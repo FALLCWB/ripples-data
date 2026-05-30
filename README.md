@@ -1,5 +1,7 @@
 # Action Ripples in Memory — Dataset
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465279.svg)](https://doi.org/10.5281/zenodo.20465279)
+
 Data and reproduction scripts for the IEEE Access submission **"Action Ripples in Memory: An Observational Characterization of Memory Cascades after External Actions on Stateful Software"**.
 
 This repository contains the experimental data, processed feature tables, and Python scripts needed to regenerate every figure and statistical claim in the paper.
@@ -133,11 +135,22 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-Until a Zenodo DOI is minted, cite as:
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.20465279
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts*. GitHub. https://github.com/FALLCWB/ripples-data
+BibTeX:
 
-After Zenodo registration, the DOI form will replace the URL.
+```bibtex
+@dataset{lemos2026ripplesdata,
+  author       = {Lemos, Filipe Augusto da Luz and others},
+  title        = {{Action Ripples in Memory --- Dataset and Reproduction Scripts}},
+  month        = may,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.20465279},
+  url          = {https://doi.org/10.5281/zenodo.20465279}
+}
+```
 
 ## License
 
