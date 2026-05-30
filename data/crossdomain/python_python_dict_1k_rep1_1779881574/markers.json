@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779881575.729712,
+  "action_ts": 1779881605.7309165,
+  "observation_end_ts": 1779881635.7733023,
+  "target_process": "python3",
+  "action_kind": "python_dict_1k",
+  "exp_name": "python_python_dict_1k_rep1_1779881574",
+  "warmup_s": 30,
+  "observation_s": 30,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 12.0
+}

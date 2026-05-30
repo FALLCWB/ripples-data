@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779936834.338219,
+  "action_ts": 1779937014.5935588,
+  "observation_end_ts": 1779937194.7003005,
+  "target_process": "dockerd",
+  "action_kind": "docker_inspect",
+  "exp_name": "dockerd_docker_inspect_rep1_1779936540739274531",
+  "warmup_s": 180,
+  "observation_s": 180,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 33160.0
+}

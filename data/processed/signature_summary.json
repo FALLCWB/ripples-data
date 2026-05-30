@@ -1,0 +1,64 @@
+{
+  "n_signatures": 108,
+  "n_within_pairs": 564,
+  "n_across_pairs": 5214,
+  "within_mean": 0.7345609279357506,
+  "within_std": 0.38600458713510893,
+  "within_median": 0.9374153191470735,
+  "across_mean": 0.3095008488269568,
+  "across_std": 0.3264023603027863,
+  "across_median": 0.20398369424814033,
+  "separation_ratio": 2.3733729025940304,
+  "per_scenario_within": {
+    "OvS-Flush": {
+      "n_reps": 10,
+      "within_mean": 0.9449630441318368,
+      "within_std": 0.030008058820526037
+    },
+    "OvS-Single": {
+      "n_reps": 10,
+      "within_mean": 0.846284697729286,
+      "within_std": 0.0637755726375966
+    },
+    "OvS-Burst": {
+      "n_reps": 10,
+      "within_mean": 0.6027799713477756,
+      "within_std": 0.4230680986099999
+    },
+    "Redis-SET": {
+      "n_reps": 16,
+      "within_mean": 0.8622989473433117,
+      "within_std": 0.32754700639770096
+    },
+    "Redis-MSET": {
+      "n_reps": 13,
+      "within_mean": 0.9989783021693415,
+      "within_std": 0.0009104838531816576
+    },
+    "Redis-FLUSHDB": {
+      "n_reps": 13,
+      "within_mean": 0.9594898527773378,
+      "within_std": 0.05987655654299186
+    },
+    "Dockerd-Inspect": {
+      "n_reps": 12,
+      "within_mean": 0.0835431038858503,
+      "within_std": 0.12737746767001515
+    },
+    "Dockerd-Run1": {
+      "n_reps": 10,
+      "within_mean": 0.2737009925590284,
+      "within_std": 0.35083800448834107
+    },
+    "Dockerd-Run10": {
+      "n_reps": 7,
+      "within_mean": 0.6529516623812912,
+      "within_std": 0.3765848010711623
+    },
+    "Dockerd-Run50": {
+      "n_reps": 7,
+      "within_mean": 0.8943977172711913,
+      "within_std": 0.07440177029717857
+    }
+  }
+}

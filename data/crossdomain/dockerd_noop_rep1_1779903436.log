@@ -1,0 +1,11 @@
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:37:21] runner starting
+  target=dockerd action=noop exp=dockerd_noop_rep1_1779903436
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:37:21] warmup 60s
+[17:38:22] injecting action: noop
+[17:38:22] observation 300s
+[17:43:22] DONE -> /data/dockerd_noop_rep1_1779903436/

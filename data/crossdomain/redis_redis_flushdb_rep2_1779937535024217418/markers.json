@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779937746.9093294,
+  "action_ts": 1779937927.0548701,
+  "observation_end_ts": 1779938107.2318573,
+  "target_process": "redis-server",
+  "action_kind": "redis_flushdb",
+  "exp_name": "redis_redis_flushdb_rep2_1779937535024217418",
+  "warmup_s": 180,
+  "observation_s": 180,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 2224.0
+}

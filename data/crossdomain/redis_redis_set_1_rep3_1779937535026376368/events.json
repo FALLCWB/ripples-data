@@ -1,0 +1,7 @@
+[
+  {
+    "ts": 1779937895.8143706,
+    "action": "inject_action",
+    "kind": "redis_set_1"
+  }
+]

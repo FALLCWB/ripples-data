@@ -1,0 +1,144 @@
+# Action Ripples in Memory — Dataset
+
+Data and reproduction scripts for the IEEE Access submission **"Action Ripples in Memory: An Observational Characterization of Memory Cascades after External Actions on Stateful Software"**.
+
+This repository contains the experimental data, processed feature tables, and Python scripts needed to regenerate every figure and statistical claim in the paper.
+
+## Quick start
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python gen_figures.py
+python gen_crossdomain.py
+```
+
+The figures are written next to the scripts (`fig2_surface.png`, `fig5_temporal.png`, `fig6_features.png`, `fig_crossdomain.png`).
+
+## Directory layout
+
+```
+data/
+  processed/   tidy CSVs and JSON summaries consumed by the figure scripts
+  crossdomain/ raw experiment logs from the Redis / Dockerd / nginx replication runs
+exp_crossdomain/ capture-side scripts used to produce the crossdomain/ logs
+scripts/         data-processing pipeline that produces data/processed from raw captures
+gen_figures.py   regenerates Fig. 2, 5, 6 from data/processed
+gen_crossdomain.py regenerates Fig. crossdomain (nginx + Redis novelty stems)
+```
+
+Raw Open vSwitch memory snapshots are not included (multi-GB per run). The processed tables in `data/processed/` contain every value used in the paper text and figures; the snapshot-to-features pipeline is in `scripts/regen_figs_data.py` for completeness.
+
+## File schemas
+
+### `data/processed/scenario_decomposition.csv`
+Per-repetition six-category attribution counts.
+
+| column | description |
+|---|---|
+| `scenario` | scenario code (`A_idle`, `B_admin_flush`, `D_attack_flush`, ...) |
+| `rep_id` | repetition identifier including timestamp |
+| `direct_anchor` | events anchored to a known audit entry within W |
+| `reactive_cascade` | post-anchor reactive events within the cascade window |
+| `induced_cascade` | post-action events with no prior audit anchor |
+| `periodic_gap` | events within a known periodic gap |
+| `endogenous_unexplained` | residual unexplained events |
+| `indeterminate` | events outside any decidable region |
+| `duration_s` | observation window length |
+| `per_hour_rate` | induced-cascade rate normalized |
+| `threshold_used` | per-rep change-volume threshold |
+| `n_test_iters` | number of iterations in the test window |
+| `n_ext` | number of audit-anchored external events |
+| `audit_era` | `rich` or `sparse` audit coverage |
+
+### `data/processed/fig2_sparse_attack_cascade_per_rep.csv`
+Per-rep cascade decomposition restricted to scenarios with sparse audit (used in Fig. 2 surface).
+
+### `data/processed/fig5_temporal_signal.csv`
+Single representative repetition trace used for the temporal-signature figure.
+
+| column | description |
+|---|---|
+| `t_rel_s` | seconds relative to the action timestamp |
+| `signal` | per-iteration `change_volume_sum` |
+| `threshold` | maximum of the pre-action signal for that rep |
+
+### `data/processed/fig6_feature_distributions.csv`
+Long-form per-feature distributions for the baseline/ripple comparison.
+
+### `data/processed/signature_pairwise_similarity.csv`
+Pairwise cosine similarity between per-rep temporal signatures.
+
+| column | description |
+|---|---|
+| `rep_a`, `rep_b` | rep IDs |
+| `scenario_a`, `scenario_b` | scenarios |
+| `same_scenario` | boolean — within vs across |
+| `cosine_similarity` | cosine over the post-action feature vector |
+
+### `data/processed/signature_summary.json`
+Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the numbers quoted in Section IV.
+
+### `data/processed/stats_summary.json`
+Detection-rate Wilson intervals and Mann–Whitney $p$-values used in the results section.
+
+### `data/processed/crossdomain_summary.csv`
+Per-(system, action) amplification table for the Redis/Dockerd/nginx replication.
+
+| column | description |
+|---|---|
+| `system` | `Redis`, `Dockerd`, `nginx` |
+| `surface` | action-surface bin (`small`, `medium`, `large`, `readback`, ...) |
+| `action` | concrete command issued |
+| `n_reps` | repetitions |
+| `baseline_pages_mean` | calibration baseline |
+| `peak_pages_mean`, `peak_pages_std` | peak post-action page count |
+| `amplification` | peak / baseline |
+
+### `data/crossdomain/*.log`
+Raw stdout from each `(system, action, rep)` capture run. Naming pattern `<system>_<action>_rep<N>_<unix_ts>.log`. The processed `crossdomain_summary.csv` is computed from these via `gen_crossdomain.py`.
+
+### `data/processed/threshold_comparison.csv`
+Sensitivity of the cascade decomposition to alternative threshold definitions (T1_max, T1_p95, T1_p99). Supports the threshold-choice robustness claim.
+
+## Regenerating processed tables from raw captures
+
+`data/raw/` and `data/snapshots/` are intentionally empty placeholders. The full Open vSwitch raw memory snapshots used to derive `data/processed/` total several gigabytes per scenario and are not redistributed here. The pipeline in `scripts/regen_figs_data.py` accepts an external snapshot path:
+
+```bash
+python scripts/regen_figs_data.py --snapshots /path/to/ovs_snapshots --out data/processed/
+```
+
+The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_pages`, audit log cross-reference) is described in Section III of the paper and the runner scripts under `exp_crossdomain/`.
+
+## Reproducing specific paper numbers
+
+| Paper claim | Source file | Compute |
+|---|---|---|
+| within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
+| Spearman $\rho = 0.08$ on cascade rate vs surface | `scenario_decomposition.csv` | `python scripts/stats_tests.py` |
+| Mann–Whitney $p < 10^{-50}$ within-vs-across | `signature_pairwise_similarity.csv` | `python scripts/signature_validation.py` |
+| Detection rate $10/10$ in attack scenarios | `stats_summary.json` | direct read |
+| Dockerd amplification $4.9 \times$ → $87 \times$ | `crossdomain_summary.csv` | direct read |
+
+## Software environment
+
+- Python 3.11
+- numpy, pandas, matplotlib, scipy (see `requirements.txt`)
+- Open vSwitch 2.17 (capture host)
+- Redis 7.2, Docker 24.x, nginx 1.24 (cross-domain replication)
+- Linux 6.x with `/proc/<pid>/pagemap` enabled
+
+The capture pipeline is OS-bound; the analysis pipeline in this repository is platform-independent.
+
+## Citing this dataset
+
+Until a Zenodo DOI is minted, cite as:
+
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts*. GitHub. https://github.com/FALLCWB/ripples-data
+
+After Zenodo registration, the DOI form will replace the URL.
+
+## License
+
+Data and code are released under **CC BY 4.0**. See `LICENSE`. Attribution should reference the IEEE Access paper above.

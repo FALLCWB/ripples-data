@@ -1,0 +1,72 @@
+=== Starting dockerd_docker_run_10_rep1_1779886323 ===
+dockerd ready
+alpine pulled
+[12:52:08] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep1_1779886323
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[12:52:08] warmup 180s
+[12:55:09] injecting action: docker_run_10
+[12:55:13] observation 180s
+[12:58:10] DONE -> /data/dockerd_docker_run_10_rep1_1779886323/
+=== dockerd_docker_run_10_rep1_1779886323 done ===
+=== Starting dockerd_docker_run_10_rep2_1779886690 ===
+dockerd ready
+alpine pulled
+[12:58:15] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep2_1779886690
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[12:58:15] warmup 180s
+[13:01:16] injecting action: docker_run_10
+[13:01:19] observation 180s
+[13:04:17] DONE -> /data/dockerd_docker_run_10_rep2_1779886690/
+=== dockerd_docker_run_10_rep2_1779886690 done ===
+=== Starting dockerd_docker_run_10_rep3_1779887057 ===
+dockerd ready
+alpine pulled
+[13:04:20] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep3_1779887057
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[13:04:20] warmup 180s
+[13:07:20] injecting action: docker_run_10
+[13:07:21] observation 180s
+[13:10:21] DONE -> /data/dockerd_docker_run_10_rep3_1779887057/
+=== dockerd_docker_run_10_rep3_1779887057 done ===
+=== Starting dockerd_docker_run_50_rep1_1779887423 ===
+dockerd ready
+alpine pulled
+[13:10:28] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep1_1779887423
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[13:10:28] warmup 180s
+[13:13:28] injecting action: docker_run_50
+[13:13:45] observation 180s
+[13:16:28] DONE -> /data/dockerd_docker_run_50_rep1_1779887423/
+=== dockerd_docker_run_50_rep1_1779887423 done ===
+=== Starting dockerd_docker_run_50_rep2_1779887788 ===
+dockerd ready
+alpine pulled
+[13:16:33] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep2_1779887788
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[13:16:33] warmup 180s
+[13:19:34] injecting action: docker_run_50
+[13:19:47] observation 180s
+[13:22:34] DONE -> /data/dockerd_docker_run_50_rep2_1779887788/
+=== dockerd_docker_run_50_rep2_1779887788 done ===
+=== Starting dockerd_docker_run_50_rep3_1779888155 ===
+dockerd ready
+alpine pulled
+[13:22:40] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep3_1779888155
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[13:22:40] warmup 180s
+[13:25:40] injecting action: docker_run_50
+[13:25:58] observation 180s
+[13:28:40] DONE -> /data/dockerd_docker_run_50_rep3_1779888155/
+=== dockerd_docker_run_50_rep3_1779888155 done ===

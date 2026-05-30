@@ -1,0 +1,7 @@
+[
+  {
+    "ts": 1779852648.7730663,
+    "action": "inject_action",
+    "kind": "nginx_burst_100"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "ts": 1779851200.550275,
+    "action": "inject_action",
+    "kind": "nginx_curl_1"
+  }
+]

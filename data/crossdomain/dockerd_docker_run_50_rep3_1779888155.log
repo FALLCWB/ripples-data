@@ -1,0 +1,10 @@
+dockerd ready
+alpine pulled
+[13:22:40] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep3_1779888155
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[13:22:40] warmup 180s
+[13:25:40] injecting action: docker_run_50
+[13:25:58] observation 180s
+[13:28:40] DONE -> /data/dockerd_docker_run_50_rep3_1779888155/

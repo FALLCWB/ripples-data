@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779852468.7601027,
+  "action_ts": 1779852648.7730663,
+  "observation_end_ts": 1779852828.8030028,
+  "target_process": "nginx",
+  "action_kind": "nginx_burst_100",
+  "exp_name": "nginx_nginx_burst_100_rep3_1779852467",
+  "warmup_s": 180,
+  "observation_s": 180,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 840.0
+}

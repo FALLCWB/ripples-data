@@ -1,0 +1,102 @@
+=== Starting redis_redis_set_1_rep1_1779847365 ===
+7:C 27 May 2026 02:02:46.686 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:02:47] runner starting
+  target=redis-server action=redis_set_1 exp=redis_redis_set_1_rep1_1779847365
+  target_pid=8
+  heap_range=(105912285327360, 105912287604736) (2224 KiB)
+[02:02:47] warmup 180s
+[02:05:47] injecting action: redis_set_1
+[02:05:47] observation 180s
+[02:08:47] DONE -> /data/redis_redis_set_1_rep1_1779847365/
+=== redis_redis_set_1_rep1_1779847365 done ===
+=== Starting redis_redis_set_1_rep2_1779847728 ===
+7:C 27 May 2026 02:08:49.516 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:08:50] runner starting
+  target=redis-server action=redis_set_1 exp=redis_redis_set_1_rep2_1779847728
+  target_pid=8
+  heap_range=(109031893229568, 109031895506944) (2224 KiB)
+[02:08:50] warmup 180s
+[02:11:50] injecting action: redis_set_1
+[02:11:50] observation 180s
+[02:14:50] DONE -> /data/redis_redis_set_1_rep2_1779847728/
+=== redis_redis_set_1_rep2_1779847728 done ===
+=== Starting redis_redis_set_1_rep3_1779848090 ===
+7:C 27 May 2026 02:14:51.984 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:14:53] runner starting
+  target=redis-server action=redis_set_1 exp=redis_redis_set_1_rep3_1779848090
+  target_pid=8
+  heap_range=(95155644555264, 95155646832640) (2224 KiB)
+[02:14:53] warmup 180s
+[02:17:53] injecting action: redis_set_1
+[02:17:53] observation 180s
+[02:20:53] DONE -> /data/redis_redis_set_1_rep3_1779848090/
+=== redis_redis_set_1_rep3_1779848090 done ===
+All reps done.
+=== Starting redis_redis_mset_100_rep1_1779848453 ===
+7:C 27 May 2026 02:20:54.488 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:20:55] runner starting
+  target=redis-server action=redis_mset_100 exp=redis_redis_mset_100_rep1_1779848453
+  target_pid=8
+  heap_range=(105789844701184, 105789846978560) (2224 KiB)
+[02:20:55] warmup 180s
+[02:23:55] injecting action: redis_mset_100
+[02:23:55] observation 180s
+[02:26:55] DONE -> /data/redis_redis_mset_100_rep1_1779848453/
+=== redis_redis_mset_100_rep1_1779848453 done ===
+=== Starting redis_redis_mset_100_rep2_1779848815 ===
+7:C 27 May 2026 02:26:57.102 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:26:58] runner starting
+  target=redis-server action=redis_mset_100 exp=redis_redis_mset_100_rep2_1779848815
+  target_pid=8
+  heap_range=(100874263973888, 100874266251264) (2224 KiB)
+[02:26:58] warmup 180s
+[02:29:58] injecting action: redis_mset_100
+[02:29:58] observation 180s
+[02:32:58] DONE -> /data/redis_redis_mset_100_rep2_1779848815/
+=== redis_redis_mset_100_rep2_1779848815 done ===
+=== Starting redis_redis_mset_100_rep3_1779849178 ===
+7:C 27 May 2026 02:32:59.690 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:33:00] runner starting
+  target=redis-server action=redis_mset_100 exp=redis_redis_mset_100_rep3_1779849178
+  target_pid=8
+  heap_range=(102834255831040, 102834258108416) (2224 KiB)
+[02:33:00] warmup 180s
+[02:36:00] injecting action: redis_mset_100
+[02:36:00] observation 180s
+[02:39:00] DONE -> /data/redis_redis_mset_100_rep3_1779849178/
+=== redis_redis_mset_100_rep3_1779849178 done ===
+All reps done.
+=== Starting redis_redis_flushdb_rep1_1779849541 ===
+7:C 27 May 2026 02:39:02.270 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:39:03] runner starting
+  target=redis-server action=redis_flushdb exp=redis_redis_flushdb_rep1_1779849541
+  target_pid=8
+  heap_range=(109182794518528, 109182796795904) (2224 KiB)
+[02:39:03] warmup 180s
+[02:42:03] injecting action: redis_flushdb
+[02:42:03] observation 180s
+[02:45:03] DONE -> /data/redis_redis_flushdb_rep1_1779849541/
+=== redis_redis_flushdb_rep1_1779849541 done ===
+=== Starting redis_redis_flushdb_rep2_1779849903 ===
+7:C 27 May 2026 02:45:04.807 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:45:05] runner starting
+  target=redis-server action=redis_flushdb exp=redis_redis_flushdb_rep2_1779849903
+  target_pid=8
+  heap_range=(99870411931648, 99870414209024) (2224 KiB)
+[02:45:05] warmup 180s
+[02:48:05] injecting action: redis_flushdb
+[02:48:05] observation 180s
+[02:51:05] DONE -> /data/redis_redis_flushdb_rep2_1779849903/
+=== redis_redis_flushdb_rep2_1779849903 done ===
+=== Starting redis_redis_flushdb_rep3_1779850266 ===
+7:C 27 May 2026 02:51:07.383 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:51:08] runner starting
+  target=redis-server action=redis_flushdb exp=redis_redis_flushdb_rep3_1779850266
+  target_pid=8
+  heap_range=(110118046584832, 110118048862208) (2224 KiB)
+[02:51:08] warmup 180s
+[02:54:08] injecting action: redis_flushdb
+[02:54:08] observation 180s
+[02:57:08] DONE -> /data/redis_redis_flushdb_rep3_1779850266/
+=== redis_redis_flushdb_rep3_1779850266 done ===
+All reps done.

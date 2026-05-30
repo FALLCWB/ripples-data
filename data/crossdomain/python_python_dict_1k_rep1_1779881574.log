@@ -1,0 +1,6 @@
+workload ready pid=7
+[11:32:55] runner starting
+  target=python3 action=python_dict_1k exp=python_python_dict_1k_rep1_1779881574
+  target_pid=7 (from WORKLOAD_PID env)
+  heap_range=(102007319756800, 102007319769088) (12 KiB)
+[11:32:55] warmup 30s

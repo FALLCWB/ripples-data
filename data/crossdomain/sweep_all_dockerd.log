@@ -1,0 +1,213 @@
+=== Starting dockerd_docker_run_1_rep1_1779882077 ===
+dockerd ready
+alpine pulled
+[11:41:21] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep1_1779882077
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[11:41:21] warmup 180s
+[11:44:22] injecting action: docker_run_1
+[11:44:23] observation 180s
+[11:47:23] DONE -> /data/dockerd_docker_run_1_rep1_1779882077/
+=== dockerd_docker_run_1_rep1_1779882077 done ===
+=== Starting dockerd_docker_run_1_rep2_1779882443 ===
+dockerd ready
+alpine pulled
+[11:47:28] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep2_1779882443
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[11:47:28] warmup 180s
+=== Starting dockerd_docker_run_1_rep1_1779883168 ===
+dockerd ready
+alpine pulled
+[11:59:33] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep1_1779883168
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[11:59:33] warmup 180s
+[12:02:33] injecting action: docker_run_1
+[12:02:34] observation 180s
+[12:05:33] DONE -> /data/dockerd_docker_run_1_rep1_1779883168/
+=== dockerd_docker_run_1_rep1_1779883168 done ===
+=== Starting dockerd_docker_run_1_rep2_1779883534 ===
+tee: /home/lemos/research/echoes-paper/data/crossdomain/dockerd_docker_run_1_rep2_1779883534.log: No such file or directory
+dockerd ready
+alpine pulled
+[12:05:39] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep2_1779883534
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[12:05:39] warmup 180s
+[12:08:39] injecting action: docker_run_1
+[12:08:39] observation 180s
+[12:11:39] DONE -> /data/dockerd_docker_run_1_rep2_1779883534/
+=== Starting dockerd_docker_inspect_rep1_1779899039 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:24:05] runner starting
+  target=dockerd action=docker_inspect exp=dockerd_docker_inspect_rep1_1779899039
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:24:05] warmup 180s
+[16:27:05] injecting action: docker_inspect
+[16:27:05] observation 180s
+[16:30:06] DONE -> /data/dockerd_docker_inspect_rep1_1779899039/
+=== dockerd_docker_inspect_rep1_1779899039 done ===
+=== Starting dockerd_docker_inspect_rep2_1779899406 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:30:09] runner starting
+  target=dockerd action=docker_inspect exp=dockerd_docker_inspect_rep2_1779899406
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:30:09] warmup 180s
+[16:33:09] injecting action: docker_inspect
+[16:33:09] observation 180s
+[16:36:09] DONE -> /data/dockerd_docker_inspect_rep2_1779899406/
+=== dockerd_docker_inspect_rep2_1779899406 done ===
+=== Starting dockerd_docker_inspect_rep3_1779899769 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:36:18] runner starting
+  target=dockerd action=docker_inspect exp=dockerd_docker_inspect_rep3_1779899769
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:36:18] warmup 180s
+[16:39:18] injecting action: docker_inspect
+[16:39:18] observation 180s
+[16:42:18] DONE -> /data/dockerd_docker_inspect_rep3_1779899769/
+=== dockerd_docker_inspect_rep3_1779899769 done ===
+=== Starting dockerd_docker_run_1_rep1_1779900141 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:42:26] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep1_1779900141
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:42:26] warmup 180s
+[16:45:27] injecting action: docker_run_1
+[16:45:27] observation 180s
+[16:48:27] DONE -> /data/dockerd_docker_run_1_rep1_1779900141/
+=== dockerd_docker_run_1_rep1_1779900141 done ===
+=== Starting dockerd_docker_run_1_rep2_1779900508 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:48:30] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep2_1779900508
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:48:30] warmup 180s
+[16:51:31] injecting action: docker_run_1
+[16:51:31] observation 180s
+[16:54:31] DONE -> /data/dockerd_docker_run_1_rep2_1779900508/
+=== dockerd_docker_run_1_rep2_1779900508 done ===
+=== Starting dockerd_docker_run_1_rep3_1779900871 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[16:54:36] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep3_1779900871
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[16:54:36] warmup 180s
+[16:57:37] injecting action: docker_run_1
+[16:57:37] observation 180s
+[17:00:37] DONE -> /data/dockerd_docker_run_1_rep3_1779900871/
+=== dockerd_docker_run_1_rep3_1779900871 done ===
+=== Starting dockerd_docker_run_10_rep1_1779901239 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:00:45] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep1_1779901239
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:00:45] warmup 180s
+[17:03:45] injecting action: docker_run_10
+[17:03:49] observation 180s
+[17:06:45] DONE -> /data/dockerd_docker_run_10_rep1_1779901239/
+=== dockerd_docker_run_10_rep1_1779901239 done ===
+=== Starting dockerd_docker_run_10_rep2_1779901606 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:06:51] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep2_1779901606
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:06:51] warmup 180s
+[17:09:51] injecting action: docker_run_10
+[17:09:52] observation 180s
+[17:12:51] DONE -> /data/dockerd_docker_run_10_rep2_1779901606/
+=== dockerd_docker_run_10_rep2_1779901606 done ===
+=== Starting dockerd_docker_run_10_rep3_1779901969 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:12:54] runner starting
+  target=dockerd action=docker_run_10 exp=dockerd_docker_run_10_rep3_1779901969
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:12:54] warmup 180s
+[17:15:55] injecting action: docker_run_10
+[17:15:58] observation 180s
+[17:18:55] DONE -> /data/dockerd_docker_run_10_rep3_1779901969/
+=== dockerd_docker_run_10_rep3_1779901969 done ===
+=== Starting dockerd_docker_run_50_rep1_1779902337 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:19:03] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep1_1779902337
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:19:03] warmup 180s
+[17:22:03] injecting action: docker_run_50
+[17:22:19] observation 180s
+[17:25:04] DONE -> /data/dockerd_docker_run_50_rep1_1779902337/
+=== dockerd_docker_run_50_rep1_1779902337 done ===
+=== Starting dockerd_docker_run_50_rep2_1779902704 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:25:09] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep2_1779902704
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:25:09] warmup 180s
+[17:28:10] injecting action: docker_run_50
+[17:28:25] observation 180s
+[17:31:10] DONE -> /data/dockerd_docker_run_50_rep2_1779902704/
+=== dockerd_docker_run_50_rep2_1779902704 done ===
+=== Starting dockerd_docker_run_50_rep3_1779903070 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:31:13] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep3_1779903070
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:31:13] warmup 180s
+[17:34:13] injecting action: docker_run_50
+[17:34:31] observation 180s
+[17:37:13] DONE -> /data/dockerd_docker_run_50_rep3_1779903070/
+=== dockerd_docker_run_50_rep3_1779903070 done ===
+=== Starting dockerd_noop_rep1_1779903436 ===
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:37:21] runner starting
+  target=dockerd action=noop exp=dockerd_noop_rep1_1779903436
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:37:21] warmup 60s
+[17:38:22] injecting action: noop
+[17:38:22] observation 300s
+[17:43:22] DONE -> /data/dockerd_noop_rep1_1779903436/
+=== dockerd_noop_rep1_1779903436 done ===

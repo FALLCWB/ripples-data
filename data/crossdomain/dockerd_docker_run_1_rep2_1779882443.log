@@ -1,0 +1,7 @@
+dockerd ready
+alpine pulled
+[11:47:28] runner starting
+  target=dockerd action=docker_run_1 exp=dockerd_docker_run_1_rep2_1779882443
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[11:47:28] warmup 180s

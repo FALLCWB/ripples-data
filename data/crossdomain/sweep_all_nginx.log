@@ -1,0 +1,886 @@
+=== Starting nginx_nginx_curl_1_rep1_1779850656 ===
+2026/05/27 02:57:37 [notice] 7#7: using the "epoll" event method
+2026/05/27 02:57:37 [notice] 7#7: nginx/1.31.1
+2026/05/27 02:57:37 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 02:57:37 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 02:57:37 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 02:57:37 [notice] 8#8: start worker processes
+2026/05/27 02:57:37 [notice] 8#8: start worker process 9
+2026/05/27 02:57:37 [notice] 8#8: start worker process 10
+2026/05/27 02:57:37 [notice] 8#8: start worker process 11
+2026/05/27 02:57:37 [notice] 8#8: start worker process 12
+2026/05/27 02:57:37 [notice] 8#8: start worker process 14
+2026/05/27 02:57:37 [notice] 8#8: start worker process 15
+2026/05/27 02:57:37 [notice] 8#8: start worker process 16
+2026/05/27 02:57:37 [notice] 8#8: start worker process 17
+2026/05/27 02:57:37 [notice] 8#8: start worker process 18
+2026/05/27 02:57:37 [notice] 8#8: start worker process 19
+2026/05/27 02:57:37 [notice] 8#8: start worker process 20
+2026/05/27 02:57:37 [notice] 8#8: start worker process 21
+2026/05/27 02:57:37 [notice] 8#8: start worker process 22
+2026/05/27 02:57:37 [notice] 8#8: start worker process 23
+2026/05/27 02:57:37 [notice] 8#8: start worker process 24
+2026/05/27 02:57:37 [notice] 8#8: start worker process 25
+[02:57:38] runner starting
+  target=nginx action=nginx_curl_1 exp=nginx_nginx_curl_1_rep1_1779850656
+  target_pid=8
+  heap_range=(101270831841280, 101270832701440) (840 KiB)
+[02:57:38] warmup 180s
+[03:00:38] injecting action: nginx_curl_1
+127.0.0.1 - - [27/May/2026:03:00:38 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.19.0" "-"
+[03:00:38] observation 180s
+[03:03:38] DONE -> /data/nginx_nginx_curl_1_rep1_1779850656/
+=== nginx_nginx_curl_1_rep1_1779850656 done ===
+=== Starting nginx_nginx_curl_1_rep2_1779851018 ===
+2026/05/27 03:03:39 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:03:39 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:03:39 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:03:39 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:03:39 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:03:39 [notice] 8#8: start worker processes
+2026/05/27 03:03:39 [notice] 8#8: start worker process 9
+2026/05/27 03:03:39 [notice] 8#8: start worker process 10
+2026/05/27 03:03:39 [notice] 8#8: start worker process 11
+2026/05/27 03:03:39 [notice] 8#8: start worker process 12
+2026/05/27 03:03:39 [notice] 8#8: start worker process 13
+2026/05/27 03:03:39 [notice] 8#8: start worker process 14
+2026/05/27 03:03:39 [notice] 8#8: start worker process 16
+2026/05/27 03:03:39 [notice] 8#8: start worker process 17
+2026/05/27 03:03:39 [notice] 8#8: start worker process 18
+2026/05/27 03:03:39 [notice] 8#8: start worker process 19
+2026/05/27 03:03:39 [notice] 8#8: start worker process 20
+2026/05/27 03:03:39 [notice] 8#8: start worker process 21
+2026/05/27 03:03:39 [notice] 8#8: start worker process 22
+2026/05/27 03:03:39 [notice] 8#8: start worker process 23
+2026/05/27 03:03:39 [notice] 8#8: start worker process 24
+2026/05/27 03:03:39 [notice] 8#8: start worker process 25
+[03:03:40] runner starting
+  target=nginx action=nginx_curl_1 exp=nginx_nginx_curl_1_rep2_1779851018
+  target_pid=8
+  heap_range=(100535908888576, 100535909748736) (840 KiB)
+[03:03:40] warmup 180s
+[03:06:40] injecting action: nginx_curl_1
+127.0.0.1 - - [27/May/2026:03:06:40 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.19.0" "-"
+[03:06:40] observation 180s
+[03:09:40] DONE -> /data/nginx_nginx_curl_1_rep2_1779851018/
+=== nginx_nginx_curl_1_rep2_1779851018 done ===
+=== Starting nginx_nginx_curl_1_rep3_1779851380 ===
+2026/05/27 03:09:41 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:09:41 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:09:41 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:09:41 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:09:41 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:09:41 [notice] 8#8: start worker processes
+2026/05/27 03:09:41 [notice] 8#8: start worker process 9
+2026/05/27 03:09:41 [notice] 8#8: start worker process 10
+2026/05/27 03:09:41 [notice] 8#8: start worker process 11
+2026/05/27 03:09:41 [notice] 8#8: start worker process 13
+2026/05/27 03:09:41 [notice] 8#8: start worker process 14
+2026/05/27 03:09:41 [notice] 8#8: start worker process 15
+2026/05/27 03:09:41 [notice] 8#8: start worker process 16
+2026/05/27 03:09:41 [notice] 8#8: start worker process 17
+2026/05/27 03:09:41 [notice] 8#8: start worker process 18
+2026/05/27 03:09:41 [notice] 8#8: start worker process 19
+2026/05/27 03:09:41 [notice] 8#8: start worker process 20
+2026/05/27 03:09:41 [notice] 8#8: start worker process 21
+2026/05/27 03:09:41 [notice] 8#8: start worker process 22
+2026/05/27 03:09:41 [notice] 8#8: start worker process 23
+2026/05/27 03:09:41 [notice] 8#8: start worker process 24
+2026/05/27 03:09:41 [notice] 8#8: start worker process 25
+[03:09:42] runner starting
+  target=nginx action=nginx_curl_1 exp=nginx_nginx_curl_1_rep3_1779851380
+  target_pid=8
+  heap_range=(103267092205568, 103267093065728) (840 KiB)
+[03:09:42] warmup 180s
+[03:12:42] injecting action: nginx_curl_1
+127.0.0.1 - - [27/May/2026:03:12:42 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.19.0" "-"
+[03:12:42] observation 180s
+[03:15:42] DONE -> /data/nginx_nginx_curl_1_rep3_1779851380/
+=== nginx_nginx_curl_1_rep3_1779851380 done ===
+=== Starting nginx_nginx_burst_100_rep1_1779851743 ===
+2026/05/27 03:15:44 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:15:44 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:15:44 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:15:44 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:15:44 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:15:44 [notice] 8#8: start worker processes
+2026/05/27 03:15:44 [notice] 8#8: start worker process 9
+2026/05/27 03:15:44 [notice] 8#8: start worker process 10
+2026/05/27 03:15:44 [notice] 8#8: start worker process 11
+2026/05/27 03:15:44 [notice] 8#8: start worker process 12
+2026/05/27 03:15:44 [notice] 8#8: start worker process 13
+2026/05/27 03:15:44 [notice] 8#8: start worker process 14
+2026/05/27 03:15:44 [notice] 8#8: start worker process 15
+2026/05/27 03:15:44 [notice] 8#8: start worker process 17
+2026/05/27 03:15:44 [notice] 8#8: start worker process 18
+2026/05/27 03:15:44 [notice] 8#8: start worker process 19
+2026/05/27 03:15:44 [notice] 8#8: start worker process 20
+2026/05/27 03:15:44 [notice] 8#8: start worker process 21
+2026/05/27 03:15:44 [notice] 8#8: start worker process 22
+2026/05/27 03:15:44 [notice] 8#8: start worker process 23
+2026/05/27 03:15:44 [notice] 8#8: start worker process 24
+2026/05/27 03:15:44 [notice] 8#8: start worker process 25
+[03:15:45] runner starting
+  target=nginx action=nginx_burst_100 exp=nginx_nginx_burst_100_rep1_1779851743
+  target_pid=8
+  heap_range=(97044772831232, 97044773691392) (840 KiB)
+[03:15:45] warmup 180s
+[03:18:45] injecting action: nginx_burst_100
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:18:45 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+[03:18:45] observation 180s
+[03:21:45] DONE -> /data/nginx_nginx_burst_100_rep1_1779851743/
+=== nginx_nginx_burst_100_rep1_1779851743 done ===
+=== Starting nginx_nginx_burst_100_rep2_1779852105 ===
+2026/05/27 03:21:45 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:21:45 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:21:45 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:21:45 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:21:45 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:21:45 [notice] 8#8: start worker processes
+2026/05/27 03:21:45 [notice] 8#8: start worker process 9
+2026/05/27 03:21:45 [notice] 8#8: start worker process 10
+2026/05/27 03:21:45 [notice] 8#8: start worker process 11
+2026/05/27 03:21:45 [notice] 8#8: start worker process 12
+2026/05/27 03:21:45 [notice] 8#8: start worker process 13
+2026/05/27 03:21:45 [notice] 8#8: start worker process 15
+2026/05/27 03:21:45 [notice] 8#8: start worker process 16
+2026/05/27 03:21:45 [notice] 8#8: start worker process 17
+2026/05/27 03:21:45 [notice] 8#8: start worker process 18
+2026/05/27 03:21:45 [notice] 8#8: start worker process 19
+2026/05/27 03:21:45 [notice] 8#8: start worker process 20
+2026/05/27 03:21:45 [notice] 8#8: start worker process 21
+2026/05/27 03:21:45 [notice] 8#8: start worker process 22
+2026/05/27 03:21:45 [notice] 8#8: start worker process 23
+2026/05/27 03:21:45 [notice] 8#8: start worker process 24
+2026/05/27 03:21:45 [notice] 8#8: start worker process 25
+[03:21:47] runner starting
+  target=nginx action=nginx_burst_100 exp=nginx_nginx_burst_100_rep2_1779852105
+  target_pid=8
+  heap_range=(110407025852416, 110407026712576) (840 KiB)
+[03:21:47] warmup 180s
+[03:24:47] injecting action: nginx_burst_100
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:24:47 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+[03:24:47] observation 180s
+[03:27:47] DONE -> /data/nginx_nginx_burst_100_rep2_1779852105/
+=== nginx_nginx_burst_100_rep2_1779852105 done ===
+=== Starting nginx_nginx_burst_100_rep3_1779852467 ===
+2026/05/27 03:27:47 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:27:47 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:27:47 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:27:47 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:27:47 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:27:47 [notice] 8#8: start worker processes
+2026/05/27 03:27:47 [notice] 8#8: start worker process 9
+2026/05/27 03:27:47 [notice] 8#8: start worker process 10
+2026/05/27 03:27:47 [notice] 8#8: start worker process 11
+2026/05/27 03:27:47 [notice] 8#8: start worker process 12
+2026/05/27 03:27:47 [notice] 8#8: start worker process 13
+2026/05/27 03:27:47 [notice] 8#8: start worker process 15
+2026/05/27 03:27:47 [notice] 8#8: start worker process 16
+2026/05/27 03:27:47 [notice] 8#8: start worker process 17
+2026/05/27 03:27:47 [notice] 8#8: start worker process 18
+2026/05/27 03:27:47 [notice] 8#8: start worker process 19
+2026/05/27 03:27:47 [notice] 8#8: start worker process 20
+2026/05/27 03:27:47 [notice] 8#8: start worker process 21
+2026/05/27 03:27:47 [notice] 8#8: start worker process 22
+2026/05/27 03:27:47 [notice] 8#8: start worker process 23
+2026/05/27 03:27:47 [notice] 8#8: start worker process 24
+2026/05/27 03:27:47 [notice] 8#8: start worker process 25
+[03:27:48] runner starting
+  target=nginx action=nginx_burst_100 exp=nginx_nginx_burst_100_rep3_1779852467
+  target_pid=8
+  heap_range=(103951208734720, 103951209594880) (840 KiB)
+[03:27:48] warmup 180s
+[03:30:48] injecting action: nginx_burst_100
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+127.0.0.1 - - [27/May/2026:03:30:48 +0000] "GET / HTTP/1.0" 200 896 "-" "ApacheBench/2.3" "-"
+[03:30:48] observation 180s
+[03:33:48] DONE -> /data/nginx_nginx_burst_100_rep3_1779852467/
+=== nginx_nginx_burst_100_rep3_1779852467 done ===
+=== Starting nginx_nginx_reload_rep1_1779852829 ===
+2026/05/27 03:33:47 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:33:47 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:33:47 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:33:47 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:33:47 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:33:47 [notice] 8#8: start worker processes
+2026/05/27 03:33:47 [notice] 8#8: start worker process 9
+2026/05/27 03:33:47 [notice] 8#8: start worker process 10
+2026/05/27 03:33:47 [notice] 8#8: start worker process 11
+2026/05/27 03:33:47 [notice] 8#8: start worker process 12
+2026/05/27 03:33:47 [notice] 8#8: start worker process 14
+2026/05/27 03:33:47 [notice] 8#8: start worker process 15
+2026/05/27 03:33:47 [notice] 8#8: start worker process 16
+2026/05/27 03:33:47 [notice] 8#8: start worker process 17
+2026/05/27 03:33:47 [notice] 8#8: start worker process 18
+2026/05/27 03:33:47 [notice] 8#8: start worker process 19
+2026/05/27 03:33:47 [notice] 8#8: start worker process 20
+2026/05/27 03:33:47 [notice] 8#8: start worker process 21
+2026/05/27 03:33:47 [notice] 8#8: start worker process 22
+2026/05/27 03:33:47 [notice] 8#8: start worker process 23
+2026/05/27 03:33:47 [notice] 8#8: start worker process 24
+2026/05/27 03:33:47 [notice] 8#8: start worker process 25
+[03:33:48] runner starting
+  target=nginx action=nginx_reload exp=nginx_nginx_reload_rep1_1779852829
+  target_pid=8
+  heap_range=(105121833324544, 105121834184704) (840 KiB)
+[03:33:48] warmup 180s
+[03:36:48] injecting action: nginx_reload
+2026/05/27 03:36:48 [notice] 8#8: signal 1 (SIGHUP) received from 1, reconfiguring
+2026/05/27 03:36:48 [notice] 8#8: reconfiguring
+[03:36:48] observation 180s
+2026/05/27 03:36:48 [notice] 8#8: using the "epoll" event method
+2026/05/27 03:36:48 [notice] 8#8: start worker processes
+2026/05/27 03:36:48 [notice] 8#8: start worker process 26
+2026/05/27 03:36:48 [notice] 8#8: start worker process 27
+2026/05/27 03:36:48 [notice] 8#8: start worker process 28
+2026/05/27 03:36:48 [notice] 8#8: start worker process 29
+2026/05/27 03:36:48 [notice] 8#8: start worker process 30
+2026/05/27 03:36:48 [notice] 8#8: start worker process 31
+2026/05/27 03:36:48 [notice] 8#8: start worker process 32
+2026/05/27 03:36:48 [notice] 8#8: start worker process 33
+2026/05/27 03:36:48 [notice] 8#8: start worker process 34
+2026/05/27 03:36:48 [notice] 8#8: start worker process 35
+2026/05/27 03:36:48 [notice] 8#8: start worker process 36
+2026/05/27 03:36:48 [notice] 8#8: start worker process 37
+2026/05/27 03:36:48 [notice] 8#8: start worker process 38
+2026/05/27 03:36:48 [notice] 8#8: start worker process 39
+2026/05/27 03:36:48 [notice] 8#8: start worker process 40
+2026/05/27 03:36:48 [notice] 8#8: start worker process 41
+2026/05/27 03:36:49 [notice] 9#9: gracefully shutting down
+2026/05/27 03:36:49 [notice] 10#10: gracefully shutting down
+2026/05/27 03:36:49 [notice] 10#10: exiting
+2026/05/27 03:36:49 [notice] 9#9: exiting
+2026/05/27 03:36:49 [notice] 11#11: gracefully shutting down
+2026/05/27 03:36:49 [notice] 12#12: gracefully shutting down
+2026/05/27 03:36:49 [notice] 11#11: exiting
+2026/05/27 03:36:49 [notice] 14#14: gracefully shutting down
+2026/05/27 03:36:49 [notice] 12#12: exiting
+2026/05/27 03:36:49 [notice] 14#14: exiting
+2026/05/27 03:36:49 [notice] 15#15: gracefully shutting down
+2026/05/27 03:36:49 [notice] 15#15: exiting
+2026/05/27 03:36:49 [notice] 16#16: gracefully shutting down
+2026/05/27 03:36:49 [notice] 16#16: exiting
+2026/05/27 03:36:49 [notice] 17#17: gracefully shutting down
+2026/05/27 03:36:49 [notice] 18#18: gracefully shutting down
+2026/05/27 03:36:49 [notice] 17#17: exiting
+2026/05/27 03:36:49 [notice] 18#18: exiting
+2026/05/27 03:36:49 [notice] 19#19: gracefully shutting down
+2026/05/27 03:36:49 [notice] 19#19: exiting
+2026/05/27 03:36:49 [notice] 20#20: gracefully shutting down
+2026/05/27 03:36:49 [notice] 22#22: gracefully shutting down
+2026/05/27 03:36:49 [notice] 21#21: gracefully shutting down
+2026/05/27 03:36:49 [notice] 20#20: exiting
+2026/05/27 03:36:49 [notice] 23#23: gracefully shutting down
+2026/05/27 03:36:49 [notice] 22#22: exiting
+2026/05/27 03:36:49 [notice] 21#21: exiting
+2026/05/27 03:36:49 [notice] 23#23: exiting
+2026/05/27 03:36:49 [notice] 9#9: exit
+2026/05/27 03:36:49 [notice] 10#10: exit
+2026/05/27 03:36:49 [notice] 11#11: exit
+2026/05/27 03:36:49 [notice] 14#14: exit
+2026/05/27 03:36:49 [notice] 12#12: exit
+2026/05/27 03:36:49 [notice] 16#16: exit
+2026/05/27 03:36:49 [notice] 18#18: exit
+2026/05/27 03:36:49 [notice] 15#15: exit
+2026/05/27 03:36:49 [notice] 19#19: exit
+2026/05/27 03:36:49 [notice] 23#23: exit
+2026/05/27 03:36:49 [notice] 17#17: exit
+2026/05/27 03:36:49 [notice] 22#22: exit
+2026/05/27 03:36:49 [notice] 21#21: exit
+2026/05/27 03:36:49 [notice] 20#20: exit
+2026/05/27 03:36:49 [notice] 24#24: gracefully shutting down
+2026/05/27 03:36:49 [notice] 24#24: exiting
+2026/05/27 03:36:49 [notice] 24#24: exit
+2026/05/27 03:36:49 [notice] 25#25: gracefully shutting down
+2026/05/27 03:36:49 [notice] 25#25: exiting
+2026/05/27 03:36:49 [notice] 25#25: exit
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 23
+2026/05/27 03:36:49 [notice] 8#8: worker process 23 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 19
+2026/05/27 03:36:49 [notice] 8#8: worker process 12 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 15 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 19 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 20 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 22 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 24 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 15
+2026/05/27 03:36:49 [notice] 8#8: worker process 25 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 21
+2026/05/27 03:36:49 [notice] 8#8: worker process 9 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 16 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 21 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 17
+2026/05/27 03:36:49 [notice] 8#8: worker process 11 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 14 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: worker process 17 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 18
+2026/05/27 03:36:49 [notice] 8#8: worker process 18 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:36:49 [notice] 8#8: signal 17 (SIGCHLD) received from 10
+2026/05/27 03:36:49 [notice] 8#8: worker process 10 exited with code 0
+2026/05/27 03:36:49 [notice] 8#8: signal 29 (SIGIO) received
+[03:39:48] DONE -> /data/nginx_nginx_reload_rep1_1779852829/
+=== nginx_nginx_reload_rep1_1779852829 done ===
+=== Starting nginx_nginx_reload_rep2_1779853189 ===
+2026/05/27 03:39:49 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:39:49 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:39:49 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:39:49 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:39:49 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:39:49 [notice] 8#8: start worker processes
+2026/05/27 03:39:49 [notice] 8#8: start worker process 9
+2026/05/27 03:39:49 [notice] 8#8: start worker process 10
+2026/05/27 03:39:49 [notice] 8#8: start worker process 11
+2026/05/27 03:39:49 [notice] 8#8: start worker process 12
+2026/05/27 03:39:49 [notice] 8#8: start worker process 14
+2026/05/27 03:39:49 [notice] 8#8: start worker process 15
+2026/05/27 03:39:49 [notice] 8#8: start worker process 16
+2026/05/27 03:39:49 [notice] 8#8: start worker process 17
+2026/05/27 03:39:49 [notice] 8#8: start worker process 18
+2026/05/27 03:39:49 [notice] 8#8: start worker process 19
+2026/05/27 03:39:49 [notice] 8#8: start worker process 20
+2026/05/27 03:39:49 [notice] 8#8: start worker process 21
+2026/05/27 03:39:49 [notice] 8#8: start worker process 22
+2026/05/27 03:39:49 [notice] 8#8: start worker process 23
+2026/05/27 03:39:49 [notice] 8#8: start worker process 24
+2026/05/27 03:39:49 [notice] 8#8: start worker process 25
+[03:39:50] runner starting
+  target=nginx action=nginx_reload exp=nginx_nginx_reload_rep2_1779853189
+  target_pid=8
+  heap_range=(94415243722752, 94415244582912) (840 KiB)
+[03:39:50] warmup 180s
+[03:42:50] injecting action: nginx_reload
+[03:42:50] observation 180s
+2026/05/27 03:42:50 [notice] 8#8: signal 1 (SIGHUP) received from 1, reconfiguring
+2026/05/27 03:42:50 [notice] 8#8: reconfiguring
+2026/05/27 03:42:50 [notice] 8#8: using the "epoll" event method
+2026/05/27 03:42:50 [notice] 8#8: start worker processes
+2026/05/27 03:42:50 [notice] 8#8: start worker process 26
+2026/05/27 03:42:50 [notice] 8#8: start worker process 27
+2026/05/27 03:42:50 [notice] 8#8: start worker process 28
+2026/05/27 03:42:50 [notice] 8#8: start worker process 29
+2026/05/27 03:42:50 [notice] 8#8: start worker process 30
+2026/05/27 03:42:50 [notice] 8#8: start worker process 31
+2026/05/27 03:42:50 [notice] 8#8: start worker process 32
+2026/05/27 03:42:50 [notice] 8#8: start worker process 33
+2026/05/27 03:42:50 [notice] 8#8: start worker process 34
+2026/05/27 03:42:50 [notice] 8#8: start worker process 35
+2026/05/27 03:42:50 [notice] 8#8: start worker process 36
+2026/05/27 03:42:50 [notice] 8#8: start worker process 37
+2026/05/27 03:42:50 [notice] 8#8: start worker process 38
+2026/05/27 03:42:50 [notice] 8#8: start worker process 39
+2026/05/27 03:42:50 [notice] 8#8: start worker process 40
+2026/05/27 03:42:50 [notice] 8#8: start worker process 41
+2026/05/27 03:42:50 [notice] 9#9: gracefully shutting down
+2026/05/27 03:42:50 [notice] 10#10: gracefully shutting down
+2026/05/27 03:42:50 [notice] 11#11: gracefully shutting down
+2026/05/27 03:42:50 [notice] 10#10: exiting
+2026/05/27 03:42:50 [notice] 9#9: exiting
+2026/05/27 03:42:50 [notice] 11#11: exiting
+2026/05/27 03:42:50 [notice] 12#12: gracefully shutting down
+2026/05/27 03:42:50 [notice] 12#12: exiting
+2026/05/27 03:42:50 [notice] 14#14: gracefully shutting down
+2026/05/27 03:42:50 [notice] 15#15: gracefully shutting down
+2026/05/27 03:42:50 [notice] 14#14: exiting
+2026/05/27 03:42:50 [notice] 15#15: exiting
+2026/05/27 03:42:50 [notice] 16#16: gracefully shutting down
+2026/05/27 03:42:50 [notice] 16#16: exiting
+2026/05/27 03:42:50 [notice] 17#17: gracefully shutting down
+2026/05/27 03:42:50 [notice] 18#18: gracefully shutting down
+2026/05/27 03:42:50 [notice] 17#17: exiting
+2026/05/27 03:42:50 [notice] 19#19: gracefully shutting down
+2026/05/27 03:42:50 [notice] 18#18: exiting
+2026/05/27 03:42:50 [notice] 21#21: gracefully shutting down
+2026/05/27 03:42:50 [notice] 20#20: gracefully shutting down
+2026/05/27 03:42:50 [notice] 19#19: exiting
+2026/05/27 03:42:50 [notice] 21#21: exiting
+2026/05/27 03:42:50 [notice] 20#20: exiting
+2026/05/27 03:42:50 [notice] 22#22: gracefully shutting down
+2026/05/27 03:42:50 [notice] 23#23: gracefully shutting down
+2026/05/27 03:42:50 [notice] 22#22: exiting
+2026/05/27 03:42:50 [notice] 23#23: exiting
+2026/05/27 03:42:50 [notice] 10#10: exit
+2026/05/27 03:42:50 [notice] 9#9: exit
+2026/05/27 03:42:50 [notice] 11#11: exit
+2026/05/27 03:42:50 [notice] 12#12: exit
+2026/05/27 03:42:50 [notice] 15#15: exit
+2026/05/27 03:42:50 [notice] 14#14: exit
+2026/05/27 03:42:50 [notice] 17#17: exit
+2026/05/27 03:42:50 [notice] 16#16: exit
+2026/05/27 03:42:50 [notice] 21#21: exit
+2026/05/27 03:42:50 [notice] 19#19: exit
+2026/05/27 03:42:50 [notice] 18#18: exit
+2026/05/27 03:42:50 [notice] 22#22: exit
+2026/05/27 03:42:50 [notice] 23#23: exit
+2026/05/27 03:42:50 [notice] 20#20: exit
+2026/05/27 03:42:50 [notice] 24#24: gracefully shutting down
+2026/05/27 03:42:50 [notice] 25#25: gracefully shutting down
+2026/05/27 03:42:50 [notice] 25#25: exiting
+2026/05/27 03:42:50 [notice] 24#24: exiting
+2026/05/27 03:42:50 [notice] 25#25: exit
+2026/05/27 03:42:50 [notice] 24#24: exit
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 18
+2026/05/27 03:42:50 [notice] 8#8: worker process 18 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 25 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 17
+2026/05/27 03:42:50 [notice] 8#8: worker process 17 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 22
+2026/05/27 03:42:50 [notice] 8#8: worker process 9 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 11 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 12 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 14 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 19 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 21 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 22 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 23 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 15
+2026/05/27 03:42:50 [notice] 8#8: worker process 10 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 15 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: worker process 20 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 20
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 16
+2026/05/27 03:42:50 [notice] 8#8: worker process 16 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:42:50 [notice] 8#8: signal 17 (SIGCHLD) received from 24
+2026/05/27 03:42:50 [notice] 8#8: worker process 24 exited with code 0
+2026/05/27 03:42:50 [notice] 8#8: signal 29 (SIGIO) received
+[03:45:50] DONE -> /data/nginx_nginx_reload_rep2_1779853189/
+=== nginx_nginx_reload_rep2_1779853189 done ===
+=== Starting nginx_nginx_reload_rep3_1779853551 ===
+2026/05/27 03:45:51 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:45:51 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:45:51 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:45:51 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:45:51 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:45:51 [notice] 8#8: start worker processes
+2026/05/27 03:45:51 [notice] 8#8: start worker process 9
+2026/05/27 03:45:51 [notice] 8#8: start worker process 10
+2026/05/27 03:45:51 [notice] 8#8: start worker process 11
+2026/05/27 03:45:51 [notice] 8#8: start worker process 13
+2026/05/27 03:45:51 [notice] 8#8: start worker process 14
+2026/05/27 03:45:51 [notice] 8#8: start worker process 15
+2026/05/27 03:45:51 [notice] 8#8: start worker process 16
+2026/05/27 03:45:51 [notice] 8#8: start worker process 17
+2026/05/27 03:45:51 [notice] 8#8: start worker process 18
+2026/05/27 03:45:51 [notice] 8#8: start worker process 19
+2026/05/27 03:45:51 [notice] 8#8: start worker process 20
+2026/05/27 03:45:51 [notice] 8#8: start worker process 21
+2026/05/27 03:45:51 [notice] 8#8: start worker process 22
+2026/05/27 03:45:51 [notice] 8#8: start worker process 23
+2026/05/27 03:45:51 [notice] 8#8: start worker process 24
+2026/05/27 03:45:51 [notice] 8#8: start worker process 25
+[03:45:52] runner starting
+  target=nginx action=nginx_reload exp=nginx_nginx_reload_rep3_1779853551
+  target_pid=8
+  heap_range=(104224422866944, 104224423727104) (840 KiB)
+[03:45:52] warmup 180s
+[03:48:52] injecting action: nginx_reload
+2026/05/27 03:48:52 [notice] 8#8: signal 1 (SIGHUP) received from 1, reconfiguring
+2026/05/27 03:48:52 [notice] 8#8: reconfiguring
+[03:48:52] observation 180s
+2026/05/27 03:48:52 [notice] 8#8: using the "epoll" event method
+2026/05/27 03:48:52 [notice] 8#8: start worker processes
+2026/05/27 03:48:52 [notice] 8#8: start worker process 26
+2026/05/27 03:48:52 [notice] 8#8: start worker process 27
+2026/05/27 03:48:52 [notice] 8#8: start worker process 28
+2026/05/27 03:48:52 [notice] 8#8: start worker process 29
+2026/05/27 03:48:52 [notice] 8#8: start worker process 30
+2026/05/27 03:48:52 [notice] 8#8: start worker process 31
+2026/05/27 03:48:52 [notice] 8#8: start worker process 32
+2026/05/27 03:48:52 [notice] 8#8: start worker process 33
+2026/05/27 03:48:52 [notice] 8#8: start worker process 34
+2026/05/27 03:48:52 [notice] 8#8: start worker process 35
+2026/05/27 03:48:52 [notice] 8#8: start worker process 36
+2026/05/27 03:48:52 [notice] 8#8: start worker process 37
+2026/05/27 03:48:52 [notice] 8#8: start worker process 38
+2026/05/27 03:48:52 [notice] 8#8: start worker process 39
+2026/05/27 03:48:52 [notice] 8#8: start worker process 40
+2026/05/27 03:48:52 [notice] 8#8: start worker process 41
+2026/05/27 03:48:52 [notice] 9#9: gracefully shutting down
+2026/05/27 03:48:52 [notice] 10#10: gracefully shutting down
+2026/05/27 03:48:52 [notice] 9#9: exiting
+2026/05/27 03:48:52 [notice] 10#10: exiting
+2026/05/27 03:48:52 [notice] 11#11: gracefully shutting down
+2026/05/27 03:48:52 [notice] 11#11: exiting
+2026/05/27 03:48:52 [notice] 13#13: gracefully shutting down
+2026/05/27 03:48:52 [notice] 14#14: gracefully shutting down
+2026/05/27 03:48:52 [notice] 13#13: exiting
+2026/05/27 03:48:52 [notice] 14#14: exiting
+2026/05/27 03:48:52 [notice] 15#15: gracefully shutting down
+2026/05/27 03:48:52 [notice] 15#15: exiting
+2026/05/27 03:48:52 [notice] 16#16: gracefully shutting down
+2026/05/27 03:48:52 [notice] 17#17: gracefully shutting down
+2026/05/27 03:48:52 [notice] 16#16: exiting
+2026/05/27 03:48:52 [notice] 18#18: gracefully shutting down
+2026/05/27 03:48:52 [notice] 17#17: exiting
+2026/05/27 03:48:52 [notice] 19#19: gracefully shutting down
+2026/05/27 03:48:52 [notice] 18#18: exiting
+2026/05/27 03:48:52 [notice] 19#19: exiting
+2026/05/27 03:48:52 [notice] 20#20: gracefully shutting down
+2026/05/27 03:48:52 [notice] 20#20: exiting
+2026/05/27 03:48:52 [notice] 21#21: gracefully shutting down
+2026/05/27 03:48:52 [notice] 21#21: exiting
+2026/05/27 03:48:52 [notice] 22#22: gracefully shutting down
+2026/05/27 03:48:52 [notice] 22#22: exiting
+2026/05/27 03:48:52 [notice] 23#23: gracefully shutting down
+2026/05/27 03:48:52 [notice] 10#10: exit
+2026/05/27 03:48:52 [notice] 14#14: exit
+2026/05/27 03:48:52 [notice] 9#9: exit
+2026/05/27 03:48:52 [notice] 11#11: exit
+2026/05/27 03:48:52 [notice] 13#13: exit
+2026/05/27 03:48:52 [notice] 23#23: exiting
+2026/05/27 03:48:52 [notice] 15#15: exit
+2026/05/27 03:48:52 [notice] 16#16: exit
+2026/05/27 03:48:52 [notice] 19#19: exit
+2026/05/27 03:48:52 [notice] 17#17: exit
+2026/05/27 03:48:52 [notice] 21#21: exit
+2026/05/27 03:48:52 [notice] 22#22: exit
+2026/05/27 03:48:52 [notice] 18#18: exit
+2026/05/27 03:48:52 [notice] 20#20: exit
+2026/05/27 03:48:52 [notice] 23#23: exit
+2026/05/27 03:48:52 [notice] 24#24: gracefully shutting down
+2026/05/27 03:48:52 [notice] 25#25: gracefully shutting down
+2026/05/27 03:48:52 [notice] 25#25: exiting
+2026/05/27 03:48:52 [notice] 24#24: exiting
+2026/05/27 03:48:52 [notice] 25#25: exit
+2026/05/27 03:48:52 [notice] 24#24: exit
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 20
+2026/05/27 03:48:52 [notice] 8#8: worker process 20 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 19 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 19
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 23
+2026/05/27 03:48:52 [notice] 8#8: worker process 22 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 23 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 16
+2026/05/27 03:48:52 [notice] 8#8: worker process 9 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 11 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 13 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 14 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 15 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 16 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 17 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 10
+2026/05/27 03:48:52 [notice] 8#8: worker process 10 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 18
+2026/05/27 03:48:52 [notice] 8#8: worker process 18 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 21
+2026/05/27 03:48:52 [notice] 8#8: worker process 21 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 24 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 24
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 25
+2026/05/27 03:48:52 [notice] 8#8: worker process 25 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+[03:51:52] DONE -> /data/nginx_nginx_reload_rep3_1779853551/
+=== nginx_nginx_reload_rep3_1779853551 done ===

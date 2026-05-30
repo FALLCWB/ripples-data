@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779894888.6576192,
+  "action_ts": 1779894948.6762953,
+  "observation_end_ts": 1779895068.689282,
+  "target_process": "redis-server",
+  "action_kind": "redis_set_1",
+  "exp_name": "redis_redis_set_1_rep1_1779894884",
+  "warmup_s": 60,
+  "observation_s": 120,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 2224.0
+}

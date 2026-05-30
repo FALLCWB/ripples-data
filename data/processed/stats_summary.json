@@ -1,0 +1,89 @@
+{
+  "detection_rate_per_scenario": {
+    "D_attack_flush": {
+      "n_reps": 10,
+      "n_detected": 10,
+      "detection_rate": 1.0,
+      "wilson_95_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "E_attack_single_rule": {
+      "n_reps": 10,
+      "n_detected": 10,
+      "detection_rate": 1.0,
+      "wilson_95_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "F_attack_burst": {
+      "n_reps": 10,
+      "n_detected": 10,
+      "detection_rate": 1.0,
+      "wilson_95_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    }
+  },
+  "surface_monotonicity_spearman": {
+    "rho": 0.08018332720821829,
+    "p_value": 0.6736090602041027,
+    "n": 30,
+    "note": ""
+  },
+  "bootstrap_per_scenario": {
+    "D_attack_flush": {
+      "mean": 1106.75,
+      "bootstrap_95_ci": [
+        1065.2397500000002,
+        1156.38075
+      ],
+      "n_reps": 10
+    },
+    "E_attack_single_rule": {
+      "mean": 1061.94,
+      "bootstrap_95_ci": [
+        998.8994999999999,
+        1119.59
+      ],
+      "n_reps": 10
+    },
+    "F_attack_burst": {
+      "mean": 967.1800000000001,
+      "bootstrap_95_ci": [
+        748.94475,
+        1124.57
+      ],
+      "n_reps": 10
+    }
+  },
+  "feature_signature_mannwhitney": {
+    "Active pages": {
+      "U": 1432705.5,
+      "p_value": 1.1369812125116536e-56,
+      "n_ripple": 181,
+      "n_baseline": 9570
+    },
+    "Entropy (changed)": {
+      "U": 1645109.0,
+      "p_value": 4.617979020590961e-96,
+      "n_ripple": 181,
+      "n_baseline": 9570
+    },
+    "High-region pages": {
+      "U": 1432615.0,
+      "p_value": 3.998615993217855e-74,
+      "n_ripple": 181,
+      "n_baseline": 9570
+    },
+    "Volume sum": {
+      "U": 1530826.5,
+      "p_value": 1.4364112692767387e-70,
+      "n_ripple": 181,
+      "n_baseline": 9570
+    }
+  }
+}

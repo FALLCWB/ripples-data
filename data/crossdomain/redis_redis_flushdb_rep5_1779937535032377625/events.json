@@ -1,0 +1,7 @@
+[
+  {
+    "ts": 1779937931.1981535,
+    "action": "inject_action",
+    "kind": "redis_flushdb"
+  }
+]

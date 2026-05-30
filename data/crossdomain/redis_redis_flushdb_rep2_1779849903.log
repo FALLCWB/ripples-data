@@ -1,0 +1,9 @@
+7:C 27 May 2026 02:45:04.807 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[02:45:05] runner starting
+  target=redis-server action=redis_flushdb exp=redis_redis_flushdb_rep2_1779849903
+  target_pid=8
+  heap_range=(99870411931648, 99870414209024) (2224 KiB)
+[02:45:05] warmup 180s
+[02:48:05] injecting action: redis_flushdb
+[02:48:05] observation 180s
+[02:51:05] DONE -> /data/redis_redis_flushdb_rep2_1779849903/

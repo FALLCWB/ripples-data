@@ -1,0 +1,130 @@
+2026/05/27 03:45:51 [notice] 7#7: using the "epoll" event method
+2026/05/27 03:45:51 [notice] 7#7: nginx/1.31.1
+2026/05/27 03:45:51 [notice] 7#7: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/05/27 03:45:51 [notice] 7#7: OS: Linux 6.6.114.1-microsoft-standard-WSL2
+2026/05/27 03:45:51 [notice] 7#7: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/05/27 03:45:51 [notice] 8#8: start worker processes
+2026/05/27 03:45:51 [notice] 8#8: start worker process 9
+2026/05/27 03:45:51 [notice] 8#8: start worker process 10
+2026/05/27 03:45:51 [notice] 8#8: start worker process 11
+2026/05/27 03:45:51 [notice] 8#8: start worker process 13
+2026/05/27 03:45:51 [notice] 8#8: start worker process 14
+2026/05/27 03:45:51 [notice] 8#8: start worker process 15
+2026/05/27 03:45:51 [notice] 8#8: start worker process 16
+2026/05/27 03:45:51 [notice] 8#8: start worker process 17
+2026/05/27 03:45:51 [notice] 8#8: start worker process 18
+2026/05/27 03:45:51 [notice] 8#8: start worker process 19
+2026/05/27 03:45:51 [notice] 8#8: start worker process 20
+2026/05/27 03:45:51 [notice] 8#8: start worker process 21
+2026/05/27 03:45:51 [notice] 8#8: start worker process 22
+2026/05/27 03:45:51 [notice] 8#8: start worker process 23
+2026/05/27 03:45:51 [notice] 8#8: start worker process 24
+2026/05/27 03:45:51 [notice] 8#8: start worker process 25
+[03:45:52] runner starting
+  target=nginx action=nginx_reload exp=nginx_nginx_reload_rep3_1779853551
+  target_pid=8
+  heap_range=(104224422866944, 104224423727104) (840 KiB)
+[03:45:52] warmup 180s
+[03:48:52] injecting action: nginx_reload
+2026/05/27 03:48:52 [notice] 8#8: signal 1 (SIGHUP) received from 1, reconfiguring
+2026/05/27 03:48:52 [notice] 8#8: reconfiguring
+[03:48:52] observation 180s
+2026/05/27 03:48:52 [notice] 8#8: using the "epoll" event method
+2026/05/27 03:48:52 [notice] 8#8: start worker processes
+2026/05/27 03:48:52 [notice] 8#8: start worker process 26
+2026/05/27 03:48:52 [notice] 8#8: start worker process 27
+2026/05/27 03:48:52 [notice] 8#8: start worker process 28
+2026/05/27 03:48:52 [notice] 8#8: start worker process 29
+2026/05/27 03:48:52 [notice] 8#8: start worker process 30
+2026/05/27 03:48:52 [notice] 8#8: start worker process 31
+2026/05/27 03:48:52 [notice] 8#8: start worker process 32
+2026/05/27 03:48:52 [notice] 8#8: start worker process 33
+2026/05/27 03:48:52 [notice] 8#8: start worker process 34
+2026/05/27 03:48:52 [notice] 8#8: start worker process 35
+2026/05/27 03:48:52 [notice] 8#8: start worker process 36
+2026/05/27 03:48:52 [notice] 8#8: start worker process 37
+2026/05/27 03:48:52 [notice] 8#8: start worker process 38
+2026/05/27 03:48:52 [notice] 8#8: start worker process 39
+2026/05/27 03:48:52 [notice] 8#8: start worker process 40
+2026/05/27 03:48:52 [notice] 8#8: start worker process 41
+2026/05/27 03:48:52 [notice] 9#9: gracefully shutting down
+2026/05/27 03:48:52 [notice] 10#10: gracefully shutting down
+2026/05/27 03:48:52 [notice] 9#9: exiting
+2026/05/27 03:48:52 [notice] 10#10: exiting
+2026/05/27 03:48:52 [notice] 11#11: gracefully shutting down
+2026/05/27 03:48:52 [notice] 11#11: exiting
+2026/05/27 03:48:52 [notice] 13#13: gracefully shutting down
+2026/05/27 03:48:52 [notice] 14#14: gracefully shutting down
+2026/05/27 03:48:52 [notice] 13#13: exiting
+2026/05/27 03:48:52 [notice] 14#14: exiting
+2026/05/27 03:48:52 [notice] 15#15: gracefully shutting down
+2026/05/27 03:48:52 [notice] 15#15: exiting
+2026/05/27 03:48:52 [notice] 16#16: gracefully shutting down
+2026/05/27 03:48:52 [notice] 17#17: gracefully shutting down
+2026/05/27 03:48:52 [notice] 16#16: exiting
+2026/05/27 03:48:52 [notice] 18#18: gracefully shutting down
+2026/05/27 03:48:52 [notice] 17#17: exiting
+2026/05/27 03:48:52 [notice] 19#19: gracefully shutting down
+2026/05/27 03:48:52 [notice] 18#18: exiting
+2026/05/27 03:48:52 [notice] 19#19: exiting
+2026/05/27 03:48:52 [notice] 20#20: gracefully shutting down
+2026/05/27 03:48:52 [notice] 20#20: exiting
+2026/05/27 03:48:52 [notice] 21#21: gracefully shutting down
+2026/05/27 03:48:52 [notice] 21#21: exiting
+2026/05/27 03:48:52 [notice] 22#22: gracefully shutting down
+2026/05/27 03:48:52 [notice] 22#22: exiting
+2026/05/27 03:48:52 [notice] 23#23: gracefully shutting down
+2026/05/27 03:48:52 [notice] 10#10: exit
+2026/05/27 03:48:52 [notice] 14#14: exit
+2026/05/27 03:48:52 [notice] 9#9: exit
+2026/05/27 03:48:52 [notice] 11#11: exit
+2026/05/27 03:48:52 [notice] 13#13: exit
+2026/05/27 03:48:52 [notice] 23#23: exiting
+2026/05/27 03:48:52 [notice] 15#15: exit
+2026/05/27 03:48:52 [notice] 16#16: exit
+2026/05/27 03:48:52 [notice] 19#19: exit
+2026/05/27 03:48:52 [notice] 17#17: exit
+2026/05/27 03:48:52 [notice] 21#21: exit
+2026/05/27 03:48:52 [notice] 22#22: exit
+2026/05/27 03:48:52 [notice] 18#18: exit
+2026/05/27 03:48:52 [notice] 20#20: exit
+2026/05/27 03:48:52 [notice] 23#23: exit
+2026/05/27 03:48:52 [notice] 24#24: gracefully shutting down
+2026/05/27 03:48:52 [notice] 25#25: gracefully shutting down
+2026/05/27 03:48:52 [notice] 25#25: exiting
+2026/05/27 03:48:52 [notice] 24#24: exiting
+2026/05/27 03:48:52 [notice] 25#25: exit
+2026/05/27 03:48:52 [notice] 24#24: exit
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 20
+2026/05/27 03:48:52 [notice] 8#8: worker process 20 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 19 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 19
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 23
+2026/05/27 03:48:52 [notice] 8#8: worker process 22 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 23 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 16
+2026/05/27 03:48:52 [notice] 8#8: worker process 9 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 11 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 13 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 14 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 15 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 16 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 17 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 10
+2026/05/27 03:48:52 [notice] 8#8: worker process 10 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 18
+2026/05/27 03:48:52 [notice] 8#8: worker process 18 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 21
+2026/05/27 03:48:52 [notice] 8#8: worker process 21 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: worker process 24 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 24
+2026/05/27 03:48:52 [notice] 8#8: signal 17 (SIGCHLD) received from 25
+2026/05/27 03:48:52 [notice] 8#8: worker process 25 exited with code 0
+2026/05/27 03:48:52 [notice] 8#8: signal 29 (SIGIO) received
+[03:51:52] DONE -> /data/nginx_nginx_reload_rep3_1779853551/

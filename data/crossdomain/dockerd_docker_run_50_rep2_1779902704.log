@@ -1,0 +1,11 @@
+dockerd ready
+alpine pulled
+GC forced; entering memdump runner
+[17:25:09] runner starting
+  target=dockerd action=docker_run_50 exp=dockerd_docker_run_50_rep2_1779902704
+  target_pid=7
+  heap_range=(85889024, 119844864) (33160 KiB)
+[17:25:09] warmup 180s
+[17:28:10] injecting action: docker_run_50
+[17:28:25] observation 180s
+[17:31:10] DONE -> /data/dockerd_docker_run_50_rep2_1779902704/

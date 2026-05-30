@@ -1,0 +1,7 @@
+[
+  {
+    "ts": 1779853370.6886454,
+    "action": "inject_action",
+    "kind": "nginx_reload"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "warmup_start_ts": 1779903441.6721108,
+  "action_ts": 1779903502.1273277,
+  "observation_end_ts": 1779903802.4302595,
+  "target_process": "dockerd",
+  "action_kind": "noop",
+  "exp_name": "dockerd_noop_rep1_1779903436",
+  "warmup_s": 60,
+  "observation_s": 300,
+  "dump_interval_s": 0.5,
+  "heap_initial_kib": 33160.0
+}
