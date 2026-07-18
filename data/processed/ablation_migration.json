@@ -1,0 +1,52 @@
+{
+ "n_induced_reps": 50,
+ "n_contested_events": 14429,
+ "params": {
+  "W": 2.0,
+  "C": 5.0,
+  "delta": 300.0,
+  "gt_ref": 300.0,
+  "PRE_QUANTILE": 95,
+  "snapshots": "data/snapshots"
+ },
+ "misattribution_rate_all": {
+  "corrected": 0.0,
+  "submitted": 0.8397,
+  "literal_may": 0.8397,
+  "naive": 1.0
+ },
+ "misattribution_rate_contested": {
+  "corrected": 0.0,
+  "submitted": 1.0,
+  "literal_may": 1.0,
+  "naive": 1.0
+ },
+ "induced_to_direct_rate": {
+  "corrected": 0.0,
+  "submitted": 0.8397,
+  "literal_may": 0.8397,
+  "naive": 0.8397
+ },
+ "induced_window_coverage": {
+  "corrected": 1.0,
+  "submitted": 0.1603,
+  "literal_may": 0.1603,
+  "naive": 0.0
+ },
+ "migration_corrected_to_submitted": {
+  "Induced-cascade -> Direct-anchor": 14429
+ },
+ "migration_corrected_to_literal_may": {
+  "Induced-cascade -> Direct-anchor": 14429
+ },
+ "migration_corrected_to_naive": {
+  "Induced-cascade -> Direct-anchor": 14429,
+  "Induced-cascade -> Reactive-cascade": 2774
+ },
+ "notes": {
+  "misattribution_rate_all": "fraction of truly-induced events NOT labelled Induced-cascade. Under a temporal GT (window = gt_ref), corrected is low largely by label consistency; the CONTESTED rate is the non-tautological number (where a competing audit anchor makes the order decide).",
+  "misattribution_rate_contested": "restricted to GT events with an audit anchor within W: here the priority order genuinely decides Induced-cascade vs Direct-anchor, so a low corrected rate vs high naive/literal_may is real evidence the priority rule prevents causal misattribution (R2.12).",
+  "induced_window_coverage": "GT is the temporal window, so this is coverage, not independent detection; naive is 0 by construction.",
+  "literal_may": "reproduces the shipped May binary (Direct-first, no legit exception); submitted isolates ONLY the ordering vs corrected."
+ }
+}

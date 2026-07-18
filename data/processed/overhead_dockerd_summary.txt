@@ -1,0 +1,10 @@
+== OBSERVER COST (n=5, valid dumps only) ==
+  pages/dump      : 34273.1 +/- 608.4
+  CPU % of wall   : 100.3 +/- 0.2
+  RSS MB          : 206.1 +/- 0.2
+  dump lat p50 ms : 809.6 +/- 13.8
+  dump lat p95 ms : 844.2 +/- 20.1
+  cadence overrun%: 100.0 +/- 0.0
+== TARGET THROUGHPUT (dockerd) ==
+  with     (n=5)  wall s 192.6 +/- 31.2
+  without  (n=5)  wall s 214.2 +/- 71.2

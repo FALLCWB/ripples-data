@@ -1,0 +1,12 @@
+== OBSERVER COST (n=5, valid dumps only) ==
+  pages/dump      : 9521.8 +/- 1.0
+  CPU % of wall   : 44.6 +/- 0.7
+  RSS MB          : 81.5 +/- 0.1
+  dump lat p50 ms : 221.0 +/- 3.2
+  dump lat p95 ms : 242.0 +/- 8.0
+  cadence overrun%: 0.0 +/- 0.0
+== TARGET THROUGHPUT (redis) ==
+  with     (n=5)  SET ops/s 34067.9 +/- 2201.2   GET ops/s 34059.0 +/- 1492.7
+  without  (n=5)  SET ops/s 34697.8 +/- 575.9   GET ops/s 32617.5 +/- 1731.1
+  impact SET: -1.8% (with vs without)
+  impact GET: +4.4% (with vs without)

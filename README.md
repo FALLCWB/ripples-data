@@ -31,6 +31,28 @@ gen_crossdomain.py regenerates Fig. crossdomain (nginx + Redis novelty stems)
 
 Raw Open vSwitch memory snapshots are not included (multi-GB per run). The processed tables in `data/processed/` contain every value used in the paper text and figures; the snapshot-to-features pipeline is in `scripts/regen_figs_data.py` for completeness.
 
+## Revision (2026) additions
+
+Added for the revised submission:
+
+**Scripts** (`scripts/`, `exp_overhead/`, `gen_figures_r1.py`):
+- `signature_replevel_perm.py` — repetition-level signature-separation test (ANOSIM/PERMANOVA label permutation + bootstrap CI), replacing the pair-level test.
+- `feature_signature_replevel.py` — within-repetition paired feature-signature test.
+- `revision_numbers.py` — recomputes and persists the revision numbers (default-GC dissociation, calibrated ripple-presence, readback amplification, shifted-anchor control, robustness signature) into `data/processed/revision_numbers.json`.
+- `gen_figures_r1.py` — regenerates the overhead, default-GC, and robustness figures.
+- `exp_overhead/` — the observer-overhead harness (runs the real capture path in paired with/without-observer arms).
+
+**Processed data** (`data/processed/`):
+- `revision_numbers.json` — the revision numbers with their sources.
+- `signature_replevel_perm.json` — rep-level signature separation (within/across, permutation p, ANOSIM R, PERMANOVA F, bootstrap CI).
+- `grid_corrected_rich.json` — the full W/C/Delta parameter-sensitivity grid (60 cells).
+- `ablation_migration.json` — the labeler-order ablation (label migration on contested events).
+- `overhead_redis_summary.txt`, `overhead_dockerd_summary.txt` — observer cost.
+
+**`WORKLOAD.md`** — exact per-scenario commands and common measurement parameters.
+
+The revision parameter-sensitivity and ablation analyses run on a fresh recollection under a denser audit regime; those raw traces are not redistributed (multi-GB, live memory), but the processed outputs above contain every reported value.
+
 ## File schemas
 
 ### `data/processed/scenario_decomposition.csv`

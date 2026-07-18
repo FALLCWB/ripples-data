@@ -1,0 +1,32 @@
+{
+ "n_reps": 108,
+ "n_pairs": 5778,
+ "n_scenarios": 10,
+ "within_mean": 0.7346,
+ "across_mean": 0.3095,
+ "ratio": 2.373,
+ "perm_stat": 0.4251,
+ "perm_p": 0.0001,
+ "n_perm": 10000,
+ "seed": 42,
+ "within_ci": [
+  0.6741,
+  0.7892
+ ],
+ "across_ci": [
+  0.2802,
+  0.3397
+ ],
+ "ratio_ci": [
+  2.1689,
+  2.6131
+ ],
+ "sustained": true,
+ "confirmatory": {
+  "anosim_R": 0.5316,
+  "anosim_p": 0.0001,
+  "permanova_pseudoF": 17.838,
+  "permanova_p": 0.0001,
+  "note": "confirmatory; ANOSIM/PERMANOVA permutation on 1-cosine distance, same rep labels"
+ }
+}
