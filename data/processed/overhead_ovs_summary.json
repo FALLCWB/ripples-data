@@ -1,0 +1,13 @@
+{
+ "target": "ovs-vswitchd",
+ "n_reps": 5,
+ "heap_mb": 1.02,
+ "pages_per_dump": 249,
+ "dump_latency_ms_p50": 4.9,
+ "dump_latency_ms_p95": 5.5,
+ "observer_cpu_pct_one_core": 2.0,
+ "observer_rss_mb": 22.6,
+ "cadence_overrun_pct": 0.0,
+ "condition": "running ovs-vswitchd, idle flow state",
+ "cadence_s": 0.5
+}
