@@ -76,10 +76,14 @@ PAIRED_AUDIT = {
                                        "interpretation": "dense audit resolves previously-unexplained events to Direct-anchor"},
 }
 CROSS_ENV_ROBUSTNESS = {
-    "note": "cross-environment same-action cosine, Redis 7/Alpine (musl) vs Redis 6/Debian (glibc)",
-    "same_action_cosine": {"SET": 0.90, "MSET": 0.92, "FLUSHDB": 0.30},
-    "cross_action_baseline": 0.65,
-    "interpretation": "SET/MSET signatures survive the environment change; FLUSHDB does not (allocator-sensitive)",
+    "note": "cross-environment signature comparison, Redis 7/Alpine vs Redis 6/Debian",
+    "post_over_pre_mean_by_action": {"SET": {"redis7": 1.00, "redis6": 1.01},
+                                     "MSET": {"redis7": 1.00, "redis6": 1.01},
+                                     "FLUSHDB": {"redis7": 1.37, "redis6": 1.00}},
+    "finding": "the page-change ripple signal on the two secondary (cross-host) environments is weak "
+               "(post-action within 1.0-1.4x of baseline), so a cross-environment SIGNATURE comparison is "
+               "under-powered on this data; the clearly-measured configuration-dependent quantity is the "
+               "peak/baseline amplification (FLUSHDB 4.0x on Redis7/Alpine vs 2.0x on Redis6/Debian).",
 }
 
 
