@@ -34,7 +34,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path.home() / "research/memory-monitoring-sdn/scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))   # vendored labeler_v2.py + rep_io.py
 from labeler_v2 import classify  # noqa: E402
 
 W, C, DELTA = 2.0, 5.0, 300.0

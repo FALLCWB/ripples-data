@@ -20,7 +20,8 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, "/opt/ripples-exp/exp_crossdomain")
+sys.path.insert(0, os.environ.get(
+    "EXP_CROSSDOMAIN", str(Path(__file__).resolve().parent.parent / "exp_crossdomain")))
 from memdump_runner import get_heap_ranges, dump_pages, aggregate_features  # noqa: E402
 
 HERE = Path(__file__).resolve().parent

@@ -28,6 +28,7 @@ Dockerd is included (GC-controlled measurement, GOGC=off with a manual GC
 before warmup and before the action); the per-action amplifications and the
 surface-monotonic signature are reported in the paper's cross-domain table.
 """
+import os
 import json
 import sys
 from pathlib import Path
@@ -43,10 +44,11 @@ from regen_figs_data import (  # noqa: E402
     per_iter_aggregates, load_rep_features, find_attack_ts,
 )
 
-ECHO_DATA = Path("/home/lemos/research/ripples-paper/data/crossdomain")
-OVS_DATA = Path("/tmp/lab_snapshots")
-OUT = Path("/home/lemos/research/ripples-paper/fig_crossdomain.png")
-TABLE = Path("/home/lemos/research/ripples-paper/data/processed/crossdomain_summary.csv")
+ROOT = Path(__file__).resolve().parent
+ECHO_DATA = ROOT / "data/crossdomain"
+OVS_DATA = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))  # raw OvS snapshots not redistributed; set OVS_SNAPSHOTS to your copy
+OUT = ROOT / "fig_crossdomain.png"
+TABLE = ROOT / "data/processed/crossdomain_summary.csv"
 
 plt.rcParams.update({
     "font.family": "serif",

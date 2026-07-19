@@ -24,6 +24,7 @@ Outputs:
   fig_signature.png
     similarity heatmap (rep × rep), with same-scenario blocks visible
 """
+import os
 import json
 import sys
 from pathlib import Path
@@ -37,11 +38,12 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from regen_figs_data import per_iter_aggregates, load_rep_features, find_attack_ts
 
-LAB = Path("/tmp/lab_snapshots")
-ECHO = Path("/home/lemos/research/ripples-paper/data/crossdomain")
-OUT_CSV = Path("/home/lemos/research/ripples-paper/data/processed/signature_pairwise_similarity.csv")
-OUT_JSON = Path("/home/lemos/research/ripples-paper/data/processed/signature_summary.json")
-OUT_PNG = Path("/home/lemos/research/ripples-paper/fig_signature.png")
+ROOT = Path(__file__).resolve().parent.parent
+LAB = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))  # raw OvS not redistributed
+ECHO = ROOT / "data/crossdomain"
+OUT_CSV = ROOT / "data/processed/signature_pairwise_similarity.csv"
+OUT_JSON = ROOT / "data/processed/signature_summary.json"
+OUT_PNG = ROOT / "fig_signature.png"
 
 BUCKET_S = 5.0
 POST_WIN_S = 200.0  # OvS aftermath window; Redis short signals will pad to 0
