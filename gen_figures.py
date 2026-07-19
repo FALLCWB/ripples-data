@@ -82,6 +82,13 @@ def fig2_surface():
                             for s in order])
     within_std = np.array([sig["per_scenario_within"][sig_key[s]]["within_std"]
                            for s in order])
+    # 95% rep-level bootstrap CIs reported in the body (Section results); used as
+    # the panel-(b) whiskers so the figure and the text describe the same interval
+    # (a raw +/-std would exceed the cosine maximum of 1.0 for the high-variance burst).
+    within_ci = {"OvS-Single": (0.79, 0.91), "OvS-Burst": (0.32, 0.85),
+                 "OvS-Flush": (0.93, 0.97)}
+    ci = np.array([within_ci[sig_key[s]] for s in order])
+    within_err = np.vstack([within_mean - ci[:, 0], ci[:, 1] - within_mean])
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5.5))
     x = np.arange(len(order))
@@ -111,12 +118,12 @@ def fig2_surface():
     ax1.text(0.02, 0.97, "(a)", transform=ax1.transAxes,
              fontsize=18, fontweight="bold", va="top", ha="left")
 
-    ax2.bar(x, within_mean, yerr=within_std, capsize=8,
+    ax2.bar(x, within_mean, yerr=within_err, capsize=8,
             color=PALETTE["anchored"], edgecolor="black", linewidth=0.6,
             error_kw={"elinewidth": 1.5, "ecolor": "black"})
     # Place value labels above the error-bar caps in clear space.
-    for i, (m, s) in enumerate(zip(within_mean, within_std)):
-        y_label = min(m + s + 0.06, 1.22)
+    for i, (m, hi) in enumerate(zip(within_mean, ci[:, 1])):
+        y_label = min(hi + 0.06, 1.22)
         ax2.annotate(f"{m:.2f}", xy=(i, y_label), ha="center", va="bottom",
                      fontsize=12, fontweight="bold")
     ax2.set_xticks(x)
