@@ -137,9 +137,14 @@ def fig_gcdefault():
             off[row["action"]] = float(row["amplification"])
     off_vals = [off.get("docker version (readback)", off.get("docker version", np.nan)),
                 off["1 container"], off["10 containers"]]
-    # default-GC amplification computed from the reps (mean per action)
-    dflt_vals = [np.mean(_amp_gcdefault(a)) for a in
-                 ["docker_inspect", "docker_run_1", "docker_run_10"]]
+    # default-GC amplification: read the shipped per-action means from the
+    # released JSON (the raw GOGC=100 reps are not redistributed). Falls back to
+    # recomputing from raw reps if GCDIR is provided.
+    _amp_json = json.loads((DATA / "revision_numbers.json").read_text())[
+        "R2.10_default_gc"]["amplification_mean"]
+    dflt_vals = [(_amp_json[a] if not glob.glob(str(GCDIR / f"dockerd_gcdefault_{a}_rep*"))
+                  else float(np.mean(_amp_gcdefault(a))))
+                 for a in ["docker_inspect", "docker_run_1", "docker_run_10"]]
 
     labels = ["readback\n(control)", "1 container", "10 containers"]
     x = np.arange(len(labels))

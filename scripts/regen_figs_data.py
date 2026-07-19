@@ -24,6 +24,7 @@ Produces three CSVs under data/processed/:
       pre-action period of the flush rep) and "ripple" (the post-action
       aftermath iterations whose signal exceeded the per-rep threshold).
 """
+import os
 import json
 import sys
 from collections import defaultdict
@@ -32,7 +33,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-SNAPSHOTS = Path("/tmp/lab_snapshots")
+SNAPSHOTS = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))
 OUT = Path(__file__).parent.parent / "data" / "processed"
 OUT.mkdir(parents=True, exist_ok=True)
 

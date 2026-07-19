@@ -18,8 +18,9 @@ import numpy as np
 from scipy.stats import spearmanr
 
 H = os.path.expanduser("~")
+PKG = Path(__file__).resolve().parent.parent  # ripples-data root
 GC = f"{H}/research/ripples-recollection/gcdefault"
-CD = f"{H}/research/ripples-data/data/crossdomain"
+CD = str(PKG / "data/crossdomain")
 SNAP = f"{H}/research/ripples-recollection/snapshots"
 R46S = f"{H}/research/ripples-recollection/r46_server"
 R46L = f"{H}/research/ripples-recollection/r46_local"
@@ -115,7 +116,7 @@ def r2_11_presence():
 
 
 def r3_1_readback():
-    for row in csv.DictReader(open(f"{H}/research/ripples-paper/data/processed/crossdomain_summary.csv")):
+    for row in csv.DictReader(open(PKG / "data/processed/crossdomain_summary.csv")):
         if row["system"] == "Dockerd" and "readback" in row["action"]:
             return {"table2_gogc_off": round(float(row["amplification"]), 2),
                     "baseline": round(float(row["baseline_pages"]), 3),
@@ -208,7 +209,7 @@ if __name__ == "__main__":
         "R4.2_shifted_anchor": r4_2_shifted(),
         "R4.6_robustness_signature": r4_6_robustness(),
     }
-    dest = os.path.join(os.path.dirname(__file__), "revision_numbers.json")
+    dest = os.path.join(str(PKG / "data/processed"), "revision_numbers.json")
     with open(dest, "w") as f:
         json.dump(result, f, indent=1)
     print(json.dumps(result, indent=1))

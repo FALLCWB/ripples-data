@@ -49,7 +49,7 @@ Added for the revised submission:
 - `signature_replevel_perm.json` — rep-level signature separation (within/across, permutation p, ANOSIM R, PERMANOVA F, bootstrap CI).
 - `grid_corrected_rich.json` — the full W/C/Delta parameter-sensitivity grid (60 cells).
 - `ablation_migration.json` — the labeler-order ablation (label migration on contested events).
-- `overhead_redis_summary.txt`, `overhead_dockerd_summary.txt` — observer cost.
+- `overhead_redis_summary.txt`, `overhead_dockerd_summary.txt`, `overhead_ovs_summary.json` — observer cost (Redis, Dockerd, OvS).
 
 **`WORKLOAD.md`** — exact per-scenario commands and common measurement parameters.
 

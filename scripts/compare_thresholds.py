@@ -25,6 +25,7 @@ Treatments are evaluated against scenario_decomposition's category labels
 (Direct/Reactive/Induced/Periodic/Endogenous/Indeterminate) computed by
 re-running classify() on the iterations flagged by each treatment.
 """
+import os
 import json
 import sys
 from collections import defaultdict
@@ -40,7 +41,7 @@ from regen_figs_data import (  # noqa: E402
     SIGNAL_COL, LLDP_PERIOD, STATS_PERIOD,
 )
 
-SNAPSHOTS = Path("/tmp/lab_snapshots")
+SNAPSHOTS = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))
 OUT_CSV = Path(__file__).parent.parent / "data/processed/threshold_comparison.csv"
 
 

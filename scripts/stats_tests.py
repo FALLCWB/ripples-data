@@ -24,6 +24,7 @@ whatever is on disk and aggregates.
 """
 from __future__ import annotations
 
+import os
 import json
 import sys
 from pathlib import Path
@@ -34,7 +35,7 @@ import pandas as pd
 from scipy import stats
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-LAB_DIR = Path("/tmp/lab_snapshots")
+LAB_DIR = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))
 XDOM_DIR = REPO_ROOT / "data/crossdomain"
 OUT_JSON = REPO_ROOT / "data/processed/stats_summary.json"
 OUT_TEX = REPO_ROOT / "data/processed/table_stats.tex"
