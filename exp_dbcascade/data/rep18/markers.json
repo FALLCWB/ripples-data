@@ -1,0 +1,1 @@
+{"warmup_start_ts": 1784483056.9421425, "action_ts": 1784483087.0216577, "legit_ts": 1784483096.2290292, "observation_end_ts": 1784483127.0303805, "target_process": "enrichment_workload", "fetch_lag_s": 2.0, "stages": 4, "stage_interval_s": 0.8, "ingest_ok": true}

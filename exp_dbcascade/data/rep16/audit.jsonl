@@ -1,0 +1,10 @@
+{"ts": 1784482939.399439, "kind": "ingest_raw", "role": "induced", "action_id": 1}
+{"ts": 1784482943.5941432, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482944.616298, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482945.6380475, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482946.6597297, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482949.1242962, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482950.6196196, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482951.6465094, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482952.6837738, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784482955.4495544, "kind": "admin_update", "role": "legit", "action_id": 2}

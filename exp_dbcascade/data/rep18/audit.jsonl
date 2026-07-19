@@ -1,0 +1,6 @@
+{"ts": 1784483087.0229273, "kind": "ingest_raw", "role": "induced", "action_id": 1}
+{"ts": 1784483089.1050744, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784483089.9431417, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784483090.7665067, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784483091.594678, "kind": "enriched_write", "role": "reactive", "action_id": 1}
+{"ts": 1784483096.2599556, "kind": "admin_update", "role": "legit", "action_id": 2}

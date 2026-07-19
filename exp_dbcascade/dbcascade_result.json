@@ -1,0 +1,45 @@
+{
+ "n_reps": 18,
+ "n_dropped": 0,
+ "dropped": [],
+ "ground_truth": "provenance windows from each action's own audit writes (roles), independent of the labeler's W/C/Delta windows",
+ "deterministic": true,
+ "note": "Per-rep recall has zero variance across reps, so recall is reported as reps-count and pooled-event fractions, not a bootstrap CI.",
+ "W": 2.0,
+ "C": 5.0,
+ "DELTA": 300.0,
+ "reactive_window": {
+  "n_events": 155,
+  "corrected_induced_first": {
+   "reps_full_recall": 18,
+   "reps_total": 18,
+   "events_recovered": 155,
+   "events_total": 155,
+   "recall": 1.0
+  },
+  "submitted_direct_first": {
+   "reps_zero_recall": 18,
+   "reps_total": 18,
+   "events_recovered": 0,
+   "events_total": 155,
+   "recall": 0.0
+  }
+ },
+ "admin_window": {
+  "n_events": 36,
+  "corrected_to_direct": 36,
+  "recall": 1.0
+ },
+ "ambient": {
+  "n_events": 102,
+  "corrected": {
+   "Induced-cascade": 90,
+   "Direct-anchor": 12
+  },
+  "submitted": {
+   "Induced-cascade": 69,
+   "Direct-anchor": 33
+  },
+  "orders_disagree": 21
+ }
+}
