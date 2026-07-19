@@ -60,7 +60,7 @@ Per-repetition six-category attribution counts.
 
 | column | description |
 |---|---|
-| `scenario` | scenario code (`A_idle`, `B_admin_flush`, `D_attack_flush`, ...) |
+| `scenario` | scenario code (`A_idle`, `B_admin_flush`, `D_attack_flush`, ...); these are legacy identifiers for the induced-action scenarios and carry no adversary semantics |
 | `rep_id` | repetition identifier including timestamp |
 | `direct_anchor` | events anchored to a known audit entry within W |
 | `reactive_cascade` | post-anchor reactive events within the cascade window |
@@ -101,17 +101,17 @@ Pairwise cosine similarity between per-rep temporal signatures.
 | `cosine_similarity` | cosine over the post-action feature vector |
 
 ### `data/processed/signature_summary.json`
-Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the numbers quoted in Section IV.
+Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
 
 ### `data/processed/stats_summary.json`
-Detection-rate Wilson intervals and Mann–Whitney $p$-values used in the results section.
+Wilson intervals and per-scenario rates used in the results section. (The earlier pooled Mann–Whitney values are retained here for provenance; the paper reports repetition-level tests instead, computed by `scripts/signature_replevel_perm.py`.)
 
 ### `data/processed/crossdomain_summary.csv`
-Per-(system, action) amplification table for the Redis/Dockerd/nginx replication.
+Per-(system, action) amplification table for the Redis and Dockerd replication.
 
 | column | description |
 |---|---|
-| `system` | `Redis`, `Dockerd`, `nginx` |
+| `system` | `Redis`, `Dockerd` (the paper's cross-domain analysis; raw `nginx` runs exist under `crossdomain/` but were not summarized or reported) |
 | `surface` | action-surface bin (`small`, `medium`, `large`, `readback`, ...) |
 | `action` | concrete command issued |
 | `n_reps` | repetitions |
@@ -141,8 +141,8 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 |---|---|---|
 | within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
 | Spearman $\rho = 0.08$ on cascade rate vs surface | `scenario_decomposition.csv` | `python scripts/stats_tests.py` |
-| Mann–Whitney $p < 10^{-50}$ within-vs-across | `signature_pairwise_similarity.csv` | `python scripts/signature_validation.py` |
-| Detection rate $10/10$ in attack scenarios | `stats_summary.json` | direct read |
+| within-vs-across separation, rep-level permutation $p < 10^{-4}$ (ANOSIM $R=0.53$, PERMANOVA $F=17.8$) | `signature_pairwise_similarity.csv` | `python scripts/signature_replevel_perm.py` |
+| predicted cascade present in $30/30$ sparse-audit reps | `stats_summary.json` | direct read |
 | Dockerd amplification $4.9 \times$ → $87 \times$ | `crossdomain_summary.csv` | direct read |
 
 ## Software environment
