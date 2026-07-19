@@ -1,0 +1,66 @@
+{
+ "daemon_blocked_permutation": {
+  "OvS": {
+   "within_action": 0.798,
+   "across_action": 0.798,
+   "separation": 1.0,
+   "perm_p": 0.4403
+  },
+  "Redis": {
+   "within_action": 0.928,
+   "across_action": 0.502,
+   "separation": 1.85,
+   "perm_p": 0.0005
+  },
+  "Dockerd": {
+   "within_action": 0.329,
+   "across_action": 0.148,
+   "separation": 2.23,
+   "perm_p": 0.0005
+  },
+  "ALL": {
+   "within_action": 0.735,
+   "across_action": 0.443,
+   "separation": 1.66,
+   "perm_p": 0.0005
+  }
+ },
+ "paired_audit_coverage": {
+  "note": "Same flush repetitions labeled under both audit densities (labels_corrected_rich/sparse, W=2 C=5 D=300); isolates audit coverage.",
+  "n_reps": 10,
+  "audit_entries_rich": 306,
+  "audit_entries_sparse": 114,
+  "induced_cascade_per_h": {
+   "rich": 1345,
+   "sparse": 1345,
+   "delta": 0,
+   "interpretation": "audit-independent (Algorithm 1 Induced rule ignores the audit set)"
+  },
+  "endogenous_plus_periodic_per_h": {
+   "rich": 0,
+   "sparse": 1480,
+   "interpretation": "dense audit resolves previously-unexplained events to Direct-anchor"
+  }
+ },
+ "cross_environment_robustness": {
+  "note": "cross-environment same-action cosine, Redis 7/Alpine (musl) vs Redis 6/Debian (glibc)",
+  "same_action_cosine": {
+   "SET": 0.9,
+   "MSET": 0.92,
+   "FLUSHDB": 0.3
+  },
+  "cross_action_baseline": 0.65,
+  "interpretation": "SET/MSET signatures survive the environment change; FLUSHDB does not (allocator-sensitive)"
+ },
+ "oracle_confusion_matrix": {
+  "induced": {
+   "recall": 1.0,
+   "precision": 0.633
+  },
+  "direct": {
+   "precision": 0.75
+  },
+  "background_recall": 0.0,
+  "note": "priority order validates the attribution ORDER (recall), not label precision; background is untestable on this single-aftermath oracle (all ambient events fall in Delta)."
+ }
+}

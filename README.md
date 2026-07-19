@@ -50,6 +50,7 @@ Added for the revised submission:
 - `grid_corrected_rich.json` — the full W/C/Delta parameter-sensitivity grid (60 cells).
 - `ablation_migration.json` — the labeler-order ablation (label migration on contested events).
 - `overhead_redis_summary.txt`, `overhead_dockerd_summary.txt`, `overhead_ovs_summary.json` — observer cost (Redis, Dockerd, OvS).
+- `reanalysis_r2.json` — second-revision re-analyses (`scripts/reanalysis_r2.py`): daemon-blocked action-label permutation (recomputed from the pairwise CSV), paired rich/sparse audit-coverage comparison on the same flush reps, cross-environment same-action signature cosine, and the oracle confusion matrix with precision.
 
 **`WORKLOAD.md`** — exact per-scenario commands and common measurement parameters.
 
