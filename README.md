@@ -26,7 +26,7 @@ data/
 exp_crossdomain/ capture-side scripts used to produce the crossdomain/ logs
 scripts/         data-processing pipeline that produces data/processed from raw captures
 gen_figures.py   regenerates Fig. 2, 5, 6 from data/processed
-gen_crossdomain.py regenerates Fig. crossdomain (nginx + Redis novelty stems)
+gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd panels)
 ```
 
 Raw Open vSwitch memory snapshots are not included (multi-GB per run). The processed tables in `data/processed/` contain every value used in the paper text and figures; the snapshot-to-features pipeline is in `scripts/regen_figs_data.py` for completeness.
@@ -85,7 +85,7 @@ Single representative repetition trace used for the temporal-signature figure.
 |---|---|
 | `t_rel_s` | seconds relative to the action timestamp |
 | `signal` | per-iteration `change_volume_sum` |
-| `threshold` | maximum of the pre-action signal for that rep |
+| `threshold` | 95th percentile of the pre-action (warmup) signal for that rep |
 
 ### `data/processed/fig6_feature_distributions.csv`
 Long-form per-feature distributions for the baseline/ripple comparison.
@@ -123,7 +123,7 @@ Per-(system, action) amplification table for the Redis and Dockerd replication.
 Raw stdout from each `(system, action, rep)` capture run. Naming pattern `<system>_<action>_rep<N>_<unix_ts>.log`. The processed `crossdomain_summary.csv` is computed from these via `gen_crossdomain.py`.
 
 ### `data/processed/threshold_comparison.csv`
-Sensitivity of the cascade decomposition to alternative threshold definitions (T1_max, T1_p95, T1_p99). Supports the threshold-choice robustness claim.
+Sensitivity of the cascade decomposition to alternative threshold definitions (`T1_max`, `T2_p99`, `T3_p95`, `T4_z3`, `T5_z5`, `T6_mad5`; the paper reports max, 99th percentile, and median + 5 MAD against the 95th-percentile operating point). Supports the threshold-choice robustness claim.
 
 ## Regenerating processed tables from raw captures
 
@@ -147,10 +147,10 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 
 ## Software environment
 
-- Python 3.11
+- Python 3.12.3
 - numpy, pandas, matplotlib, scipy (see `requirements.txt`)
-- Open vSwitch 2.17 (capture host)
-- Redis 7.2, Docker 24.x, nginx 1.24 (cross-domain replication)
+- Open vSwitch 3.3.0 (capture host)
+- Redis 7.4 (robustness arm 6.2), Docker 25.x (cross-domain replication); nginx 1.24 (collected raw, not reported)
 - Linux 6.x with `/proc/<pid>/pagemap` enabled
 
 The capture pipeline is OS-bound; the analysis pipeline in this repository is platform-independent.

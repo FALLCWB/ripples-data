@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate fig_crossdomain.png — 2x3 panels of novelty detections over time.
+"""Generate fig_crossdomain.png — per-panel post-action signal over time for
+the cross-domain systems (OvS, Redis, Dockerd).
 
 For each (system, action) cell:
   1. Pick a representative rep
@@ -23,9 +24,9 @@ events. Some panels saturate (every post bucket has detections — this is
 itself a finding: large action → sustained cascade rather than discrete
 events).
 
-Dockerd dropped from this submission (Phase-4 GC-controlled re-collection
-in flight; preliminary numbers showed surface law does not hold for
-sequential-spawn actions, deferred to follow-up).
+Dockerd is included (GC-controlled measurement, GOGC=off with a manual GC
+before warmup and before the action); the per-action amplifications and the
+surface-monotonic signature are reported in the paper's cross-domain table.
 """
 import json
 import sys
@@ -288,7 +289,7 @@ def main():
                         bbox=dict(boxstyle="round,pad=0.25",
                                   facecolor="white", edgecolor=color, alpha=0.85))
             else:
-                ax.text(0.5, 0.5, "no ripple detected",
+                ax.text(0.5, 0.5, "no ripple present",
                         transform=ax.transAxes, ha="center", va="center",
                         fontsize=14, color="gray", style="italic")
             ax.set_title(action_pretty, fontsize=16)
