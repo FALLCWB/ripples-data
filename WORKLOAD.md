@@ -14,6 +14,10 @@ Flow-table actions on the switch bridge `br0`:
 - **flush** (surface ~200): `ovs-ofctl del-flows br0`
 - **overlapping**: two induced actions 30 s and 150 s apart, both inside the aftermath window.
 
+Background (routine-condition) scenarios used for the labeler decomposition (Table 3), not for the magnitude/signature actions:
+- **rule-install**: scripted periodic flow-rule installs on `br0` across the run (the routine administrative condition). Exact install cadence is in the OvS capture script under `exp_crossdomain/`.
+- **sustained-traffic**: continuous packet traffic forwarded through `br0` for the run duration (the routine load condition). Exact packet rate and generator are in the OvS capture script under `exp_crossdomain/`.
+
 ## Redis
 Server: `redis-server --save '' --appendonly no` (snapshotting and AOF disabled).
 - **SET** (1 key): `redis-cli SET k1 v1`
@@ -22,7 +26,7 @@ Server: `redis-server --save '' --appendonly no` (snapshotting and AOF disabled)
 - Robustness arm: Redis 6.2 on Debian (`redis:6-bookworm`, glibc) and Redis 7.4 on Alpine (`redis:7-alpine`, musl), on two hosts.
 
 ## Dockerd
-Docker engine with the Go runtime configured for measurement (`GOGC=off` plus a manual GC after warmup) in the main arms, and with the default collector (`GOGC=100`, no manual trigger) in the default-GC arm.
+Docker engine with the Go runtime configured for measurement (`GOGC=off` plus a manual GC forced before warmup and again immediately before the action, via the pprof endpoint) in the main arms, and with the default collector (`GOGC=100`, no manual trigger) in the default-GC arm.
 - **readback** (state read, no container): `docker version`
 - **N containers** (N in {1, 10, 50}): N successive `docker run -d --rm alpine:latest sleep 60`
 - Containers auto-remove (`--rm`); each launch is bounded at 30 s.
