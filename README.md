@@ -22,7 +22,9 @@ The figures are written next to the scripts (`fig2_surface.png`, `fig5_temporal.
 ```
 data/
   processed/   tidy CSVs and JSON summaries consumed by the figure scripts
-  crossdomain/ raw experiment logs from the Redis / Dockerd / nginx replication runs
+  crossdomain/ raw experiment logs from the Redis and Dockerd replication runs
+               (also present: nginx and a python-dict workload, collected raw but
+               not summarized or reported in the paper)
 exp_crossdomain/ capture-side scripts used to produce the crossdomain/ logs
 scripts/         data-processing pipeline that produces data/processed from raw captures
 gen_figures.py   regenerates Fig. 2, 5, 6 from data/processed
