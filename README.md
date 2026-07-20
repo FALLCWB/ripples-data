@@ -61,24 +61,19 @@ The revision parameter-sensitivity and ablation analyses run on a fresh recollec
 ## File schemas
 
 ### `data/processed/scenario_decomposition.csv`
-Per-repetition six-category attribution counts.
+Per-scenario six-category decomposition (paper Table 3): one row per (scenario, audit mode), reporting the per-repetition mean rate in events/hour over ten repetitions, under the Induced-first labeler of Algorithm 1. Produced by `scripts/regen_ovs_figs.py`.
 
 | column | description |
 |---|---|
-| `scenario` | scenario code (`A_idle`, `B_admin_flush`, `D_attack_flush`, ...); these are legacy identifiers for the induced-action scenarios and carry no adversary semantics |
-| `rep_id` | repetition identifier including timestamp |
-| `direct_anchor` | events anchored to a known audit entry within W |
-| `reactive_cascade` | post-anchor reactive events within the cascade window |
-| `induced_cascade` | post-action events with no prior audit anchor |
-| `periodic_gap` | events within a known periodic gap |
-| `endogenous_unexplained` | residual unexplained events |
-| `indeterminate` | events outside any decidable region |
-| `duration_s` | observation window length |
-| `per_hour_rate` | induced-cascade rate normalized |
-| `threshold_used` | per-rep change-volume threshold |
-| `n_test_iters` | number of iterations in the test window |
-| `n_ext` | number of audit-anchored external events |
-| `audit_era` | `rich` or `sparse` audit coverage |
+| `scenario` | scenario name (`Idle`, `Rule installation`, `Sustained traffic`, `Flow-table flush`, `Single-rule insertion`, `Multi-rule burst`) |
+| `audit` | `sparse` or `rich` audit coverage |
+| `reps` | repetitions aggregated (10) |
+| `Direct-anchor` | per-hour rate of events anchored to an audit entry within W |
+| `Reactive-cascade` | per-hour rate of post-anchor reactive events |
+| `Induced-cascade` | per-hour rate of events in the induced aftermath (Induced-first) |
+| `Periodic-gap` | per-hour rate of events in a known periodic gap |
+| `Endogenous-unexplained` | per-hour rate of residual unexplained events |
+| `Indeterminate` | per-hour rate of events outside any decidable region |
 
 ### `data/processed/fig2_sparse_attack_cascade_per_rep.csv`
 Per-rep cascade decomposition restricted to scenarios with sparse audit (used in Fig. 2 surface).
@@ -147,7 +142,7 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 | Paper claim | Source file | Compute |
 |---|---|---|
 | within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
-| Spearman $\rho = 0.08$ on cascade rate vs surface | `scenario_decomposition.csv` | `python scripts/stats_tests.py` |
+| Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_attack_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | within-vs-across separation, rep-level permutation $p < 10^{-4}$ (ANOSIM $R=0.53$, PERMANOVA $F=17.8$) | `signature_pairwise_similarity.csv` | `python scripts/signature_replevel_perm.py` |
 | predicted cascade present in $30/30$ sparse-audit reps | `stats_summary.json` | direct read |
 | Dockerd amplification $4.9 \times$ → $87 \times$ | `crossdomain_summary.csv` | direct read |
@@ -164,7 +159,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.8). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.9). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -175,7 +170,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.8},
+  version      = {v2.1.9},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }

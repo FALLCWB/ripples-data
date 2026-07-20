@@ -203,7 +203,7 @@ def fig_robustness():
     ax.set_ylabel("Within-scenario signature similarity\n(mean pairwise cosine)")
     ax.set_ylim(0, 1.15)
     ax.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
-    ax.set_title("Per-action signature reproduces across version, OS, and hardware")
+    ax.set_title("Within-environment signature repeatability (cross-environment under-powered)")
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=3, framealpha=0.95)
     plt.tight_layout()
     plt.savefig(OUT / "fig_robustness.png")
