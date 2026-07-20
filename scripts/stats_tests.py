@@ -126,13 +126,13 @@ def permutation_amplification(ripple: np.ndarray, baseline: np.ndarray,
 # ----------------------------------------------------------------------
 # Per-rep loader / classifier — reuses regen_figs_data.py if available.
 # ----------------------------------------------------------------------
-def load_per_rep_attack_cascade_counts() -> pd.DataFrame:
+def load_per_rep_induced_cascade_counts() -> pd.DataFrame:
     """Return per-rep Attack-cascade counts and per-hour rates.
 
     Wraps the canonical decompose_v2 logic; if scripts/regen_figs_data.py
     has been run, prefers its cached CSV under data/processed/.
     """
-    cached = REPO_ROOT / "data/processed/fig2_sparse_attack_cascade_per_rep.csv"
+    cached = REPO_ROOT / "data/processed/fig2_sparse_cascade_per_rep.csv"
     if cached.exists():
         return pd.read_csv(cached)
     raise FileNotFoundError(
@@ -153,7 +153,7 @@ def load_feature_distributions() -> pd.DataFrame:
 # ----------------------------------------------------------------------
 # Test pipelines
 # ----------------------------------------------------------------------
-def stats_detection_rate(per_rep: pd.DataFrame) -> dict:
+def stats_presence_rate(per_rep: pd.DataFrame) -> dict:
     """Wilson CI for the binomial "rep has Induced-cascade > 0" rate per scenario."""
     out = {}
     for scenario, group in per_rep.groupby("scenario"):
@@ -164,8 +164,8 @@ def stats_detection_rate(per_rep: pd.DataFrame) -> dict:
         lo, hi = wilson_ci(k, n)
         out[scenario] = {
             "n_reps": n,
-            "n_detected": k,
-            "detection_rate": k / n if n else float("nan"),
+            "n_present": k,
+            "presence_rate": k / n if n else float("nan"),
             "wilson_95_ci": [lo, hi],
         }
     return out
@@ -215,12 +215,12 @@ def emit_latex_table(results: dict) -> str:
         r"\hline",
     ]
     boots = results.get("bootstrap_per_scenario", {})
-    wils = results.get("detection_rate_per_scenario", {})
+    wils = results.get("presence_rate_per_scenario", {})
     # Map internal scenario codes to paper-friendly descriptive names.
     NAME = {
-        "D_attack_flush":         "Flow-table flush",
-        "E_attack_single_rule":   "Single-rule injection",
-        "F_attack_burst":         "Multi-rule burst",
+        "D_flush":         "Flow-table flush",
+        "E_single_rule":   "Single-rule injection",
+        "F_burst":         "Multi-rule burst",
     }
     for scenario in sorted(boots.keys()):
         b = boots[scenario]
@@ -238,7 +238,7 @@ def emit_latex_table(results: dict) -> str:
 
 def main() -> int:
     try:
-        per_rep = load_per_rep_attack_cascade_counts()
+        per_rep = load_per_rep_induced_cascade_counts()
     except FileNotFoundError as exc:
         print(f"FATAL: {exc}", file=sys.stderr)
         return 1
@@ -250,13 +250,21 @@ def main() -> int:
         features = None
 
     surface_map = {
-        "E_attack_single_rule": 1,
-        "F_attack_burst": 21,
-        "D_attack_flush": 200,
+        "E_single_rule": 1,
+        "F_burst": 21,
+        "D_flush": 200,
     }
 
     results = {
-        "detection_rate_per_scenario": stats_detection_rate(per_rep),
+        "_note": ("presence_rate_per_scenario, surface_monotonicity_spearman and "
+                  "bootstrap_per_scenario are computed from "
+                  "fig2_sparse_cascade_per_rep.csv and are the source of the "
+                  "paper's per-scenario presence, rho = -0.13, and Induced-cascade "
+                  "means. feature_signature_mannwhitney pools iterations within a "
+                  "repetition and is SUPERSEDED in the paper by the repetition-level "
+                  "paired test of scripts/feature_signature_replevel.py; it is kept "
+                  "here only for continuity with the first submission."),
+        "presence_rate_per_scenario": stats_presence_rate(per_rep),
         "surface_monotonicity_spearman": stats_surface_monotonicity(per_rep, surface_map),
         "bootstrap_per_scenario": stats_bootstrap_table(per_rep),
     }
@@ -271,8 +279,8 @@ def main() -> int:
     print(f"Wrote {OUT_TEX}")
 
     print("\n=== Summary ===")
-    for scenario, info in results["detection_rate_per_scenario"].items():
-        print(f"  {scenario}: n={info['n_reps']}, det={info['n_detected']}/"
+    for scenario, info in results["presence_rate_per_scenario"].items():
+        print(f"  {scenario}: n={info['n_reps']}, det={info['n_present']}/"
               f"{info['n_reps']}, Wilson 95% = "
               f"[{info['wilson_95_ci'][0]:.2f}, {info['wilson_95_ci'][1]:.2f}]")
     sp = results["surface_monotonicity_spearman"]

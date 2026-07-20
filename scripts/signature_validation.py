@@ -2,7 +2,7 @@
 """Signature validation: do reps of the same action produce similar
 temporal ripple patterns?
 
-For each rep in (D_attack_flush, E_attack_single_rule, F_attack_burst,
+For each rep in (D_flush, E_single_rule, F_burst,
 plus Redis SET/MSET/FLUSHDB), compute a per-rep ripple time series
 (novelty events bucketed in time post-action). Then compute pairwise
 similarity matrix across all reps. If within-scenario pairs have
@@ -36,7 +36,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from regen_figs_data import per_iter_aggregates, load_rep_features, find_attack_ts
+from regen_figs_data import per_iter_aggregates, load_rep_features, find_action_ts
 
 ROOT = Path(__file__).resolve().parent.parent
 LAB = Path(os.environ.get("OVS_SNAPSHOTS", "/tmp/lab_snapshots"))  # raw OvS not redistributed
@@ -67,19 +67,19 @@ def is_sparse_era(d: Path) -> bool:
 
 def ovs_signature(rep_dir: Path) -> np.ndarray | None:
     try:
-        attack_ts = find_attack_ts(rep_dir)
+        action_ts = find_action_ts(rep_dir)
         df, _ = load_rep_features(rep_dir)
     except Exception:
         return None
-    if attack_ts is None:
+    if action_ts is None:
         return None
-    pre_agg = per_iter_aggregates(df[df["ts"] < attack_ts], 0)
-    post_agg = per_iter_aggregates(df[df["ts"] >= attack_ts], 0)
+    pre_agg = per_iter_aggregates(df[df["ts"] < action_ts], 0)
+    post_agg = per_iter_aggregates(df[df["ts"] >= action_ts], 0)
     if len(pre_agg) < 10 or len(post_agg) < 5:
         return None
     threshold = float(np.percentile(pre_agg["change_volume_sum"].values, 95))
     excess = np.clip(post_agg["change_volume_sum"].values - threshold, 0, None)
-    t_rel = post_agg["ts"].values - attack_ts
+    t_rel = post_agg["ts"].values - action_ts
     return bucket_signal(t_rel, excess)
 
 
@@ -132,11 +132,11 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
 def collect_signatures():
     sigs = {}  # rep_name -> (scenario, signature)
     # OvS sparse-era reps only
-    for prefix in ["D_attack_flush", "E_attack_single_rule", "F_attack_burst"]:
+    for prefix in ["D_flush", "E_single_rule", "F_burst"]:
         scenario = {
-            "D_attack_flush": "OvS-Flush",
-            "E_attack_single_rule": "OvS-Single",
-            "F_attack_burst": "OvS-Burst",
+            "D_flush": "OvS-Flush",
+            "E_single_rule": "OvS-Single",
+            "F_burst": "OvS-Burst",
         }[prefix]
         for d in sorted(LAB.glob(f"{prefix}_*")):
             if not d.is_dir():

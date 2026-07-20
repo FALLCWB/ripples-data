@@ -1,0 +1,184 @@
+{
+  "params": {
+    "bin_s": 10.0,
+    "pre_reference_s": 250.0,
+    "iteration_threshold": "p95 of warmup change_volume_sum",
+    "bin_reference": "p95 of the pre-action bin scores of the same repetition",
+    "aftermath_s": 300.0,
+    "checkpoints_s": [
+      60,
+      150,
+      200,
+      240,
+      290
+    ],
+    "source": "data/processed/ovs_recollection_aggregates"
+  },
+  "note": "A bin is active when its excess mass exceeds the 95th percentile of the same repetition's pre-action bins, so roughly one bin in twenty is expected active by chance. last_active_s is right-censored at the window length: a value at the edge means the cascade was still running when observation ended.",
+  "pooled": {
+    "label": "all induced",
+    "n_reps": 30,
+    "last_active_s": {
+      "median": 300.0,
+      "min": 0.0,
+      "max": 300.0,
+      "iqr": [
+        300.0,
+        300.0
+      ]
+    },
+    "active_bin_fraction_median": 0.9667,
+    "still_active_fraction": {
+      "60": {
+        "n_active": 29,
+        "n_reps": 30,
+        "fraction": 0.967
+      },
+      "150": {
+        "n_active": 29,
+        "n_reps": 30,
+        "fraction": 0.967
+      },
+      "200": {
+        "n_active": 29,
+        "n_reps": 30,
+        "fraction": 0.967
+      },
+      "240": {
+        "n_active": 28,
+        "n_reps": 30,
+        "fraction": 0.933
+      },
+      "290": {
+        "n_active": 24,
+        "n_reps": 30,
+        "fraction": 0.8
+      }
+    }
+  },
+  "per_scenario": {
+    "D_flush": {
+      "label": "D_flush",
+      "n_reps": 10,
+      "last_active_s": {
+        "median": 300.0,
+        "min": 300.0,
+        "max": 300.0,
+        "iqr": [
+          300.0,
+          300.0
+        ]
+      },
+      "active_bin_fraction_median": 1.0,
+      "still_active_fraction": {
+        "60": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "150": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "200": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "240": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "290": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        }
+      }
+    },
+    "E_single_rule": {
+      "label": "E_single_rule",
+      "n_reps": 10,
+      "last_active_s": {
+        "median": 300.0,
+        "min": 240.0,
+        "max": 300.0,
+        "iqr": [
+          290.0,
+          300.0
+        ]
+      },
+      "active_bin_fraction_median": 0.6,
+      "still_active_fraction": {
+        "60": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "150": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "200": {
+          "n_active": 10,
+          "n_reps": 10,
+          "fraction": 1.0
+        },
+        "240": {
+          "n_active": 9,
+          "n_reps": 10,
+          "fraction": 0.9
+        },
+        "290": {
+          "n_active": 6,
+          "n_reps": 10,
+          "fraction": 0.6
+        }
+      }
+    },
+    "F_burst": {
+      "label": "F_burst",
+      "n_reps": 10,
+      "last_active_s": {
+        "median": 300.0,
+        "min": 0.0,
+        "max": 300.0,
+        "iqr": [
+          300.0,
+          300.0
+        ]
+      },
+      "active_bin_fraction_median": 1.0,
+      "still_active_fraction": {
+        "60": {
+          "n_active": 9,
+          "n_reps": 10,
+          "fraction": 0.9
+        },
+        "150": {
+          "n_active": 9,
+          "n_reps": 10,
+          "fraction": 0.9
+        },
+        "200": {
+          "n_active": 9,
+          "n_reps": 10,
+          "fraction": 0.9
+        },
+        "240": {
+          "n_active": 9,
+          "n_reps": 10,
+          "fraction": 0.9
+        },
+        "290": {
+          "n_active": 8,
+          "n_reps": 10,
+          "fraction": 0.8
+        }
+      }
+    }
+  }
+}

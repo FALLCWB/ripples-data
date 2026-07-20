@@ -1,0 +1,429 @@
+{
+  "params": {
+    "window_s": 300.0,
+    "stride_s": 30.0,
+    "threshold": "p95 of the same repetition's warmup change_volume_sum",
+    "null_sources": "warmup windows of every repetition + full test phase of the idle repetitions"
+  },
+  "null": {
+    "n_windows": 57,
+    "median": 308.0,
+    "p95": 324.0,
+    "max": 326,
+    "mean": 263.68
+  },
+  "observed": {
+    "n_reps": 30,
+    "median_count": 314.0,
+    "min_count": 2,
+    "max_count": 339,
+    "n_below_alpha_05": 7,
+    "n_below_bonferroni": 0,
+    "min_attainable_p": 0.01724
+  },
+  "paired_excess": {
+    "window_s": 250.0,
+    "n_reps": 30,
+    "n_reps_post_greater": 29,
+    "excess_pre_median": 13461.0,
+    "excess_post_median": 19956.0,
+    "ratio_of_medians": 1.483,
+    "wilcoxon_stat": 29.0,
+    "wilcoxon_p": 3.24e-06,
+    "note": "The calibrated presence criterion. Event counts do not separate the aftermath from the matched pre-action window; the excess mass above the warmup threshold does. The single repetition that does not follow is the low-density burst repetition also visible in the burst confidence interval.",
+    "per_rep": [
+      {
+        "rep": "D_flush_rep10_1784127218",
+        "scenario": "D_flush",
+        "excess_pre": 6143.0,
+        "excess_post": 17531.0
+      },
+      {
+        "rep": "D_flush_rep1_1784114542",
+        "scenario": "D_flush",
+        "excess_pre": 3024.0,
+        "excess_post": 12279.0
+      },
+      {
+        "rep": "D_flush_rep2_1784116155",
+        "scenario": "D_flush",
+        "excess_pre": 2210.0,
+        "excess_post": 12658.0
+      },
+      {
+        "rep": "D_flush_rep3_1784117531",
+        "scenario": "D_flush",
+        "excess_pre": 15409.0,
+        "excess_post": 20909.0
+      },
+      {
+        "rep": "D_flush_rep4_1784118914",
+        "scenario": "D_flush",
+        "excess_pre": 5159.0,
+        "excess_post": 19673.0
+      },
+      {
+        "rep": "D_flush_rep5_1784120305",
+        "scenario": "D_flush",
+        "excess_pre": 16557.0,
+        "excess_post": 28533.0
+      },
+      {
+        "rep": "D_flush_rep6_1784121684",
+        "scenario": "D_flush",
+        "excess_pre": 29589.0,
+        "excess_post": 38246.0
+      },
+      {
+        "rep": "D_flush_rep7_1784123080",
+        "scenario": "D_flush",
+        "excess_pre": 14161.0,
+        "excess_post": 22710.0
+      },
+      {
+        "rep": "D_flush_rep8_1784124445",
+        "scenario": "D_flush",
+        "excess_pre": 16937.0,
+        "excess_post": 26313.0
+      },
+      {
+        "rep": "D_flush_rep9_1784125839",
+        "scenario": "D_flush",
+        "excess_pre": 7588.0,
+        "excess_post": 16028.0
+      },
+      {
+        "rep": "E_single_rule_rep10_1784140959",
+        "scenario": "E_single_rule",
+        "excess_pre": 11044.0,
+        "excess_post": 15990.0
+      },
+      {
+        "rep": "E_single_rule_rep1_1784128583",
+        "scenario": "E_single_rule",
+        "excess_pre": 47804.0,
+        "excess_post": 51366.0
+      },
+      {
+        "rep": "E_single_rule_rep2_1784129948",
+        "scenario": "E_single_rule",
+        "excess_pre": 11597.5,
+        "excess_post": 16482.0
+      },
+      {
+        "rep": "E_single_rule_rep3_1784131339",
+        "scenario": "E_single_rule",
+        "excess_pre": 35134.1,
+        "excess_post": 36920.5
+      },
+      {
+        "rep": "E_single_rule_rep4_1784132700",
+        "scenario": "E_single_rule",
+        "excess_pre": 16924.0,
+        "excess_post": 18018.0
+      },
+      {
+        "rep": "E_single_rule_rep5_1784134084",
+        "scenario": "E_single_rule",
+        "excess_pre": 15069.0,
+        "excess_post": 21134.0
+      },
+      {
+        "rep": "E_single_rule_rep6_1784135478",
+        "scenario": "E_single_rule",
+        "excess_pre": 23246.0,
+        "excess_post": 30962.0
+      },
+      {
+        "rep": "E_single_rule_rep7_1784136866",
+        "scenario": "E_single_rule",
+        "excess_pre": 6423.0,
+        "excess_post": 8962.0
+      },
+      {
+        "rep": "E_single_rule_rep8_1784138257",
+        "scenario": "E_single_rule",
+        "excess_pre": 8871.0,
+        "excess_post": 11484.0
+      },
+      {
+        "rep": "E_single_rule_rep9_1784139588",
+        "scenario": "E_single_rule",
+        "excess_pre": 7.2,
+        "excess_post": 907.8
+      },
+      {
+        "rep": "F_burst_rep10_1784154758",
+        "scenario": "F_burst",
+        "excess_pre": 24268.0,
+        "excess_post": 44349.0
+      },
+      {
+        "rep": "F_burst_rep1_1784142339",
+        "scenario": "F_burst",
+        "excess_pre": 13256.0,
+        "excess_post": 24771.0
+      },
+      {
+        "rep": "F_burst_rep2_1784143717",
+        "scenario": "F_burst",
+        "excess_pre": 21440.0,
+        "excess_post": 36996.0
+      },
+      {
+        "rep": "F_burst_rep3_1784145097",
+        "scenario": "F_burst",
+        "excess_pre": 15908.0,
+        "excess_post": 28918.0
+      },
+      {
+        "rep": "F_burst_rep4_1784146495",
+        "scenario": "F_burst",
+        "excess_pre": 5649.0,
+        "excess_post": 20237.0
+      },
+      {
+        "rep": "F_burst_rep5_1784147877",
+        "scenario": "F_burst",
+        "excess_pre": 13666.0,
+        "excess_post": 20621.0
+      },
+      {
+        "rep": "F_burst_rep6_1784149273",
+        "scenario": "F_burst",
+        "excess_pre": 17059.2,
+        "excess_post": 154.5
+      },
+      {
+        "rep": "F_burst_rep7_1784150643",
+        "scenario": "F_burst",
+        "excess_pre": 6215.0,
+        "excess_post": 15855.0
+      },
+      {
+        "rep": "F_burst_rep8_1784152031",
+        "scenario": "F_burst",
+        "excess_pre": 7661.0,
+        "excess_post": 16453.0
+      },
+      {
+        "rep": "F_burst_rep9_1784153396",
+        "scenario": "F_burst",
+        "excess_pre": 10407.0,
+        "excess_post": 19675.0
+      }
+    ]
+  },
+  "per_rep": [
+    {
+      "rep": "D_flush_rep10_1784127218",
+      "scenario": "D_flush",
+      "count": 339,
+      "n_null_ge": 0,
+      "p_empirical": 0.01724
+    },
+    {
+      "rep": "D_flush_rep1_1784114542",
+      "scenario": "D_flush",
+      "count": 310,
+      "n_null_ge": 23,
+      "p_empirical": 0.41379
+    },
+    {
+      "rep": "D_flush_rep2_1784116155",
+      "scenario": "D_flush",
+      "count": 332,
+      "n_null_ge": 0,
+      "p_empirical": 0.01724
+    },
+    {
+      "rep": "D_flush_rep3_1784117531",
+      "scenario": "D_flush",
+      "count": 303,
+      "n_null_ge": 42,
+      "p_empirical": 0.74138
+    },
+    {
+      "rep": "D_flush_rep4_1784118914",
+      "scenario": "D_flush",
+      "count": 303,
+      "n_null_ge": 42,
+      "p_empirical": 0.74138
+    },
+    {
+      "rep": "D_flush_rep5_1784120305",
+      "scenario": "D_flush",
+      "count": 311,
+      "n_null_ge": 21,
+      "p_empirical": 0.37931
+    },
+    {
+      "rep": "D_flush_rep6_1784121684",
+      "scenario": "D_flush",
+      "count": 307,
+      "n_null_ge": 32,
+      "p_empirical": 0.56897
+    },
+    {
+      "rep": "D_flush_rep7_1784123080",
+      "scenario": "D_flush",
+      "count": 315,
+      "n_null_ge": 11,
+      "p_empirical": 0.2069
+    },
+    {
+      "rep": "D_flush_rep8_1784124445",
+      "scenario": "D_flush",
+      "count": 318,
+      "n_null_ge": 6,
+      "p_empirical": 0.12069
+    },
+    {
+      "rep": "D_flush_rep9_1784125839",
+      "scenario": "D_flush",
+      "count": 302,
+      "n_null_ge": 42,
+      "p_empirical": 0.74138
+    },
+    {
+      "rep": "E_single_rule_rep10_1784140959",
+      "scenario": "E_single_rule",
+      "count": 316,
+      "n_null_ge": 8,
+      "p_empirical": 0.15517
+    },
+    {
+      "rep": "E_single_rule_rep1_1784128583",
+      "scenario": "E_single_rule",
+      "count": 313,
+      "n_null_ge": 17,
+      "p_empirical": 0.31034
+    },
+    {
+      "rep": "E_single_rule_rep2_1784129948",
+      "scenario": "E_single_rule",
+      "count": 309,
+      "n_null_ge": 26,
+      "p_empirical": 0.46552
+    },
+    {
+      "rep": "E_single_rule_rep3_1784131339",
+      "scenario": "E_single_rule",
+      "count": 330,
+      "n_null_ge": 0,
+      "p_empirical": 0.01724
+    },
+    {
+      "rep": "E_single_rule_rep4_1784132700",
+      "scenario": "E_single_rule",
+      "count": 311,
+      "n_null_ge": 21,
+      "p_empirical": 0.37931
+    },
+    {
+      "rep": "E_single_rule_rep5_1784134084",
+      "scenario": "E_single_rule",
+      "count": 310,
+      "n_null_ge": 23,
+      "p_empirical": 0.41379
+    },
+    {
+      "rep": "E_single_rule_rep6_1784135478",
+      "scenario": "E_single_rule",
+      "count": 326,
+      "n_null_ge": 1,
+      "p_empirical": 0.03448
+    },
+    {
+      "rep": "E_single_rule_rep7_1784136866",
+      "scenario": "E_single_rule",
+      "count": 322,
+      "n_null_ge": 5,
+      "p_empirical": 0.10345
+    },
+    {
+      "rep": "E_single_rule_rep8_1784138257",
+      "scenario": "E_single_rule",
+      "count": 319,
+      "n_null_ge": 6,
+      "p_empirical": 0.12069
+    },
+    {
+      "rep": "E_single_rule_rep9_1784139588",
+      "scenario": "E_single_rule",
+      "count": 223,
+      "n_null_ge": 46,
+      "p_empirical": 0.81034
+    },
+    {
+      "rep": "F_burst_rep10_1784154758",
+      "scenario": "F_burst",
+      "count": 334,
+      "n_null_ge": 0,
+      "p_empirical": 0.01724
+    },
+    {
+      "rep": "F_burst_rep1_1784142339",
+      "scenario": "F_burst",
+      "count": 319,
+      "n_null_ge": 6,
+      "p_empirical": 0.12069
+    },
+    {
+      "rep": "F_burst_rep2_1784143717",
+      "scenario": "F_burst",
+      "count": 326,
+      "n_null_ge": 1,
+      "p_empirical": 0.03448
+    },
+    {
+      "rep": "F_burst_rep3_1784145097",
+      "scenario": "F_burst",
+      "count": 317,
+      "n_null_ge": 6,
+      "p_empirical": 0.12069
+    },
+    {
+      "rep": "F_burst_rep4_1784146495",
+      "scenario": "F_burst",
+      "count": 321,
+      "n_null_ge": 5,
+      "p_empirical": 0.10345
+    },
+    {
+      "rep": "F_burst_rep5_1784147877",
+      "scenario": "F_burst",
+      "count": 313,
+      "n_null_ge": 17,
+      "p_empirical": 0.31034
+    },
+    {
+      "rep": "F_burst_rep6_1784149273",
+      "scenario": "F_burst",
+      "count": 2,
+      "n_null_ge": 57,
+      "p_empirical": 1.0
+    },
+    {
+      "rep": "F_burst_rep7_1784150643",
+      "scenario": "F_burst",
+      "count": 311,
+      "n_null_ge": 21,
+      "p_empirical": 0.37931
+    },
+    {
+      "rep": "F_burst_rep8_1784152031",
+      "scenario": "F_burst",
+      "count": 328,
+      "n_null_ge": 0,
+      "p_empirical": 0.01724
+    },
+    {
+      "rep": "F_burst_rep9_1784153396",
+      "scenario": "F_burst",
+      "count": 310,
+      "n_null_ge": 23,
+      "p_empirical": 0.41379
+    }
+  ]
+}

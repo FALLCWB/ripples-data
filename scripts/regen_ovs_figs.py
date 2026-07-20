@@ -13,7 +13,7 @@ recollection is too large to host online):
     profile (Fig 5) and per-iteration feature distributions (Fig 6).
 
 Outputs (data/processed/): scenario_decomposition.csv,
-fig2_sparse_attack_cascade_per_rep.csv, fig5_temporal_signal.csv,
+fig2_sparse_cascade_per_rep.csv, fig5_temporal_signal.csv,
 fig6_feature_distributions.csv.
 """
 import csv, json, statistics as st
@@ -34,8 +34,7 @@ SCEN = {"A_idle": "Idle", "B_flow_install": "Rule installation",
 CATS = ["Direct-anchor", "Reactive-cascade", "Induced-cascade",
         "Periodic-gap", "Endogenous-unexplained", "Indeterminate"]
 SURF = {"E_single_rule": 1, "F_burst": 21, "D_flush": 200}
-FIG_KEY = {"D_flush": "D_attack_flush", "E_single_rule": "E_attack_single_rule",
-           "F_burst": "F_attack_burst"}
+INDUCED = ("D_flush", "E_single_rule", "F_burst")
 
 
 def load_labels(name):
@@ -89,10 +88,10 @@ def build_decomposition_and_fig2():
             "induced_cascade_count", "per_hour_rate", "threshold_used", "n_test_iters", "n_ext"]
     rows = []
     for r in load_labels("labels_corrected_sparse_W2.0_C5.0_D300.json"):
-        if r.get("excluded") or r["scenario"] not in FIG_KEY:
+        if r.get("excluded") or r["scenario"] not in INDUCED:
             continue
         c = r["counts"]; ic = c.get("Induced-cascade", 0)
-        rows.append({"scenario": FIG_KEY[r["scenario"]], "rep_id": r["rep"],
+        rows.append({"scenario": r["scenario"], "rep_id": r["rep"],
                      "direct_anchor": c.get("Direct-anchor", 0), "reactive_cascade": c.get("Reactive-cascade", 0),
                      "induced_cascade": ic, "periodic_gap": c.get("Periodic-gap", 0),
                      "endogenous_unexplained": c.get("Endogenous-unexplained", 0),
@@ -100,11 +99,11 @@ def build_decomposition_and_fig2():
                      "induced_cascade_count": ic, "per_hour_rate": round(ic / r["dur_h"], 1),
                      "threshold_used": r.get("threshold", 0), "n_test_iters": r.get("n_iters_test", 0),
                      "n_ext": r.get("n_events", 0)})
-    order = {"E_attack_single_rule": 0, "F_attack_burst": 1, "D_attack_flush": 2}
+    order = {"E_single_rule": 0, "F_burst": 1, "D_flush": 2}
     rows.sort(key=lambda x: (order[x["scenario"]], x["rep_id"]))
-    with open(PROC / "fig2_sparse_attack_cascade_per_rep.csv", "w", newline="") as f:
+    with open(PROC / "fig2_sparse_cascade_per_rep.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
-    means = {k: st.mean([x["per_hour_rate"] for x in rows if x["scenario"] == FIG_KEY[k]]) for k in SURF}
+    means = {k: st.mean([x["per_hour_rate"] for x in rows if x["scenario"] == k]) for k in SURF}
     print(f"decomposition + fig2: means single/burst/flush = "
           f"{means['E_single_rule']:.0f}/{means['F_burst']:.0f}/{means['D_flush']:.0f}")
 

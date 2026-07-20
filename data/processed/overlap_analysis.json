@@ -1,0 +1,925 @@
+{
+  "params": {
+    "primary_window_s": 25.0,
+    "primary_metric": "excess",
+    "iteration_threshold": "p95 of warmup change_volume_sum",
+    "metrics": {
+      "excess": "summed (signal - threshold) over supra-threshold iterations",
+      "occupancy": "fraction of supra-threshold iterations in the window",
+      "pages": "mean mutated pages per iteration in the window"
+    },
+    "note": "Excess is the primary reading because event counts do not separate the aftermath from the pre-action test phase in this corpus (scripts/presence_null.py). The window sweep is reported because a single window length would not show whether an effect is stable."
+  },
+  "primary": {
+    "window_s": 25.0,
+    "metric": "excess",
+    "per_scenario": {
+      "G_overlap_30s": {
+        "n_reps": 10,
+        "metric": "excess",
+        "before_median": 2197.0,
+        "after_median": 2342.5,
+        "delta_median": 66.0,
+        "n_reps_after_greater": 6,
+        "wilcoxon_stat": 25.0,
+        "wilcoxon_p": 0.846,
+        "spacing_measured_median_s": 28.28,
+        "spacing_nominal_s": 30.0
+      },
+      "H_overlap_150s": {
+        "n_reps": 10,
+        "metric": "excess",
+        "before_median": 3581.0,
+        "after_median": 3642.0,
+        "delta_median": 92.25,
+        "n_reps_after_greater": 7,
+        "wilcoxon_stat": 12.0,
+        "wilcoxon_p": 0.125,
+        "spacing_measured_median_s": 138.37,
+        "spacing_nominal_s": 150.0
+      }
+    },
+    "solo_control": {
+      "G_overlap_30s": {
+        "n_reps": 10,
+        "metric": "excess",
+        "before_median": 2044.0,
+        "after_median": 1812.0,
+        "delta_median": 70.0,
+        "n_reps_after_greater": 8,
+        "wilcoxon_stat": 18.0,
+        "wilcoxon_p": 0.361,
+        "elapsed_s": 28.28,
+        "delta_vs_overlap_mannwhitney": {
+          "U": 47.0,
+          "p": 0.85
+        }
+      },
+      "H_overlap_150s": {
+        "n_reps": 10,
+        "metric": "excess",
+        "before_median": 1855.5,
+        "after_median": 2053.0,
+        "delta_median": 69.5,
+        "n_reps_after_greater": 7,
+        "wilcoxon_stat": 17.0,
+        "wilcoxon_p": 0.322,
+        "elapsed_s": 138.37,
+        "delta_vs_overlap_mannwhitney": {
+          "U": 58.0,
+          "p": 0.571
+        }
+      }
+    },
+    "between_spacings": {
+      "delta_median_30s": 66.0,
+      "delta_median_150s": 92.25,
+      "U": 40.0,
+      "p": 0.473,
+      "n_30s": 10,
+      "n_150s": 10
+    }
+  },
+  "window_sweep": [
+    {
+      "window_s": 10.0,
+      "metric": "excess",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 906.0,
+          "after_median": 902.0,
+          "delta_median": 50.0,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 19.5,
+          "wilcoxon_p": 0.447,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1483.0,
+          "after_median": 1369.0,
+          "delta_median": 96.0,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 16.0,
+          "wilcoxon_p": 0.275,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 758.0,
+          "after_median": 757.0,
+          "delta_median": 53.0,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 16.0,
+          "wilcoxon_p": 0.264,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 49.0,
+            "p": 0.97
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 708.5,
+          "after_median": 830.0,
+          "delta_median": 51.0,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 10.0,
+          "wilcoxon_p": 0.164,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 59.0,
+            "p": 0.521
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 50.0,
+        "delta_median_150s": 96.0,
+        "U": 38.5,
+        "p": 0.406,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 10.0,
+      "metric": "occupancy",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3337,
+          "after_median": 0.3392,
+          "delta_median": 0.0151,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 23.0,
+          "wilcoxon_p": 0.695,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3704,
+          "after_median": 0.3455,
+          "delta_median": 0.0069,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3231,
+          "after_median": 0.3279,
+          "delta_median": 0.0208,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 20.0,
+          "wilcoxon_p": 0.797,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 56.0,
+            "p": 0.677
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3052,
+          "after_median": 0.3114,
+          "delta_median": 0.023,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 18.0,
+          "wilcoxon_p": 0.375,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 45.0,
+            "p": 0.734
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.0151,
+        "delta_median_150s": 0.007,
+        "U": 51.0,
+        "p": 0.97,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 10.0,
+      "metric": "pages",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 13.6663,
+          "after_median": 14.1942,
+          "delta_median": 0.733,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 21.0,
+          "wilcoxon_p": 0.557,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 14.1852,
+          "after_median": 13.7921,
+          "delta_median": 0.3958,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 26.0,
+          "wilcoxon_p": 0.922,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.6834,
+          "after_median": 13.3705,
+          "delta_median": 0.9306,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 51.0,
+            "p": 0.97
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.3106,
+          "after_median": 12.8831,
+          "delta_median": 0.3573,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 18.0,
+          "wilcoxon_p": 0.375,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 47.0,
+            "p": 0.85
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.733,
+        "delta_median_150s": 0.3959,
+        "U": 51.0,
+        "p": 0.97,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 15.0,
+      "metric": "excess",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1376.5,
+          "after_median": 1390.0,
+          "delta_median": 36.0,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 20.0,
+          "wilcoxon_p": 0.82,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 2170.5,
+          "after_median": 2132.0,
+          "delta_median": 137.25,
+          "n_reps_after_greater": 8,
+          "wilcoxon_stat": 11.0,
+          "wilcoxon_p": 0.105,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1205.5,
+          "after_median": 1098.5,
+          "delta_median": -6.5,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 56.0,
+            "p": 0.678
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1100.5,
+          "after_median": 1283.5,
+          "delta_median": 82.0,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 11.0,
+          "wilcoxon_p": 0.105,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 59.0,
+            "p": 0.521
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 36.0,
+        "delta_median_150s": 137.25,
+        "U": 34.0,
+        "p": 0.241,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 15.0,
+      "metric": "occupancy",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3023,
+          "after_median": 0.3176,
+          "delta_median": 0.0015,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 26.0,
+          "wilcoxon_p": 0.922,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.2873,
+          "after_median": 0.3266,
+          "delta_median": 0.0248,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 16.0,
+          "wilcoxon_p": 0.275,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3159,
+          "after_median": 0.3022,
+          "delta_median": -0.0106,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 59.0,
+            "p": 0.521
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3506,
+          "after_median": 0.3184,
+          "delta_median": -0.0183,
+          "n_reps_after_greater": 4,
+          "wilcoxon_stat": 20.0,
+          "wilcoxon_p": 0.82,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 64.0,
+            "p": 0.307
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.0014,
+        "delta_median_150s": 0.0249,
+        "U": 41.5,
+        "p": 0.545,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 15.0,
+      "metric": "pages",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.721,
+          "after_median": 13.4939,
+          "delta_median": 0.3467,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 23.0,
+          "wilcoxon_p": 0.695,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.0645,
+          "after_median": 13.462,
+          "delta_median": 0.9894,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 14.0,
+          "wilcoxon_p": 0.193,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.8854,
+          "after_median": 12.5831,
+          "delta_median": -0.1156,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 60.0,
+            "p": 0.473
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 13.7026,
+          "after_median": 13.0183,
+          "delta_median": -0.3055,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 26.0,
+          "wilcoxon_p": 0.922,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 66.0,
+            "p": 0.241
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.3468,
+        "delta_median_150s": 0.9894,
+        "U": 43.0,
+        "p": 0.623,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 20.0,
+      "metric": "excess",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1787.0,
+          "after_median": 1893.5,
+          "delta_median": 49.5,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 26.0,
+          "wilcoxon_p": 0.922,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 2817.5,
+          "after_median": 2854.5,
+          "delta_median": 110.25,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 14.0,
+          "wilcoxon_p": 0.186,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1634.0,
+          "after_median": 1431.0,
+          "delta_median": 36.5,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 51.5,
+            "p": 0.94
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1513.0,
+          "after_median": 1663.5,
+          "delta_median": 80.5,
+          "n_reps_after_greater": 8,
+          "wilcoxon_stat": 13.0,
+          "wilcoxon_p": 0.16,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 52.0,
+            "p": 0.91
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 49.5,
+        "delta_median_150s": 110.25,
+        "U": 35.0,
+        "p": 0.273,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 20.0,
+      "metric": "occupancy",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3292,
+          "after_median": 0.3306,
+          "delta_median": 0.0162,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.275,
+          "after_median": 0.3333,
+          "delta_median": 0.0361,
+          "n_reps_after_greater": 8,
+          "wilcoxon_stat": 9.0,
+          "wilcoxon_p": 0.0645,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.2962,
+          "after_median": 0.3125,
+          "delta_median": 0.0014,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 59.0,
+            "p": 0.521
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3144,
+          "after_median": 0.3025,
+          "delta_median": 0.0041,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 25.0,
+          "wilcoxon_p": 0.846,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 66.5,
+            "p": 0.226
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.0163,
+        "delta_median_150s": 0.0362,
+        "U": 40.0,
+        "p": 0.473,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 20.0,
+      "metric": "pages",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 13.3549,
+          "after_median": 13.8088,
+          "delta_median": 0.6748,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 11.7905,
+          "after_median": 13.5818,
+          "delta_median": 1.2583,
+          "n_reps_after_greater": 8,
+          "wilcoxon_stat": 5.0,
+          "wilcoxon_p": 0.0195,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.5079,
+          "after_median": 13.0864,
+          "delta_median": 0.0682,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 26.0,
+          "wilcoxon_p": 0.922,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 57.0,
+            "p": 0.623
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.7817,
+          "after_median": 12.3371,
+          "delta_median": 0.0213,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 24.0,
+          "wilcoxon_p": 0.77,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 71.0,
+            "p": 0.121
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.6748,
+        "delta_median_150s": 1.2582,
+        "U": 39.0,
+        "p": 0.427,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 25.0,
+      "metric": "excess",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 2197.0,
+          "after_median": 2342.5,
+          "delta_median": 66.0,
+          "n_reps_after_greater": 6,
+          "wilcoxon_stat": 25.0,
+          "wilcoxon_p": 0.846,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 3581.0,
+          "after_median": 3642.0,
+          "delta_median": 92.25,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 12.0,
+          "wilcoxon_p": 0.125,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 2044.0,
+          "after_median": 1812.0,
+          "delta_median": 70.0,
+          "n_reps_after_greater": 8,
+          "wilcoxon_stat": 18.0,
+          "wilcoxon_p": 0.361,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 47.0,
+            "p": 0.85
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "excess",
+          "before_median": 1855.5,
+          "after_median": 2053.0,
+          "delta_median": 69.5,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 17.0,
+          "wilcoxon_p": 0.322,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 58.0,
+            "p": 0.571
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 66.0,
+        "delta_median_150s": 92.25,
+        "U": 40.0,
+        "p": 0.473,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 25.0,
+      "metric": "occupancy",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3162,
+          "after_median": 0.3196,
+          "delta_median": 0.0089,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.2934,
+          "after_median": 0.3333,
+          "delta_median": 0.0437,
+          "n_reps_after_greater": 9,
+          "wilcoxon_stat": 4.0,
+          "wilcoxon_p": 0.0137,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.3142,
+          "after_median": 0.3128,
+          "delta_median": -0.0074,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 20.0,
+          "wilcoxon_p": 0.492,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 54.0,
+            "p": 0.791
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "occupancy",
+          "before_median": 0.2995,
+          "after_median": 0.2942,
+          "delta_median": 0.0104,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 23.0,
+          "wilcoxon_p": 0.695,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 69.0,
+            "p": 0.162
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.0089,
+        "delta_median_150s": 0.0436,
+        "U": 29.0,
+        "p": 0.121,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    },
+    {
+      "window_s": 25.0,
+      "metric": "pages",
+      "per_scenario": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 13.262,
+          "after_median": 13.2985,
+          "delta_median": 0.2858,
+          "n_reps_after_greater": 5,
+          "wilcoxon_stat": 27.0,
+          "wilcoxon_p": 1.0,
+          "spacing_measured_median_s": 28.28,
+          "spacing_nominal_s": 30.0
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.1161,
+          "after_median": 13.7838,
+          "delta_median": 1.4931,
+          "n_reps_after_greater": 9,
+          "wilcoxon_stat": 3.0,
+          "wilcoxon_p": 0.00977,
+          "spacing_measured_median_s": 138.37,
+          "spacing_nominal_s": 150.0
+        }
+      },
+      "solo_control": {
+        "G_overlap_30s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.7352,
+          "after_median": 12.9661,
+          "delta_median": -0.2931,
+          "n_reps_after_greater": 4,
+          "wilcoxon_stat": 21.0,
+          "wilcoxon_p": 0.557,
+          "elapsed_s": 28.28,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 55.0,
+            "p": 0.734
+          }
+        },
+        "H_overlap_150s": {
+          "n_reps": 10,
+          "metric": "pages",
+          "before_median": 12.2388,
+          "after_median": 12.1321,
+          "delta_median": 0.269,
+          "n_reps_after_greater": 7,
+          "wilcoxon_stat": 22.0,
+          "wilcoxon_p": 0.625,
+          "elapsed_s": 138.37,
+          "delta_vs_overlap_mannwhitney": {
+            "U": 71.0,
+            "p": 0.121
+          }
+        }
+      },
+      "between_spacings": {
+        "delta_median_30s": 0.2858,
+        "delta_median_150s": 1.4931,
+        "U": 26.0,
+        "p": 0.0757,
+        "n_30s": 10,
+        "n_150s": 10
+      }
+    }
+  ]
+}

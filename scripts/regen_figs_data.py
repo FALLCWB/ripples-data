@@ -10,10 +10,10 @@ gen_crossdomain.py.
 
 Produces three CSVs under data/processed/:
 
-  fig2_sparse_attack_cascade_per_rep.csv
+  fig2_sparse_cascade_per_rep.csv
       Per-rep Induced-cascade event counts and per-hour rates for the
-      three sparse-era induced-action scenarios (D_attack_flush,
-      E_attack_single_rule, F_attack_burst).
+      three sparse-era induced-action scenarios (D_flush,
+      E_single_rule, F_burst).
 
   fig5_temporal_signal.csv
       Raw change_volume_sum signal over time for a representative flush
@@ -178,7 +178,7 @@ def find_action_ts(sd: Path):
 
 
 # Backward-compatible alias for callers that imported the old name.
-find_attack_ts = find_action_ts
+find_action_ts = find_action_ts
 
 
 def load_rep_features(sd: Path) -> tuple[pd.DataFrame, int]:
@@ -290,9 +290,9 @@ def build_fig2() -> pd.DataFrame:
         if not d.is_dir():
             continue
         name = d.name
-        if not (name.startswith("D_attack_flush") or
-                name.startswith("E_attack_single_rule") or
-                name.startswith("F_attack_burst")):
+        if not (name.startswith("D_flush") or
+                name.startswith("E_single_rule") or
+                name.startswith("F_burst")):
             continue
         if not is_sparse_era(d):
             continue
@@ -310,7 +310,7 @@ def build_fig2() -> pd.DataFrame:
               f"threshold={r['threshold_used']:.0f}")
 
     df = pd.DataFrame(rows)
-    out = OUT / "fig2_sparse_attack_cascade_per_rep.csv"
+    out = OUT / "fig2_sparse_cascade_per_rep.csv"
     df.to_csv(out, index=False)
     print(f"  -> {out}  ({len(df)} reps)")
     return df
@@ -326,7 +326,7 @@ def build_scenario_decomposition() -> pd.DataFrame:
     the raw-threshold event flagging defined in flag_above_threshold."""
     prefixes = [
         "A_idle", "B_flow_install", "C_ping_sustained",
-        "D_attack_flush", "E_attack_single_rule", "F_attack_burst",
+        "D_flush", "E_single_rule", "F_burst",
     ]
     rows = []
     for d in sorted(SNAPSHOTS.iterdir()):
@@ -348,15 +348,15 @@ def build_scenario_decomposition() -> pd.DataFrame:
 
 
 # --------------------------------------------------------------------------
-# Fig 5 — raw temporal signal for a representative D_attack_flush rep.
+# Fig 5 — raw temporal signal for a representative D_flush rep.
 # --------------------------------------------------------------------------
 def build_fig5() -> pd.DataFrame:
-    cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep11_*"))
+    cand = sorted(SNAPSHOTS.glob("D_flush_rep11_*"))
     if not cand:
-        cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep10_*"))
+        cand = sorted(SNAPSHOTS.glob("D_flush_rep10_*"))
         print("  [fig5] rep11 missing, falling back to rep10")
     if not cand:
-        cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep*"))
+        cand = sorted(SNAPSHOTS.glob("D_flush_rep*"))
         print(f"  [fig5] using {cand[0].name}")
     sd = cand[0]
     print(f"  [fig5] using {sd.name}")
@@ -403,12 +403,12 @@ def build_fig6() -> pd.DataFrame:
     same rep plus the full timeline of three idle reps. No threshold
     filtering; this represents the typical per-iteration footprint of OvS
     when no induced action is present."""
-    cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep11_*"))
+    cand = sorted(SNAPSHOTS.glob("D_flush_rep11_*"))
     if not cand:
-        cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep10_*"))
+        cand = sorted(SNAPSHOTS.glob("D_flush_rep10_*"))
         print("  [fig6] rep11 missing, falling back to rep10")
     if not cand:
-        cand = sorted(SNAPSHOTS.glob("D_attack_flush_rep*"))
+        cand = sorted(SNAPSHOTS.glob("D_flush_rep*"))
     attack_sd = cand[0]
     print(f"  [fig6] ripple source: {attack_sd.name}")
 

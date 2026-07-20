@@ -149,7 +149,7 @@ def analyze_rep_under_treatment(sd: Path, threshold_fn) -> dict | None:
 def main():
     # Collect reps we care about
     prefixes = ["A_idle", "B_flow_install", "C_ping_sustained",
-                "D_attack_flush", "E_attack_single_rule", "F_attack_burst"]
+                "D_flush", "E_single_rule", "F_burst"]
     rep_dirs = [d for d in sorted(SNAPSHOTS.iterdir())
                 if d.is_dir() and any(d.name.startswith(p) for p in prefixes)]
     print(f"Found {len(rep_dirs)} rep dirs")
@@ -192,7 +192,7 @@ def main():
     print(f"{'treatment':10s} {'induced_flush_sparse':22s} {'endo_idle_rich':18s} {'SNR':8s}")
     for treatment in TREATMENTS:
         sub_t = df[df.treatment == treatment]
-        ind = sub_t[(sub_t.scenario == "D_attack_flush") & (sub_t.audit_era == "sparse")]
+        ind = sub_t[(sub_t.scenario == "D_flush") & (sub_t.audit_era == "sparse")]
         idle = sub_t[(sub_t.scenario == "A_idle") & (sub_t.audit_era == "rich")]
         ind_h = ind["induced_cascade"].sum() / max(ind["duration_s"].sum() / 3600, 1e-9)
         idle_h = idle["endogenous_unexplained"].sum() / max(idle["duration_s"].sum() / 3600, 1e-9)
@@ -205,14 +205,14 @@ def main():
     for treatment in TREATMENTS:
         sub_t = df[df.treatment == treatment]
         # Recall over D/E/F induced reps combined (sparse + rich for D)
-        def_reps = sub_t[sub_t.scenario.isin(["D_attack_flush", "E_attack_single_rule",
-                                              "F_attack_burst"])]
+        def_reps = sub_t[sub_t.scenario.isin(["D_flush", "E_single_rule",
+                                              "F_burst"])]
         recall = (def_reps["induced_cascade"] > 0).sum() / len(def_reps) if len(def_reps) else 0
         # Endogenous in idle/rich
         idle_rich = sub_t[(sub_t.scenario == "A_idle") & (sub_t.audit_era == "rich")]
         endo_idle = idle_rich["endogenous_unexplained"].sum() / max(idle_rich["duration_s"].sum() / 3600, 1e-9)
         # Induced in flush rich
-        flush_rich = sub_t[(sub_t.scenario == "D_attack_flush") & (sub_t.audit_era == "rich")]
+        flush_rich = sub_t[(sub_t.scenario == "D_flush") & (sub_t.audit_era == "rich")]
         ind_flush_rich = flush_rich["induced_cascade"].sum() / max(flush_rich["duration_s"].sum() / 3600, 1e-9)
         # Latency in D/E/F
         finite_lat = def_reps["first_lat_s"][def_reps["first_lat_s"] < float("inf")]

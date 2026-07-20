@@ -33,7 +33,7 @@ gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd pane
 
 Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and the surface, temporal, and feature figures (Fig. 2, Fig. 4, Fig. 5) from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
 
-Some released identifiers (`D_attack_flush`, `inject_attack`, `*_attack_*`) are legacy names predating the observational framing and carry no attack semantics; the study is purely observational, and scenarios D/E/F are induced administrative actions.
+Released identifiers use the observational vocabulary throughout: scenarios are `D_flush`, `E_single_rule`, and `F_burst`, the action marker in the event logs is `inject_action`, and per-scenario rates are reported as ripple *presence*. The loaders still accept the legacy marker `inject_attack`, which appears only in first-collection captures that are not redistributed; it predates the observational framing and carries no attack semantics. Scenarios D/E/F are induced administrative actions and the study is purely observational.
 
 ## Revision (2026) additions
 
@@ -43,6 +43,10 @@ Added for the revised submission:
 - `signature_replevel_perm.py` — repetition-level signature-separation test (ANOSIM/PERMANOVA label permutation + bootstrap CI), replacing the pair-level test.
 - `feature_signature_replevel.py` — within-repetition paired feature-signature test.
 - `revision_numbers.py` — recomputes and persists the revision numbers (default-GC dissociation, calibrated ripple-presence, readback amplification, shifted-anchor control, robustness signature) into `data/processed/revision_numbers.json`.
+- `build_ovs_aggregates.py` — reduces the raw OvS capture to the released per-iteration aggregates (reproduces the shipped files byte for byte).
+- `presence_null.py` — count-level null for the presence claim and the calibrated paired-excess criterion.
+- `persistence_profile.py` — per-repetition cascade duration on excess mass against each repetition's own pre-action bins.
+- `overlap_analysis.py` — closely spaced actions (scenarios G and H), paired before/after contrast with solo-flush control and window sweep.
 - `gen_figures_r1.py` — regenerates the overhead, default-GC, and robustness figures.
 - `exp_overhead/` — the observer-overhead harness (runs the real capture path in paired with/without-observer arms).
 
@@ -60,6 +64,15 @@ The revision parameter-sensitivity and ablation analyses run on a fresh recollec
 
 ## File schemas
 
+### `data/processed/presence_null.json`
+Count-level null for the OvS presence claim, plus the calibrated paired-excess criterion that replaces it in the text (29/30 repetitions, Wilcoxon p = 3.2e-6). Produced by `scripts/presence_null.py`.
+
+### `data/processed/persistence_profile.json`, `persistence_per_rep.csv`
+Per-repetition cascade duration measured on excess mass in 10 s bins against each repetition's own pre-action bins. Produced by `scripts/persistence_profile.py`.
+
+### `data/processed/overlap_analysis.json`, `overlap_per_rep.csv`
+Closely spaced actions (scenarios G and H): paired before/after contrast around the second action, with the solo-flush control at matched elapsed time and a window sweep. Produced by `scripts/overlap_analysis.py`.
+
 ### `data/processed/scenario_decomposition.csv`
 Per-scenario six-category decomposition (paper Table 3): one row per (scenario, audit mode), reporting the per-repetition mean rate in events/hour over ten repetitions, under the Induced-first labeler of Algorithm 1. Produced by `scripts/regen_ovs_figs.py`.
 
@@ -75,7 +88,7 @@ Per-scenario six-category decomposition (paper Table 3): one row per (scenario, 
 | `Endogenous-unexplained` | per-hour rate of residual unexplained events |
 | `Indeterminate` | per-hour rate of events outside any decidable region |
 
-### `data/processed/fig2_sparse_attack_cascade_per_rep.csv`
+### `data/processed/fig2_sparse_cascade_per_rep.csv`
 Per-rep cascade decomposition restricted to scenarios with sparse audit (used in Fig. 2 surface).
 
 ### `data/processed/fig5_temporal_signal.csv`
@@ -104,7 +117,7 @@ Pairwise cosine similarity between per-rep temporal signatures.
 Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
 
 ### `data/processed/stats_summary.json`
-Retains only `detection_rate_per_scenario` (30/30 ripple presence per scenario with Wilson 95% intervals, lower bound 0.72), which is the source of the paper's presence claim (§VII). The earlier surface-monotonicity, pooled bootstrap, and pooled Mann–Whitney fields have been **removed** as superseded; the paper's ρ=−0.13 comes from `fig2_sparse_attack_cascade_per_rep.csv` and the Induced means 1345/1346/1234 from `scenario_decomposition.csv`, and repetition-level tests from `scripts/signature_replevel_perm.py`.
+Retains only `presence_rate_per_scenario` (30/30 ripple presence per scenario with Wilson 95% intervals, lower bound 0.72), which is the source of the paper's presence claim (§VII). The earlier surface-monotonicity, pooled bootstrap, and pooled Mann–Whitney fields have been **removed** as superseded; the paper's ρ=−0.13 comes from `fig2_sparse_cascade_per_rep.csv` and the Induced means 1345/1346/1234 from `scenario_decomposition.csv`, and repetition-level tests from `scripts/signature_replevel_perm.py`.
 
 ### `data/processed/crossdomain_summary.csv`
 Per-(system, action) amplification table for the Redis and Dockerd replication.
@@ -142,7 +155,7 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 | Paper claim | Source file | Compute |
 |---|---|---|
 | within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
-| Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_attack_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
+| Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | within-vs-across separation, rep-level permutation $p < 10^{-4}$ (ANOSIM $R=0.53$, PERMANOVA $F=17.8$) | `signature_pairwise_similarity.csv` | `python scripts/signature_replevel_perm.py` |
 | predicted cascade present in $30/30$ sparse-audit reps | `stats_summary.json` | direct read |
 | Dockerd amplification $4.9 \times$ → $87 \times$ | `crossdomain_summary.csv` | direct read |

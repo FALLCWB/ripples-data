@@ -66,18 +66,18 @@ def fig2_surface():
     post-action signal across reps. The signature reproducibility
     is high but non-monotonic in surface (0.85/0.60/0.94 for single/burst/flush).
     """
-    df = pd.read_csv(DATA / "fig2_sparse_attack_cascade_per_rep.csv")
+    df = pd.read_csv(DATA / "fig2_sparse_cascade_per_rep.csv")
     sig = json.loads((DATA / "signature_summary.json").read_text())
-    order = ["E_attack_single_rule", "F_attack_burst", "D_attack_flush"]
+    order = ["E_single_rule", "F_burst", "D_flush"]
     labels = ["1\n(single-rule)", "21\n(burst)", "200\n(flush)"]
     means = np.array([df.loc[df["scenario"] == s, "per_hour_rate"].mean()
                       for s in order])
     stds = np.array([df.loc[df["scenario"] == s, "per_hour_rate"].std(ddof=1)
                      for s in order])
     raw = [df.loc[df["scenario"] == s, "per_hour_rate"].to_numpy() for s in order]
-    sig_key = {"E_attack_single_rule": "OvS-Single",
-               "F_attack_burst": "OvS-Burst",
-               "D_attack_flush": "OvS-Flush"}
+    sig_key = {"E_single_rule": "OvS-Single",
+               "F_burst": "OvS-Burst",
+               "D_flush": "OvS-Flush"}
     within_mean = np.array([sig["per_scenario_within"][sig_key[s]]["within_mean"]
                             for s in order])
     within_std = np.array([sig["per_scenario_within"][sig_key[s]]["within_std"]

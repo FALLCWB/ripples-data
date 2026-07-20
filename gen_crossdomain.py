@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(Path(__file__).parent / "scripts"))
 from regen_figs_data import (  # noqa: E402
-    per_iter_aggregates, load_rep_features, find_attack_ts,
+    per_iter_aggregates, load_rep_features, find_action_ts,
 )
 
 ROOT = Path(__file__).resolve().parent
@@ -101,21 +101,21 @@ def load_ovs_signal(scenario_glob):
         return None
     sd = matches[0]
     try:
-        attack_ts = find_attack_ts(sd)
+        action_ts = find_action_ts(sd)
         df, max_page = load_rep_features(sd)
     except Exception:
         return None
-    if attack_ts is None:
+    if action_ts is None:
         return None
-    pre_iters = df[df["ts"] < attack_ts]
-    post_iters = df[df["ts"] >= attack_ts]
+    pre_iters = df[df["ts"] < action_ts]
+    post_iters = df[df["ts"] >= action_ts]
     if pre_iters.empty or post_iters.empty:
         return None
     pre_agg = per_iter_aggregates(pre_iters, max_page)
     post_agg = per_iter_aggregates(post_iters, max_page)
-    pre = pd.DataFrame({"t_rel": pre_agg["ts"] - attack_ts,
+    pre = pd.DataFrame({"t_rel": pre_agg["ts"] - action_ts,
                         "signal": pre_agg["change_volume_sum"]})
-    post = pd.DataFrame({"t_rel": post_agg["ts"] - attack_ts,
+    post = pd.DataFrame({"t_rel": post_agg["ts"] - action_ts,
                          "signal": post_agg["change_volume_sum"]})
     return {"pre": pre, "post": post}
 

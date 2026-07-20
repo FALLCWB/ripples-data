@@ -1,32 +1,90 @@
 {
-  "_note": "Retains only detection_rate_per_scenario (30/30 ripple presence per scenario with Wilson 95% intervals, lower bound 0.72), which the paper cites. Superseded fields from the earlier pipeline (surface-monotonicity rho, pooled bootstrap means, pooled Mann-Whitney) were removed; the paper's rho=-0.13 comes from fig2_sparse_attack_cascade_per_rep.csv and the Induced means 1345/1346/1234 from scenario_decomposition.csv.",
-  "detection_rate_per_scenario": {
-    "D_attack_flush": {
+  "_note": "presence_rate_per_scenario, surface_monotonicity_spearman and bootstrap_per_scenario are computed from fig2_sparse_cascade_per_rep.csv and are the source of the paper's per-scenario presence, rho = -0.13, and Induced-cascade means. feature_signature_mannwhitney pools iterations within a repetition and is SUPERSEDED in the paper by the repetition-level paired test of scripts/feature_signature_replevel.py; it is kept here only for continuity with the first submission.",
+  "presence_rate_per_scenario": {
+    "D_flush": {
       "n_reps": 10,
-      "n_detected": 10,
-      "detection_rate": 1.0,
+      "n_present": 10,
+      "presence_rate": 1.0,
       "wilson_95_ci": [
         0.7224672001371107,
         0.9999999999999999
       ]
     },
-    "E_attack_single_rule": {
+    "E_single_rule": {
       "n_reps": 10,
-      "n_detected": 10,
-      "detection_rate": 1.0,
+      "n_present": 10,
+      "presence_rate": 1.0,
       "wilson_95_ci": [
         0.7224672001371107,
         0.9999999999999999
       ]
     },
-    "F_attack_burst": {
+    "F_burst": {
       "n_reps": 10,
-      "n_detected": 10,
-      "detection_rate": 1.0,
+      "n_present": 10,
+      "presence_rate": 1.0,
       "wilson_95_ci": [
         0.7224672001371107,
         0.9999999999999999
       ]
+    }
+  },
+  "surface_monotonicity_spearman": {
+    "rho": -0.1273499902718761,
+    "p_value": 0.5024598193530542,
+    "n": 30,
+    "note": ""
+  },
+  "bootstrap_per_scenario": {
+    "D_flush": {
+      "mean": 1345.3400000000001,
+      "bootstrap_95_ci": [
+        1315.6295,
+        1379.9307499999998
+      ],
+      "n_reps": 10
+    },
+    "E_single_rule": {
+      "mean": 1345.87,
+      "bootstrap_95_ci": [
+        1315.7494999999997,
+        1371.6717499999997
+      ],
+      "n_reps": 10
+    },
+    "F_burst": {
+      "mean": 1234.24,
+      "bootstrap_95_ci": [
+        958.7857500000002,
+        1384.7502499999998
+      ],
+      "n_reps": 10
+    }
+  },
+  "feature_signature_mannwhitney": {
+    "Active pages": {
+      "U": 1400163.0,
+      "p_value": 5.581704968912405e-98,
+      "n_ripple": 303,
+      "n_baseline": 5477
+    },
+    "Entropy (changed)": {
+      "U": 1231998.0,
+      "p_value": 3.166548999978189e-46,
+      "n_ripple": 303,
+      "n_baseline": 5477
+    },
+    "High-region pages": {
+      "U": 1400163.0,
+      "p_value": 2.240055855801844e-121,
+      "n_ripple": 303,
+      "n_baseline": 5477
+    },
+    "Volume sum": {
+      "U": 1659429.5,
+      "p_value": 1.1555058570988004e-189,
+      "n_ripple": 303,
+      "n_baseline": 5477
     }
   }
 }
