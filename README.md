@@ -112,7 +112,7 @@ Per-(system, action) amplification table for the Redis and Dockerd replication.
 | column | description |
 |---|---|
 | `system` | `Redis`, `Dockerd` (the paper's cross-domain analysis; raw `nginx` runs exist under `crossdomain/` but were not summarized or reported) |
-| `surface` | action-surface bin (`small`, `medium`, `large`, `readback`, ...) |
+| `surface` | action-surface bin (`small`, `medium`, `large`, `xlarge`; the Dockerd readback is `surface=small`) |
 | `action` | concrete command issued |
 | `n_reps` | repetitions |
 | `baseline_pages` | calibration baseline |
@@ -159,7 +159,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.10). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.11). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -170,7 +170,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.10},
+  version      = {v2.1.11},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }

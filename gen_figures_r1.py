@@ -158,7 +158,7 @@ def fig_gcdefault():
     ax.set_xticks(x); ax.set_xticklabels(labels)
     ax.set_ylabel("Peak / baseline amplification\n(log scale)")
     ax.set_xlabel("Action surface (containers spawned)")
-    ax.set_title("Magnitude does not track surface, under default GC too")
+    ax.set_title("No detectable surface trend under default GC (3 levels)")
     for bars, vals in [(b1, off_vals), (b2, dflt_vals)]:
         for bar, v in zip(bars, vals):
             ax.annotate(f"{v:.1f}x", xy=(bar.get_x() + bar.get_width() / 2, v * 1.05),
