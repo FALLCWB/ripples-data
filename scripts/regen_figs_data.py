@@ -146,10 +146,14 @@ def classify(ts, audit, lldp_ticks, stats_ticks, action_ts):
     """Six-category labeller. action_ts is the timestamp of the induced
     state-mutation event for the rep (None for non-induced scenarios)."""
     d_a = dist_nearest(ts, audit)
-    if d_a <= W_TIGHT:
-        return "Direct-anchor"
+    # Algorithm 1: scan Induced-cascade before Direct-anchor, so an action's own
+    # reactive audit entries are not read back as the cause of the cascade they
+    # belong to (a reaction cannot precede its cause). See the manuscript's
+    # priority-order rationale; labeler_v2 is the definitive implementation.
     if action_ts is not None and action_ts <= ts <= action_ts + AFTERMATH_S:
         return "Induced-cascade"
+    if d_a <= W_TIGHT:
+        return "Direct-anchor"
     if len(audit):
         idx = np.searchsorted(audit, ts - CASCADE_LOOKBACK_S)
         if idx < len(audit) and audit[idx] < ts - W_TIGHT:

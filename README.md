@@ -31,7 +31,9 @@ gen_figures.py   regenerates Fig. 2, 5, 6 from data/processed
 gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd panels)
 ```
 
-Raw Open vSwitch memory snapshots are not included (multi-GB per run). The processed tables in `data/processed/` contain every value used in the paper text and figures; the snapshot-to-features pipeline is in `scripts/regen_figs_data.py` for completeness.
+Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and Figs 2, 5, and 6 from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
+
+Some released identifiers (`D_attack_flush`, `inject_attack`, `*_attack_*`) are legacy names predating the observational framing and carry no attack semantics; the study is purely observational, and scenarios D/E/F are induced administrative actions.
 
 ## Revision (2026) additions
 
@@ -130,11 +132,13 @@ Sensitivity of the cascade decomposition to alternative threshold definitions (`
 
 ## Regenerating processed tables from raw captures
 
-`data/raw/` and `data/snapshots/` are intentionally empty placeholders. The full Open vSwitch raw memory snapshots used to derive `data/processed/` total several gigabytes per scenario and are not redistributed here. The pipeline in `scripts/regen_figs_data.py` accepts an external snapshot path:
+The full Open vSwitch raw memory snapshots total 1.3 GB per recollection and are too large to host online. The figures and tables are regenerated instead from the released processed outputs (no raw needed):
 
 ```bash
-python scripts/regen_figs_data.py --snapshots /path/to/ovs_snapshots --out data/processed/
+python scripts/regen_ovs_figs.py
 ```
+
+This reproduces `scenario_decomposition.csv` and the `fig2`/`fig5`/`fig6` CSVs from the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels under `data/processed/`, under Algorithm 1's order and the 95th-percentile threshold.
 
 The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_pages`, audit log cross-reference) is described in Section III of the paper and the runner scripts under `exp_crossdomain/`.
 
@@ -160,7 +164,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.3). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -171,7 +175,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v1.0.0},
+  version      = {v2.1.3},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }

@@ -26,7 +26,7 @@
   }
  },
  "paired_audit_coverage": {
-  "note": "Same flush repetitions labeled under both audit densities (labels_corrected_rich/sparse, W=2 C=5 D=300); isolates audit coverage.",
+  "note": "Same flush repetitions under both audit densities (labels_corrected_rich/sparse, W=2 C=5 D=300); computed from released labels, isolates audit coverage.",
   "n_reps": 10,
   "audit_entries_rich": 306,
   "audit_entries_sparse": 114,

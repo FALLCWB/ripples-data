@@ -5,11 +5,11 @@ about (a) the audit-coverage comparison being run on different repetitions,
 (c) the robustness figure measuring within-environment self-similarity rather
 than cross-environment reproduction. Writes data/processed/reanalysis_r2.json.
 
-The daemon-blocked permutation is recomputed here from the released pairwise
-CSV. The paired audit and cross-environment results are computed from the
-dense-audit recollection corpus (labels_corrected_{rich,sparse}*.json and the
-r46 environment reps), which is not redistributed (multi-GB, live memory); the
-computed values are persisted below so every reported number is available.
+The daemon-blocked permutation and the paired audit are recomputed here from
+released outputs (the pairwise CSV and labels_corrected_{rich,sparse} in
+data/processed/). The cross-environment robustness values are from the r46
+environment reps, whose raw captures are too large to host online (multi-GB,
+live memory); those values are stated below.
 """
 import csv
 import json
@@ -65,16 +65,30 @@ def daemon_blocked_permutation(n_perm=2000, seed=42):
     return out
 
 
-# Values computed from the non-redistributed dense-audit recollection corpus.
-PAIRED_AUDIT = {
-    "note": "Same flush repetitions labeled under both audit densities "
-            "(labels_corrected_rich/sparse, W=2 C=5 D=300); isolates audit coverage.",
-    "n_reps": 10, "audit_entries_rich": 306, "audit_entries_sparse": 114,
-    "induced_cascade_per_h": {"rich": 1345, "sparse": 1345, "delta": 0,
-                              "interpretation": "audit-independent (Algorithm 1 Induced rule ignores the audit set)"},
-    "endogenous_plus_periodic_per_h": {"rich": 0, "sparse": 1480,
-                                       "interpretation": "dense audit resolves previously-unexplained events to Direct-anchor"},
-}
+def paired_audit():
+    """Same flush repetitions labeled under both audit densities, computed from the
+    released labels (data/processed/labels_corrected_{rich,sparse}), so the result
+    is reproducible from the package rather than asserted. Isolates audit coverage."""
+    import statistics as _st
+    def flush_rates(name):
+        res = json.loads((PKG / "data/processed" / name).read_text())["results"]
+        reps = [r for r in res if r["scenario"] == "D_flush" and not r.get("excluded")]
+        ind = _st.mean(r["rates_per_h"].get("Induced-cascade", 0.0) for r in reps)
+        ep = _st.mean(r["rates_per_h"].get("Endogenous-unexplained", 0.0)
+                      + r["rates_per_h"].get("Periodic-gap", 0.0) for r in reps)
+        ae = _st.mean(r.get("n_audit_entries", 0) for r in reps)
+        return len(reps), round(ind), round(ep), round(ae)
+    nr, ind_r, ep_r, ae_r = flush_rates("labels_corrected_rich_W2.0_C5.0_D300.json")
+    ns, ind_s, ep_s, ae_s = flush_rates("labels_corrected_sparse_W2.0_C5.0_D300.json")
+    return {
+        "note": "Same flush repetitions under both audit densities (labels_corrected_rich/sparse, "
+                "W=2 C=5 D=300); computed from released labels, isolates audit coverage.",
+        "n_reps": ns, "audit_entries_rich": ae_r, "audit_entries_sparse": ae_s,
+        "induced_cascade_per_h": {"rich": ind_r, "sparse": ind_s, "delta": ind_r - ind_s,
+                                  "interpretation": "audit-independent (Algorithm 1 Induced rule ignores the audit set)"},
+        "endogenous_plus_periodic_per_h": {"rich": ep_r, "sparse": ep_s,
+                                           "interpretation": "dense audit resolves previously-unexplained events to Direct-anchor"},
+    }
 CROSS_ENV_ROBUSTNESS = {
     "note": "cross-environment signature comparison, Redis 7/Alpine vs Redis 6/Debian",
     "post_over_pre_mean_by_action": {"SET": {"redis7": 1.00, "redis6": 1.01},
@@ -111,7 +125,7 @@ def oracle_confusion():
 if __name__ == "__main__":
     result = {
         "daemon_blocked_permutation": daemon_blocked_permutation(),
-        "paired_audit_coverage": PAIRED_AUDIT,
+        "paired_audit_coverage": paired_audit(),
         "cross_environment_robustness": CROSS_ENV_ROBUSTNESS,
         "oracle_confusion_matrix": oracle_confusion(),
     }
