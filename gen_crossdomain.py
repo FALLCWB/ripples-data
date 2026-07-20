@@ -94,19 +94,50 @@ POST_WIN_S = {     # seconds of post-action to show (per system)
 }
 
 
-def load_ovs_signal(scenario_glob):
-    """For OvS: per-iter change_volume_sum, split pre/post action."""
-    matches = sorted(OVS_DATA.glob(scenario_glob))
+AGG_DIR = Path(__file__).resolve().parent / "data" / "processed" / "ovs_recollection_aggregates"
+
+
+def load_ovs_signal_from_aggregates(scenario_glob):
+    """OvS panels from the released per-iteration aggregates.
+
+    The raw OvS capture is too large to redistribute, so the released package
+    reproduces these panels from the aggregates shipped in data/processed.
+    """
+    matches = sorted(AGG_DIR.glob(scenario_glob.rstrip("*") + "*.csv"))
     if not matches:
         return None
+    df = pd.read_csv(matches[0])
+    action_ts = float(df["action_ts"].iloc[0])
+    if not np.isfinite(action_ts):
+        return None
+    pre = df[df["ts"] < action_ts]
+    post = df[df["ts"] >= action_ts]
+    if pre.empty or post.empty:
+        return None
+    return {"pre": pd.DataFrame({"t_rel": pre["ts"] - action_ts,
+                                 "signal": pre["change_volume_sum"]}),
+            "post": pd.DataFrame({"t_rel": post["ts"] - action_ts,
+                                  "signal": post["change_volume_sum"]})}
+
+
+def load_ovs_signal(scenario_glob):
+    """For OvS: per-iter change_volume_sum, split pre/post action.
+
+    Prefers the raw snapshots when a copy is available (OVS_SNAPSHOTS), and
+    falls back to the released aggregates so the figure regenerates from the
+    package alone.
+    """
+    matches = sorted(OVS_DATA.glob(scenario_glob))
+    if not matches:
+        return load_ovs_signal_from_aggregates(scenario_glob)
     sd = matches[0]
     try:
         action_ts = find_action_ts(sd)
         df, max_page = load_rep_features(sd)
     except Exception:
-        return None
+        return load_ovs_signal_from_aggregates(scenario_glob)
     if action_ts is None:
-        return None
+        return load_ovs_signal_from_aggregates(scenario_glob)
     pre_iters = df[df["ts"] < action_ts]
     post_iters = df[df["ts"] >= action_ts]
     if pre_iters.empty or post_iters.empty:
