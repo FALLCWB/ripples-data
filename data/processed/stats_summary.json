@@ -1,4 +1,5 @@
 {
+  "_superseded": "SUPERSEDED legacy file, retained for provenance only. surface_monotonicity (rho=0.08) and bootstrap_per_scenario means (1106/1061/967) are from the earlier pipeline and are NOT the paper's values; the paper uses rho=-0.13 (fig2_sparse_attack_cascade_per_rep.csv) and Induced means 1345/1346/1234 (scenario_decomposition.csv). No reported number is taken from this file.",
   "detection_rate_per_scenario": {
     "D_attack_flush": {
       "n_reps": 10,

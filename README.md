@@ -104,7 +104,7 @@ Pairwise cosine similarity between per-rep temporal signatures.
 Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
 
 ### `data/processed/stats_summary.json`
-Wilson intervals and per-scenario rates used in the results section. (The earlier pooled Mann–Whitney values are retained here for provenance; the paper reports repetition-level tests instead, computed by `scripts/signature_replevel_perm.py`.)
+**Superseded legacy file, retained for provenance only.** Its `surface_monotonicity` (ρ=0.08) and `bootstrap_per_scenario` means (1106/1061/967) are from the earlier pipeline and are **not** the paper's values; the paper reports ρ=−0.13 (from `fig2_sparse_attack_cascade_per_rep.csv`) and Induced-cascade means 1345/1346/1234 (from `scenario_decomposition.csv`), and repetition-level tests from `scripts/signature_replevel_perm.py`. No reported number is taken from this file.
 
 ### `data/processed/crossdomain_summary.csv`
 Per-(system, action) amplification table for the Redis and Dockerd replication.
@@ -159,7 +159,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.11). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.12). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -170,7 +170,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.11},
+  version      = {v2.1.12},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }
