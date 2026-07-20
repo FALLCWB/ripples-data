@@ -3,8 +3,7 @@
 revision_numbers — recompute and PERSIST every number introduced in the
 resubmission response that was not already backed by a committed artifact
 (R2.10 default-GC, R2.11 calibrated ripple-presence, R3.1 readback amplification,
-R4.2 shifted-anchor spurious attribution, R4.6 robustness signature). Writes
-revision_numbers.json so each reported value is reproducible from a named file.
+R4.2 shifted-anchor spurious attribution, R4.6 robustness signature). Writes revision_numbers.json so each reported value is persisted with its source. The raw input corpora below live on the collection host and are too large to redistribute (multi-GB, live memory); the released package ships revision_numbers.json with the computed values rather than these raw traces.
 
 Data locations (read-only):
   ~/research/ripples-recollection/gcdefault      GOGC=100 dockerd (R2.10)

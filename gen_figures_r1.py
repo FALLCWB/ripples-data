@@ -96,7 +96,7 @@ def fig_overhead():
     ax2.set_xticks(xr); ax2.set_xticklabels(rlab)
     ax2.set_ylabel("Relative throughput\n(with observer / without)")
     ax2.set_ylim(0, 1.7)
-    ax2.set_title("No measurable impact on the target")
+    ax2.set_title("Redis within run-to-run variance; Dockerd unresolved (n=5)")
     ax2.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16),
                ncol=1, framealpha=0.95)
     ax2.text(0.02, 0.97, "(b)", transform=ax2.transAxes, fontsize=18,

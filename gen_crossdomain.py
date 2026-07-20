@@ -71,11 +71,11 @@ SYSTEM_COLOR = {"OvS": "#762a83", "Redis": "#1f78b4", "Dockerd": "#33a02c"}
 # (system, surface, action_key_for_redis, action_pretty, ovs_scenario_glob)
 PLOT_GRID = [
     ("OvS",     "small",  None,              "Single-rule injection (1 entry)",
-     "E_attack_single_rule_rep1_*"),
+     "E_single_rule_rep1_*"),
     ("OvS",     "medium", None,              "Multi-rule burst (21 entries)",
-     "F_attack_burst_rep1_*"),
+     "F_burst_rep1_*"),
     ("OvS",     "large",  None,              "Full-table flush ($\\sim$200 entries)",
-     "D_attack_flush_rep11_*"),
+     "D_flush_rep1_*"),
     ("Redis",   "small",  "redis_set_1",     "SET (1 key)",          None),
     ("Redis",   "medium", "redis_mset_100",  "MSET (100 keys)",      None),
     ("Redis",   "large",  "redis_flushdb",   "FLUSHDB",              None),
