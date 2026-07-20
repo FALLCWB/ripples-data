@@ -1,0 +1,99 @@
+{
+  "params": {
+    "quantile": 95,
+    "ovs_window_s": 30.0,
+    "note": "OvS is read against placebo anchors because its corpus carries a within-run ramp; Redis and Dockerd carry no supra-threshold excess before the action, so a direct contrast is valid there."
+  },
+  "ovs": [
+    {
+      "action": "single rule",
+      "surface": 1,
+      "n_reps": 9,
+      "step_over_ramp": 0.967,
+      "n_reps_with_step": 4
+    },
+    {
+      "action": "21-rule burst",
+      "surface": 21,
+      "n_reps": 10,
+      "step_over_ramp": 1.407,
+      "n_reps_with_step": 9
+    },
+    {
+      "action": "flow-table flush",
+      "surface": 200,
+      "n_reps": 10,
+      "step_over_ramp": 1.35,
+      "n_reps_with_step": 10
+    }
+  ],
+  "crossdomain": [
+    {
+      "system": "Redis",
+      "action": "SET (1 key)",
+      "surface": 1,
+      "n_reps": 16,
+      "pre_excess_median": 0.0,
+      "post_excess_median": 30.5,
+      "last_event_s_median": 0.6,
+      "window_s_median": 179.6,
+      "n_reps_with_post_excess": 15
+    },
+    {
+      "system": "Redis",
+      "action": "MSET (100 keys)",
+      "surface": 100,
+      "n_reps": 13,
+      "pre_excess_median": 0.0,
+      "post_excess_median": 37.0,
+      "last_event_s_median": 0.7,
+      "window_s_median": 179.8,
+      "n_reps_with_post_excess": 13
+    },
+    {
+      "system": "Redis",
+      "action": "FLUSHDB",
+      "surface": 1000,
+      "n_reps": 13,
+      "pre_excess_median": 1.0,
+      "post_excess_median": 4115.0,
+      "last_event_s_median": 179.8,
+      "window_s_median": 179.8,
+      "n_reps_with_post_excess": 13
+    }
+  ],
+  "dockerd": [
+    {
+      "system": "Dockerd",
+      "action": "docker inspect (readback)",
+      "surface": 0,
+      "n_reps": 12,
+      "n_present": 1,
+      "presence_rate": 0.083
+    },
+    {
+      "system": "Dockerd",
+      "action": "1 container",
+      "surface": 1,
+      "n_reps": 10,
+      "n_present": 2,
+      "presence_rate": 0.2
+    },
+    {
+      "system": "Dockerd",
+      "action": "10 containers",
+      "surface": 10,
+      "n_reps": 7,
+      "n_present": 4,
+      "presence_rate": 0.571
+    },
+    {
+      "system": "Dockerd",
+      "action": "50 containers",
+      "surface": 50,
+      "n_reps": 7,
+      "n_present": 7,
+      "presence_rate": 1.0
+    }
+  ]
+}
