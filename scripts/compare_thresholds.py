@@ -14,9 +14,9 @@ For each treatment we report, per OvS scenario:
   - lat_mean: mean first-flag latency in seconds for induced reps
 
 Treatments:
-  T1: max(pre)                — current production
+  T1: max(pre)                — prior/submitted threshold
   T2: p99(pre)
-  T3: p95(pre)
+  T3: p95(pre)                — operating point
   T4: z-score, mean(pre)+3*std(pre)
   T5: z-score, mean(pre)+5*std(pre)
   T6: rolling median + 2*MAD over pre-action
