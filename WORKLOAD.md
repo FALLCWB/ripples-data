@@ -15,8 +15,10 @@ Flow-table actions on the switch bridge `br0`:
 - **overlapping**: two induced actions 30 s and 150 s apart, both inside the aftermath window.
 
 Background (routine-condition) scenarios used for the labeler decomposition (Table 3), not for the magnitude/signature actions:
-- **rule-install**: scripted periodic flow-rule installs on `br0` across the run (the routine administrative condition). Exact install cadence is in the OvS capture script under `exp_crossdomain/`.
-- **sustained-traffic**: continuous packet traffic forwarded through `br0` for the run duration (the routine load condition). Exact packet rate and generator are in the OvS capture script under `exp_crossdomain/`.
+- **rule-install**: scripted periodic flow-rule installs on `br0` across the run (the routine administrative condition), under the frozen collection protocol (warmup 300 s, settling 120 s; installs on a fixed cadence of roughly one every ~110 s per repetition).
+- **sustained-traffic**: continuous packet traffic forwarded through `br0` for the run duration (the routine load condition).
+
+The exact per-repetition action schedule (action names and timestamps) is recorded in each repetition's `events.json` in the raw OvS recollection; that raw capture is too large to host online (1.3 GB), so the per-rep event logs are not redistributed, but the released per-iteration aggregates and labels reproduce every reported OvS value.
 
 ## Redis
 Server: `redis-server --save '' --appendonly no` (snapshotting and AOF disabled).
