@@ -1,0 +1,100 @@
+{
+  "params": {
+    "n_boot": 10000,
+    "seed": 42,
+    "unit": "repetition (pairs weighted by endpoint multiplicity)",
+    "source": "data/processed/signature_pairwise_similarity.csv"
+  },
+  "per_scenario": {
+    "Dockerd-Inspect": {
+      "n_reps": 12,
+      "n_pairs": 66,
+      "within_mean": 0.0835,
+      "ci95": [
+        0.0247,
+        0.1616
+      ]
+    },
+    "Dockerd-Run1": {
+      "n_reps": 10,
+      "n_pairs": 45,
+      "within_mean": 0.2737,
+      "ci95": [
+        0.1653,
+        0.4403
+      ]
+    },
+    "Dockerd-Run10": {
+      "n_reps": 7,
+      "n_pairs": 21,
+      "within_mean": 0.653,
+      "ci95": [
+        0.3181,
+        0.9856
+      ]
+    },
+    "Dockerd-Run50": {
+      "n_reps": 7,
+      "n_pairs": 21,
+      "within_mean": 0.8944,
+      "ci95": [
+        0.8425,
+        0.9637
+      ]
+    },
+    "OvS-Burst": {
+      "n_reps": 10,
+      "n_pairs": 45,
+      "within_mean": 0.6028,
+      "ci95": [
+        0.2589,
+        0.9348
+      ]
+    },
+    "OvS-Flush": {
+      "n_reps": 10,
+      "n_pairs": 45,
+      "within_mean": 0.945,
+      "ci95": [
+        0.9276,
+        0.9695
+      ]
+    },
+    "OvS-Single": {
+      "n_reps": 10,
+      "n_pairs": 45,
+      "within_mean": 0.8463,
+      "ci95": [
+        0.7975,
+        0.8927
+      ]
+    },
+    "Redis-FLUSHDB": {
+      "n_reps": 13,
+      "n_pairs": 78,
+      "within_mean": 0.9595,
+      "ci95": [
+        0.9228,
+        0.9968
+      ]
+    },
+    "Redis-MSET": {
+      "n_reps": 13,
+      "n_pairs": 78,
+      "within_mean": 0.999,
+      "ci95": [
+        0.9983,
+        0.9996
+      ]
+    },
+    "Redis-SET": {
+      "n_reps": 16,
+      "n_pairs": 120,
+      "within_mean": 0.8623,
+      "ci95": [
+        0.631,
+        0.9997
+      ]
+    }
+  }
+}

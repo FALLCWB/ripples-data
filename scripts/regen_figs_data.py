@@ -267,6 +267,7 @@ def analyze_rep(sd: Path) -> dict | None:
 
 
 def is_sparse_era(d: Path) -> bool:
+    # legacy capture filename, kept so first-collection snapshots still load
     prov_files = sorted(d.glob("provenance_*_post_attack.json"))
     if not prov_files:
         return False
@@ -409,15 +410,15 @@ def build_fig6() -> pd.DataFrame:
         print("  [fig6] rep11 missing, falling back to rep10")
     if not cand:
         cand = sorted(SNAPSHOTS.glob("D_flush_rep*"))
-    attack_sd = cand[0]
-    print(f"  [fig6] ripple source: {attack_sd.name}")
+    action_sd = cand[0]
+    print(f"  [fig6] ripple source: {action_sd.name}")
 
-    markers = json.loads((attack_sd / "markers.json").read_text())
+    markers = json.loads((action_sd / "markers.json").read_text())
     p1_s = markers["warmup_start_ts"]
     p1_e = markers["controller_attached_ts"]
     t_s = markers["test_phase_start_ts"]
-    action_ts = find_action_ts(attack_sd)
-    df, max_page = load_rep_features(attack_sd)
+    action_ts = find_action_ts(action_sd)
+    df, max_page = load_rep_features(action_sd)
     agg_warm = per_iter_aggregates(df[(df["ts"] >= p1_s) & (df["ts"] < p1_e)], max_page)
     agg_test = per_iter_aggregates(df[df["ts"] >= t_s], max_page)
     if len(agg_warm) < 10:

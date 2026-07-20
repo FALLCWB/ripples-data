@@ -47,6 +47,10 @@ Added for the revised submission:
 - `presence_null.py` — count-level null for the presence claim and the calibrated paired-excess criterion.
 - `persistence_profile.py` — per-repetition cascade duration on excess mass against each repetition's own pre-action bins.
 - `overlap_analysis.py` — closely spaced actions (scenarios G and H), paired before/after contrast with solo-flush control and window sweep.
+- `within_scenario_ci.py` — per-scenario within-cosine bootstrap CIs (repetition level) used by Fig. 2(b).
+- `ablation_migration.py` — labeler priority-order ablation, writes `ablation_migration.json` (needs the raw snapshots).
+- `grid_wcd.py` — W/C/Delta parameter grid, writes `grid_corrected_rich.json` (needs the raw snapshots).
+- `labeler_v2.py` — the six-category labeler (Algorithm 1) used by the ablation and the grid.
 - `gen_figures_r1.py` — regenerates the overhead, default-GC, and robustness figures.
 - `exp_overhead/` — the observer-overhead harness (runs the real capture path in paired with/without-observer arms).
 
@@ -63,6 +67,19 @@ Added for the revised submission:
 The revision parameter-sensitivity and ablation analyses run on a fresh recollection under a denser audit regime; those raw traces are not redistributed (multi-GB, live memory), but the processed outputs above contain every reported value.
 
 ## File schemas
+
+### Audit-log schema
+
+The controller-side audit entries that anchor the labeler are JSON objects with the fields below. The OvS per-repetition audit files are part of the raw capture and are not redistributed; the same schema is used by the released oracle logs in `exp_dbcascade/data/*/audit.jsonl`.
+
+| field | type | meaning |
+| --- | --- | --- |
+| `ts` | float (epoch seconds) | when the actor recorded the operation |
+| `category` | string | actor-side class of the operation (for OvS: controller flow op, statistics poll, notification) |
+| `device` / `swid` | string | component the operation targeted |
+| `detail` | object | operation-specific payload, not read by the labeler |
+
+The labeler consumes only `ts` and `category`; every other field is carried through for provenance.
 
 ### `data/processed/presence_null.json`
 Count-level null for the OvS presence claim, plus the calibrated paired-excess criterion that replaces it in the text (29/30 repetitions, Wilcoxon p = 3.2e-6). Produced by `scripts/presence_null.py`.
@@ -117,7 +134,7 @@ Pairwise cosine similarity between per-rep temporal signatures.
 Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
 
 ### `data/processed/stats_summary.json`
-Retains only `presence_rate_per_scenario` (30/30 ripple presence per scenario with Wilson 95% intervals, lower bound 0.72), which is the source of the paper's presence claim (§VII). The earlier surface-monotonicity, pooled bootstrap, and pooled Mann–Whitney fields have been **removed** as superseded; the paper's ρ=−0.13 comes from `fig2_sparse_cascade_per_rep.csv` and the Induced means 1345/1346/1234 from `scenario_decomposition.csv`, and repetition-level tests from `scripts/signature_replevel_perm.py`.
+Per-scenario ripple presence (10/10 per scenario, 30/30 pooled, with Wilson 95% intervals), the surface-monotonicity Spearman (rho = -0.13, n = 30), the per-scenario bootstrap means and CIs (1345/1346/1234 per hour), and the pooled feature-signature Mann-Whitney. The pooled Mann-Whitney is superseded in the paper by the repetition-level paired test of `scripts/feature_signature_replevel.py` and is kept for continuity with the first submission; the file's own `_note` field says so. The presence figure quoted in the paper is the calibrated excess criterion of `presence_null.json` (29/30), not this event-count rate. Produced by `scripts/stats_tests.py`.
 
 ### `data/processed/crossdomain_summary.csv`
 Per-(system, action) amplification table for the Redis and Dockerd replication.

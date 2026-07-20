@@ -1,0 +1,79 @@
+{
+ "n_induced_reps_used": 30,
+ "n_reps_scanned": 30,
+ "n_censored": 0,
+ "censored_reps": [],
+ "aftermath_s": 300,
+ "seed": 42,
+ "selection_variable_feature": "Volume sum",
+ "features": {
+  "Active pages": {
+   "n_reps": 30,
+   "baseline_mean": 14.701,
+   "ripple_mean": 32.0,
+   "median_ratio": 2.181,
+   "ratio_ci_of_means": [
+    2.162,
+    2.191
+   ],
+   "wilcoxon_stat": 465.0,
+   "wilcoxon_p": 9.31e-10,
+   "wilcoxon_p_note": "all reps positive; W+ maximal; exact one-sided p = 2^-n",
+   "reps_ripple_gt_baseline": "30/30",
+   "sign_test_p_incl_censored": 9.31e-10,
+   "definitional": false,
+   "sustained": true
+  },
+  "Volume sum": {
+   "n_reps": 30,
+   "baseline_mean": 18001.624,
+   "ripple_mean": 48183.055,
+   "median_ratio": 2.683,
+   "ratio_ci_of_means": [
+    2.658,
+    2.695
+   ],
+   "wilcoxon_stat": 465.0,
+   "wilcoxon_p": 9.31e-10,
+   "wilcoxon_p_note": "all reps positive; W+ maximal; exact one-sided p = 2^-n",
+   "reps_ripple_gt_baseline": "30/30",
+   "sign_test_p_incl_censored": 9.31e-10,
+   "definitional": true,
+   "sustained": true
+  },
+  "High-region pages": {
+   "n_reps": 30,
+   "baseline_mean": 3.535,
+   "ripple_mean": 9.0,
+   "median_ratio": 2.539,
+   "ratio_ci_of_means": [
+    2.513,
+    2.58
+   ],
+   "wilcoxon_stat": 465.0,
+   "wilcoxon_p": 9.31e-10,
+   "wilcoxon_p_note": "all reps positive; W+ maximal; exact one-sided p = 2^-n",
+   "reps_ripple_gt_baseline": "30/30",
+   "sign_test_p_incl_censored": 9.31e-10,
+   "definitional": false,
+   "sustained": true
+  },
+  "Entropy (changed)": {
+   "n_reps": 30,
+   "baseline_mean": 3.362,
+   "ripple_mean": 5.592,
+   "median_ratio": 1.662,
+   "ratio_ci_of_means": [
+    1.655,
+    1.671
+   ],
+   "wilcoxon_stat": 465.0,
+   "wilcoxon_p": 9.31e-10,
+   "wilcoxon_p_note": "all reps positive; W+ maximal; exact one-sided p = 2^-n",
+   "reps_ripple_gt_baseline": "30/30",
+   "sign_test_p_incl_censored": 9.31e-10,
+   "definitional": false,
+   "sustained": true
+  }
+ }
+}

@@ -289,11 +289,9 @@ def main():
             xlim = (-PRE_WIN_S, post_win)
 
             if data is None:
-                ax.text(0.5, 0.5, "(data unavailable)", ha="center",
-                        va="center", transform=ax.transAxes, color="gray")
-                ax.set_title(action_pretty, fontsize=14)
-                ax.set_xlim(*xlim)
-                continue
+                raise RuntimeError(
+                    f"no data for panel {system}/{surface} ({action_pretty}); "
+                    "refusing to render a placeholder panel")
 
             threshold, centers, sums = detection_buckets(data, post_win)
 
@@ -313,7 +311,7 @@ def main():
                 plt.setp(stemlines, linewidth=3.0, alpha=0.95)
                 plt.setp(markerline, markersize=10,
                          markerfacecolor=color, markeredgecolor=color)
-                unit_short = "kB" if system == "OvS" else "pg"
+                unit_short = "B" if system == "OvS" else "pg"
                 ax.text(0.97, 0.93,
                         f"peak={ymax:.0f} {unit_short}\n{n_events} event{'s' if n_events != 1 else ''}",
                         transform=ax.transAxes, ha="right", va="top",
@@ -326,16 +324,16 @@ def main():
                         fontsize=14, color="gray", style="italic")
             ax.set_title(action_pretty, fontsize=16)
             if ci == 0:
-                unit = "kB" if system == "OvS" else "pages"
+                unit = "B" if system == "OvS" else "pages"
                 ax.set_ylabel(f"{system}\nexcess per {int(BUCKET_S)}s ({unit})",
                               fontsize=15)
             if ri == len(rows) - 1:
                 ax.set_xlabel("t $-$ action (s)")
 
     fig.suptitle("Action ripples observed as discrete signal-excursion events over time\n"
-                 "Pre-action is empty by construction; each post-action stem "
-                 "counts iterations in a 5-second bucket whose page-mutation "
-                 "signal exceeded the 95th percentile of warmup signal",
+                 "Only the post-action window is bucketed; each stem sums the excess "
+                 "of the page-mutation signal over the 95th percentile of the warmup "
+                 "signal within a 5-second bucket",
                  fontsize=16, y=1.01)
     plt.tight_layout()
     plt.savefig(OUT)

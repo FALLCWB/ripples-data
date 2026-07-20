@@ -72,7 +72,8 @@ def fig2_surface():
     labels = ["1\n(single-rule)", "21\n(burst)", "200\n(flush)"]
     means = np.array([df.loc[df["scenario"] == s, "per_hour_rate"].mean()
                       for s in order])
-    stds = np.array([df.loc[df["scenario"] == s, "per_hour_rate"].std(ddof=1)
+    # population std, matching the per-scenario spreads quoted in the body
+    stds = np.array([df.loc[df["scenario"] == s, "per_hour_rate"].std(ddof=0)
                      for s in order])
     raw = [df.loc[df["scenario"] == s, "per_hour_rate"].to_numpy() for s in order]
     sig_key = {"E_single_rule": "OvS-Single",
@@ -85,8 +86,8 @@ def fig2_surface():
     # 95% rep-level bootstrap CIs reported in the body (Section results); used as
     # the panel-(b) whiskers so the figure and the text describe the same interval
     # (a raw +/-std would exceed the cosine maximum of 1.0 for the high-variance burst).
-    within_ci = {"OvS-Single": (0.79, 0.91), "OvS-Burst": (0.32, 0.85),
-                 "OvS-Flush": (0.93, 0.97)}
+    ci_json = json.loads((DATA / "within_scenario_ci.json").read_text())["per_scenario"]
+    within_ci = {k: tuple(v["ci95"]) for k, v in ci_json.items()}
     ci = np.array([within_ci[sig_key[s]] for s in order])
     within_err = np.vstack([within_mean - ci[:, 0], ci[:, 1] - within_mean])
 
@@ -197,7 +198,7 @@ def fig5_temporal():
     xmax = int(np.ceil(xmax_data / 10.0) * 10) + 5
     ax.set_xlim(-30, xmax)
     ax.set_ylim(0, max(excess_kb.max() * 1.2, 0.3))
-    ax.legend(loc="upper right", framealpha=0.95)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3, frameon=False)
     pre_total_b = excess_sum[pre_mask].sum()
     post_total_b = excess_sum[post_mask].sum()
     ratio_pp = (post_total_b / pre_total_b) if pre_total_b > 0 else float("inf")
@@ -249,11 +250,15 @@ def fig6_features():
     fig, ax = plt.subplots(figsize=(10.5, 5.5))
     x = np.arange(len(features))
     width = 0.36
-    bars1 = ax.bar(x - width/2, normal, width, yerr=normal_std,
+    # clip the lower whisker at zero: these are non-negative counts and volumes,
+    # so a symmetric +/- std would draw an impossible negative cap
+    normal_err = np.vstack([np.minimum(normal_std, normal), normal_std])
+    ripple_err = np.vstack([np.minimum(ripple_std, ripple), ripple_std])
+    bars1 = ax.bar(x - width/2, normal, width, yerr=normal_err,
                     capsize=4, label="Baseline iteration",
                     color=PALETTE["baseline"], edgecolor="black", linewidth=0.5,
                     error_kw={"elinewidth": 1, "ecolor": "black"})
-    bars2 = ax.bar(x + width/2, ripple, width, yerr=ripple_std,
+    bars2 = ax.bar(x + width/2, ripple, width, yerr=ripple_err,
                     capsize=4, label="Ripple iteration",
                     color=PALETTE["induced"], edgecolor="black", linewidth=0.5,
                     error_kw={"elinewidth": 1, "ecolor": "black"})

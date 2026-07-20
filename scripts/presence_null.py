@@ -131,7 +131,14 @@ def main():
             sup = w[w[SIG] > thr]
             return float((sup[SIG] - thr).sum())
 
+        def occ(w):
+            return float((w[SIG] > thr).mean())
+
         paired.append({"rep": path.stem,
+                       "occupancy_pre": round(occ(pre), 4),
+                       "occupancy_post": round(occ(post), 4),
+                       "count_pre": int((pre[SIG] > thr).sum()),
+                       "count_post": int((post[SIG] > thr).sum()),
                        "scenario": next(s for s in INDUCED if path.stem.startswith(s)),
                        "excess_pre": round(mass(pre), 1),
                        "excess_post": round(mass(post), 1)})
@@ -161,6 +168,9 @@ def main():
             "window_s": args.paired,
             "n_reps": len(paired),
             "n_reps_post_greater": int((post_v > pre_v).sum()),
+            "occupancy_pre_median": round(float(np.median([r["occupancy_pre"] for r in paired])), 4),
+            "occupancy_post_median": round(float(np.median([r["occupancy_post"] for r in paired])), 4),
+            "n_reps_count_post_greater": int(sum(r["count_post"] > r["count_pre"] for r in paired)),
             "excess_pre_median": round(float(np.median(pre_v)), 1),
             "excess_post_median": round(float(np.median(post_v)), 1),
             "ratio_of_medians": round(float(np.median(post_v) / np.median(pre_v)), 3),
@@ -186,6 +196,8 @@ def main():
           f"{o['n_below_bonferroni']}/{o['n_reps']} under Bonferroni "
           f"(smallest attainable p = {o['min_attainable_p']})")
     q = out["paired_excess"]
+    print(f"matched-window occupancy: {q['occupancy_pre_median']} -> {q['occupancy_post_median']}, "
+          f"count higher after the action in {q['n_reps_count_post_greater']}/{q['n_reps']} reps")
     print(f"paired excess ({q['window_s']:.0f} s windows): pre {q['excess_pre_median']:.0f} -> "
           f"post {q['excess_post_median']:.0f} ({q['ratio_of_medians']}x), "
           f"post > pre in {q['n_reps_post_greater']}/{q['n_reps']} reps, "

@@ -57,7 +57,8 @@ def fig_overhead():
     labels = list(OVH.keys())
     x = np.arange(len(labels))
     p50 = np.array([OVH[k]["lat_p50"] for k in labels])
-    err = np.array([OVH[k]["lat_p95"] - OVH[k]["lat_p50"] for k in labels])
+    err_up = np.array([OVH[k]["lat_p95"] - OVH[k]["lat_p50"] for k in labels])
+    err = np.vstack([np.zeros_like(err_up), err_up])   # one-sided: p50 -> p95
 
     # Panel (a): dump latency (cost) with CPU% and RSS annotated; cost scales with heap.
     bars = ax1.bar(x, p50, yerr=err, capsize=8, width=0.55,
@@ -66,7 +67,7 @@ def fig_overhead():
                    label="dump latency p50 (p95 cap)")
     for i, k in enumerate(labels):
         ax1.annotate(f"CPU {OVH[k]['cpu']:.0f}% of a core\nRSS {OVH[k]['rss']:.0f} MB",
-                     xy=(i, p50[i] + err[i] + 55), ha="center", va="bottom",
+                     xy=(i, p50[i] + err_up[i] + 55), ha="center", va="bottom",
                      fontsize=11, fontweight="bold")
     ax1.set_xticks(x); ax1.set_xticklabels(labels)
     ax1.set_ylabel("Per-dump latency (ms)")
@@ -135,7 +136,7 @@ def fig_gcdefault():
     for row in csv.DictReader(open(DATA / "crossdomain_summary.csv")):
         if row["system"] == "Dockerd":
             off[row["action"]] = float(row["amplification"])
-    off_vals = [off.get("docker version (readback)", off.get("docker version", np.nan)),
+    off_vals = [off["docker inspect (readback)"],
                 off["1 container"], off["10 containers"]]
     # default-GC amplification: read the shipped per-action means from the
     # released JSON (the raw GOGC=100 reps are not redistributed). Falls back to

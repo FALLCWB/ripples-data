@@ -51,6 +51,7 @@ N_BUCKETS = int(POST_WIN_S / BUCKET_S)
 
 
 def is_sparse_era(d: Path) -> bool:
+    # legacy capture filename, kept so first-collection snapshots still load
     prov = sorted(d.glob("provenance_*_post_attack.json"))
     if not prov:
         return False

@@ -25,6 +25,9 @@
     "window_s": 250.0,
     "n_reps": 30,
     "n_reps_post_greater": 29,
+    "occupancy_pre_median": 0.3068,
+    "occupancy_post_median": 0.3034,
+    "n_reps_count_post_greater": 19,
     "excess_pre_median": 13461.0,
     "excess_post_median": 19956.0,
     "ratio_of_medians": 1.483,
@@ -34,180 +37,300 @@
     "per_rep": [
       {
         "rep": "D_flush_rep10_1784127218",
+        "occupancy_pre": 0.271,
+        "occupancy_post": 0.314,
+        "count_pre": 242,
+        "count_post": 281,
         "scenario": "D_flush",
         "excess_pre": 6143.0,
         "excess_post": 17531.0
       },
       {
         "rep": "D_flush_rep1_1784114542",
+        "occupancy_pre": 0.2,
+        "occupancy_post": 0.2859,
+        "count_pre": 179,
+        "count_post": 261,
         "scenario": "D_flush",
         "excess_pre": 3024.0,
         "excess_post": 12279.0
       },
       {
         "rep": "D_flush_rep2_1784116155",
+        "occupancy_pre": 0.2107,
+        "occupancy_post": 0.316,
+        "count_pre": 173,
+        "count_post": 280,
         "scenario": "D_flush",
         "excess_pre": 2210.0,
         "excess_post": 12658.0
       },
       {
         "rep": "D_flush_rep3_1784117531",
+        "occupancy_pre": 0.3434,
+        "occupancy_post": 0.3045,
+        "count_pre": 261,
+        "count_post": 253,
         "scenario": "D_flush",
         "excess_pre": 15409.0,
         "excess_post": 20909.0
       },
       {
         "rep": "D_flush_rep4_1784118914",
+        "occupancy_pre": 0.2704,
+        "occupancy_post": 0.2917,
+        "count_pre": 232,
+        "count_post": 252,
         "scenario": "D_flush",
         "excess_pre": 5159.0,
         "excess_post": 19673.0
       },
       {
         "rep": "D_flush_rep5_1784120305",
+        "occupancy_pre": 0.3355,
+        "occupancy_post": 0.3073,
+        "count_pre": 264,
+        "count_post": 260,
         "scenario": "D_flush",
         "excess_pre": 16557.0,
         "excess_post": 28533.0
       },
       {
         "rep": "D_flush_rep6_1784121684",
+        "occupancy_pre": 0.294,
+        "occupancy_post": 0.2989,
+        "count_pre": 259,
+        "count_post": 255,
         "scenario": "D_flush",
         "excess_pre": 29589.0,
         "excess_post": 38246.0
       },
       {
         "rep": "D_flush_rep7_1784123080",
+        "occupancy_pre": 0.3253,
+        "occupancy_post": 0.3247,
+        "count_pre": 269,
+        "count_post": 264,
         "scenario": "D_flush",
         "excess_pre": 14161.0,
         "excess_post": 22710.0
       },
       {
         "rep": "D_flush_rep8_1784124445",
+        "occupancy_pre": 0.3089,
+        "occupancy_post": 0.3039,
+        "count_pre": 265,
+        "count_post": 265,
         "scenario": "D_flush",
         "excess_pre": 16937.0,
         "excess_post": 26313.0
       },
       {
         "rep": "D_flush_rep9_1784125839",
+        "occupancy_pre": 0.2901,
+        "occupancy_post": 0.2895,
+        "count_pre": 248,
+        "count_post": 251,
         "scenario": "D_flush",
         "excess_pre": 7588.0,
         "excess_post": 16028.0
       },
       {
         "rep": "E_single_rule_rep10_1784140959",
+        "occupancy_pre": 0.3075,
+        "occupancy_post": 0.3016,
+        "count_pre": 250,
+        "count_post": 263,
         "scenario": "E_single_rule",
         "excess_pre": 11044.0,
         "excess_post": 15990.0
       },
       {
         "rep": "E_single_rule_rep1_1784128583",
+        "occupancy_pre": 0.2915,
+        "occupancy_post": 0.2985,
+        "count_pre": 258,
+        "count_post": 257,
         "scenario": "E_single_rule",
         "excess_pre": 47804.0,
         "excess_post": 51366.0
       },
       {
         "rep": "E_single_rule_rep2_1784129948",
+        "occupancy_pre": 0.3001,
+        "occupancy_post": 0.2916,
+        "count_pre": 259,
+        "count_post": 256,
         "scenario": "E_single_rule",
         "excess_pre": 11597.5,
         "excess_post": 16482.0
       },
       {
         "rep": "E_single_rule_rep3_1784131339",
+        "occupancy_pre": 0.3173,
+        "occupancy_post": 0.3286,
+        "count_pre": 277,
+        "count_post": 275,
         "scenario": "E_single_rule",
         "excess_pre": 35134.1,
         "excess_post": 36920.5
       },
       {
         "rep": "E_single_rule_rep4_1784132700",
+        "occupancy_pre": 0.303,
+        "occupancy_post": 0.311,
+        "count_pre": 253,
+        "count_post": 260,
         "scenario": "E_single_rule",
         "excess_pre": 16924.0,
         "excess_post": 18018.0
       },
       {
         "rep": "E_single_rule_rep5_1784134084",
+        "occupancy_pre": 0.3178,
+        "occupancy_post": 0.2856,
+        "count_pre": 252,
+        "count_post": 259,
         "scenario": "E_single_rule",
         "excess_pre": 15069.0,
         "excess_post": 21134.0
       },
       {
         "rep": "E_single_rule_rep6_1784135478",
+        "occupancy_pre": 0.3208,
+        "occupancy_post": 0.306,
+        "count_pre": 265,
+        "count_post": 272,
         "scenario": "E_single_rule",
         "excess_pre": 23246.0,
         "excess_post": 30962.0
       },
       {
         "rep": "E_single_rule_rep7_1784136866",
+        "occupancy_pre": 0.3066,
+        "occupancy_post": 0.3054,
+        "count_pre": 252,
+        "count_post": 266,
         "scenario": "E_single_rule",
         "excess_pre": 6423.0,
         "excess_post": 8962.0
       },
       {
         "rep": "E_single_rule_rep8_1784138257",
+        "occupancy_pre": 0.3093,
+        "occupancy_post": 0.301,
+        "count_pre": 262,
+        "count_post": 264,
         "scenario": "E_single_rule",
         "excess_pre": 8871.0,
         "excess_post": 11484.0
       },
       {
         "rep": "E_single_rule_rep9_1784139588",
+        "occupancy_pre": 0.0012,
+        "occupancy_post": 0.2026,
+        "count_pre": 1,
+        "count_post": 171,
         "scenario": "E_single_rule",
         "excess_pre": 7.2,
         "excess_post": 907.8
       },
       {
         "rep": "F_burst_rep10_1784154758",
+        "occupancy_pre": 0.322,
+        "occupancy_post": 0.3244,
+        "count_pre": 266,
+        "count_post": 278,
         "scenario": "F_burst",
         "excess_pre": 24268.0,
         "excess_post": 44349.0
       },
       {
         "rep": "F_burst_rep1_1784142339",
+        "occupancy_pre": 0.3046,
+        "occupancy_post": 0.3112,
+        "count_pre": 258,
+        "count_post": 262,
         "scenario": "F_burst",
         "excess_pre": 13256.0,
         "excess_post": 24771.0
       },
       {
         "rep": "F_burst_rep2_1784143717",
+        "occupancy_pre": 0.3399,
+        "occupancy_post": 0.3,
+        "count_pre": 277,
+        "count_post": 273,
         "scenario": "F_burst",
         "excess_pre": 21440.0,
         "excess_post": 36996.0
       },
       {
         "rep": "F_burst_rep3_1784145097",
+        "occupancy_pre": 0.2986,
+        "occupancy_post": 0.3022,
+        "count_pre": 261,
+        "count_post": 262,
         "scenario": "F_burst",
         "excess_pre": 15908.0,
         "excess_post": 28918.0
       },
       {
         "rep": "F_burst_rep4_1784146495",
+        "occupancy_pre": 0.2793,
+        "occupancy_post": 0.3129,
+        "count_pre": 241,
+        "count_post": 266,
         "scenario": "F_burst",
         "excess_pre": 5649.0,
         "excess_post": 20237.0
       },
       {
         "rep": "F_burst_rep5_1784147877",
+        "occupancy_pre": 0.307,
+        "occupancy_post": 0.2999,
+        "count_pre": 264,
+        "count_post": 260,
         "scenario": "F_burst",
         "excess_pre": 13666.0,
         "excess_post": 20621.0
       },
       {
         "rep": "F_burst_rep6_1784149273",
+        "occupancy_pre": 0.3381,
+        "occupancy_post": 0.0023,
+        "count_pre": 261,
+        "count_post": 2,
         "scenario": "F_burst",
         "excess_pre": 17059.2,
         "excess_post": 154.5
       },
       {
         "rep": "F_burst_rep7_1784150643",
+        "occupancy_pre": 0.2898,
+        "occupancy_post": 0.3029,
+        "count_pre": 244,
+        "count_post": 259,
         "scenario": "F_burst",
         "excess_pre": 6215.0,
         "excess_post": 15855.0
       },
       {
         "rep": "F_burst_rep8_1784152031",
+        "occupancy_pre": 0.3199,
+        "occupancy_post": 0.3094,
+        "count_pre": 270,
+        "count_post": 272,
         "scenario": "F_burst",
         "excess_pre": 7661.0,
         "excess_post": 16453.0
       },
       {
         "rep": "F_burst_rep9_1784153396",
+        "occupancy_pre": 0.3166,
+        "occupancy_post": 0.308,
+        "count_pre": 252,
+        "count_post": 259,
         "scenario": "F_burst",
         "excess_pre": 10407.0,
         "excess_post": 19675.0

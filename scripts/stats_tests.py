@@ -127,7 +127,7 @@ def permutation_amplification(ripple: np.ndarray, baseline: np.ndarray,
 # Per-rep loader / classifier — reuses regen_figs_data.py if available.
 # ----------------------------------------------------------------------
 def load_per_rep_induced_cascade_counts() -> pd.DataFrame:
-    """Return per-rep Attack-cascade counts and per-hour rates.
+    """Return per-rep Induced-cascade counts and per-hour rates.
 
     Wraps the canonical decompose_v2 logic; if scripts/regen_figs_data.py
     has been run, prefers its cached CSV under data/processed/.
@@ -159,7 +159,8 @@ def stats_presence_rate(per_rep: pd.DataFrame) -> dict:
     for scenario, group in per_rep.groupby("scenario"):
         n = len(group)
         # Tolerate either column name for backward compat.
-        col = "induced_cascade_count" if "induced_cascade_count" in group.columns else "attack_cascade_count"
+        col = ("induced_cascade_count" if "induced_cascade_count" in group.columns
+               else "attack_cascade_count")   # legacy column name in first-collection CSVs
         k = int((group[col] > 0).sum())
         lo, hi = wilson_ci(k, n)
         out[scenario] = {

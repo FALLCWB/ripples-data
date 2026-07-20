@@ -92,6 +92,34 @@ def load_full(sd: Path):
     return df
 
 
+AGG_DIR = Path(__file__).resolve().parent.parent / "data" / "processed" / "ovs_recollection_aggregates"
+
+
+def rep_contrast_from_aggregates(path: Path, aftermath: float):
+    """Same contrast computed from the released per-iteration aggregates.
+
+    The raw per-page capture is not redistributed, so this is the path a
+    reviewer can run from the package alone. The aggregate columns are the ones
+    per_iter_aggregates() would produce, so the two paths agree by construction.
+    """
+    df = pd.read_csv(path)
+    ws, ca = df["warmup_start_ts"].iloc[0], df["controller_attached_ts"].iloc[0]
+    action_ts = float(df["action_ts"].iloc[0])
+    if not np.isfinite(action_ts):
+        return None
+    warm = df[(df["ts"] >= ws) & (df["ts"] < ca)]
+    after = df[df["ts"] >= action_ts]
+    if len(warm) < 10 or after.empty:
+        return None
+    threshold = float(np.percentile(warm[SIGNAL_COL], 95))
+    ripple = after[(after[SIGNAL_COL] > threshold) &
+                   (after["ts"] <= action_ts + aftermath)]
+    if ripple.empty:
+        return None
+    return {label: (float(warm[col].fillna(0).mean()), float(ripple[col].fillna(0).mean()))
+            for label, col in FEATS.items()}
+
+
 def rep_contrast(sd: Path, aftermath: float):
     """Returns {feature: (baseline_mean, ripple_mean)} or None if unusable."""
     markers = json.loads((sd / "markers.json").read_text())
@@ -135,28 +163,35 @@ def boot_ratio_ci(base, rip, rng, n_boot=10000):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--snapshots", type=Path, required=True)
+    ap.add_argument("--snapshots", type=Path, default=None,
+                    help="raw snapshot directory; omit to use the released aggregates")
     ap.add_argument("--aftermath", type=float, default=AFTERMATH_S)
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
     rng = np.random.default_rng(SEED)
 
-    reps = [d for d in sorted(args.snapshots.iterdir())
-            if d.is_dir() and d.name.startswith(INDUCED_PREFIXES)
-            and (d / "markers.json").exists()]
+    if args.snapshots is not None:
+        reps = [d for d in sorted(args.snapshots.iterdir())
+                if d.is_dir() and d.name.startswith(INDUCED_PREFIXES)
+                and (d / "markers.json").exists()]
+        contrast = lambda r: rep_contrast(r, args.aftermath)
+    else:
+        reps = [f for f in sorted(AGG_DIR.glob("*.csv"))
+                if f.stem.startswith(INDUCED_PREFIXES)]
+        contrast = lambda r: rep_contrast_from_aggregates(r, args.aftermath)
     per_feat = {label: {"base": [], "rip": [], "reps": []} for label in FEATS}
     used, censored = 0, []
     for sd in reps:
-        c = rep_contrast(sd, args.aftermath)
+        c = contrast(sd)
         if c is None:
-            censored.append(sd.name)      # scanned but no supra-warmup ripple / unusable
+            censored.append(getattr(sd, "stem", None) or sd.name)      # scanned but no supra-warmup ripple / unusable
             print(f"  censored {sd.name} (no ripple iters above warmup p95 / short warmup)")
             continue
         used += 1
         for label, (b, r) in c.items():
             per_feat[label]["base"].append(b)
             per_feat[label]["rip"].append(r)
-            per_feat[label]["reps"].append(sd.name)
+            per_feat[label]["reps"].append(getattr(sd, "stem", None) or sd.name)
 
     def sig3(x):                          # keep tiny p-values instead of rounding to 0.0
         return float(f"{x:.3g}")
