@@ -1,8 +1,12 @@
 {
   "params": {
     "window_s": 30.0,
-    "placebo_offset_s": 180.0,
     "bin_s": 10.0,
+    "placebo_anchors_at": [
+      "action - 2 x window",
+      "action - 3 x window",
+      "action - 4 x window"
+    ],
     "persistence_pre_s": 120.0,
     "persistence_post_s": 300.0,
     "threshold": "p95 of warmup change_volume_sum",
@@ -461,6 +465,56 @@
       "log_did": 0.301276164548944,
       "active_fraction_action": 0.9,
       "active_fraction_placebo": 0.8666666666666667
+    }
+  ],
+  "sham_anchor_no_action_scenarios": {
+    "offset_s": 288.0,
+    "note": "Same difference in differences on scenarios that contain no induced action, sham anchor at the elapsed offset where the induced scenarios deliver theirs.",
+    "per_scenario": {
+      "A_idle": {
+        "n_reps": 9,
+        "did_ratio_median": 0.931,
+        "n_reps_positive": 3
+      },
+      "B_flow_install": {
+        "n_reps": 8,
+        "did_ratio_median": 0.963,
+        "n_reps_positive": 3
+      },
+      "C_ping_sustained": {
+        "n_reps": 10,
+        "did_ratio_median": 0.987,
+        "n_reps_positive": 4
+      }
+    }
+  },
+  "window_sweep": [
+    {
+      "window_s": 20.0,
+      "n_reps": 29,
+      "did_ratio_median": 1.342,
+      "n_reps_did_positive": 23,
+      "p_did": 5.34e-05
+    },
+    {
+      "window_s": 30.0,
+      "did_ratio_median": 1.284,
+      "n_reps_did_positive": 23,
+      "p_did": 0.000217
+    },
+    {
+      "window_s": 45.0,
+      "n_reps": 29,
+      "did_ratio_median": 1.192,
+      "n_reps_did_positive": 21,
+      "p_did": 0.00351
+    },
+    {
+      "window_s": 60.0,
+      "n_reps": 29,
+      "did_ratio_median": 1.013,
+      "n_reps_did_positive": 16,
+      "p_did": 0.733
     }
   ]
 }

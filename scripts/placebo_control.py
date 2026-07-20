@@ -38,6 +38,11 @@ SIG = "change_volume_sum"
 PRE_Q = 95
 REF_Q = 95
 INDUCED = ("D_flush", "E_single_rule", "F_burst")
+# Scenarios with no induced action: a sham anchor is placed at the elapsed offset
+# where the induced scenarios deliver theirs, so the machinery runs where there is
+# nothing to find.
+SHAM = ("A_idle", "B_flow_install", "C_ping_sustained")
+SHAM_OFFSET_S = 288.0
 
 
 def load(path: Path):
@@ -78,7 +83,7 @@ def active_fraction(df, thr, anchor, pre_s, post_s, bin_s):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--win", type=float, default=60.0, help="window length each side of an anchor")
-    ap.add_argument("--offset", type=float, default=180.0, help="placebo anchor, seconds before the action")
+
     ap.add_argument("--bin", type=float, default=10.0)
     ap.add_argument("--n-placebo", type=int, default=3,
                     help="number of non-overlapping placebo anchors used to estimate the ramp")
@@ -147,7 +152,8 @@ def main():
     _, p_fr = wilcoxon(fa, fp, alternative="two-sided")
 
     out = {
-        "params": {"window_s": args.win, "placebo_offset_s": args.offset, "bin_s": args.bin,
+        "params": {"window_s": args.win, "bin_s": args.bin,
+                   "placebo_anchors_at": [f"action - {k} x window" for k in range(2, 2 + args.n_placebo)],
                    "persistence_pre_s": args.persist_pre, "persistence_post_s": args.persist_post,
                    "threshold": f"p{PRE_Q} of warmup {SIG}", "n_reps": len(rows)},
         "note": ("The placebo anchor sits inside the live pre-action phase, so any ramp common to "
@@ -190,9 +196,80 @@ def main():
                 [r["active_fraction_placebo"] for r in sub if r["active_fraction_placebo"] is not None])), 3),
         }
 
+    # Negative control: same statistic on scenarios with no induced action.
+    sham = {}
+    for scen in SHAM:
+        vals = []
+        for path in sorted(AGG.glob(f"{scen}_rep*.csv")):
+            df = pd.read_csv(path)
+            ws, ca = df["warmup_start_ts"].iloc[0], df["controller_attached_ts"].iloc[0]
+            warm = df[(df["ts"] >= ws) & (df["ts"] < ca)]
+            tp = float(df["test_phase_start_ts"].iloc[0])
+            if len(warm) < 10:
+                continue
+            thr = float(np.percentile(warm[SIG], PRE_Q))
+            anc = tp + SHAM_OFFSET_S
+            pre_s = excess(df, thr, anc - args.win, anc)
+            ratios = [excess(df, thr, x, x + args.win) / excess(df, thr, x - args.win, x)
+                      for x in (anc - k * args.win for k in range(2, 2 + args.n_placebo))
+                      if x - args.win >= tp and excess(df, thr, x - args.win, x) > 0]
+            if not ratios or pre_s <= 0:
+                continue
+            vals.append(float(np.log(excess(df, thr, anc, anc + args.win) / pre_s)
+                              - np.log(float(np.median(ratios)))))
+        if vals:
+            v = np.array(vals)
+            sham[scen] = {"n_reps": len(v),
+                          "did_ratio_median": round(float(np.exp(np.median(v))), 3),
+                          "n_reps_positive": int((v > 0).sum())}
+    out["sham_anchor_no_action_scenarios"] = {
+        "offset_s": SHAM_OFFSET_S,
+        "note": ("Same difference in differences on scenarios that contain no induced "
+                 "action, sham anchor at the elapsed offset where the induced scenarios "
+                 "deliver theirs."),
+        "per_scenario": sham}
+
+    # Window sweep, so the decay reported in the paper is in the released output.
+    sweep = []
+    for w in (20.0, 30.0, 45.0, 60.0):
+        if w == args.win:
+            sweep.append({"window_s": w, "did_ratio_median": out["excess"]["did_ratio_median"],
+                          "n_reps_did_positive": out["excess"]["n_reps_did_positive"],
+                          "p_did": out["excess"]["p_did"]})
+            continue
+        rr = []
+        for path in sorted(AGG.glob("*.csv")):
+            scen = next((x for x in INDUCED if path.stem.startswith(x)), None)
+            if scen is None:
+                continue
+            df = pd.read_csv(path)
+            ws, ca = df["warmup_start_ts"].iloc[0], df["controller_attached_ts"].iloc[0]
+            warm = df[(df["ts"] >= ws) & (df["ts"] < ca)]
+            a_ts = float(df["action_ts"].iloc[0])
+            tp = float(df["test_phase_start_ts"].iloc[0])
+            if len(warm) < 10 or not np.isfinite(a_ts):
+                continue
+            thr = float(np.percentile(warm[SIG], PRE_Q))
+            pre_s = excess(df, thr, a_ts - w, a_ts)
+            ratios = [excess(df, thr, x, x + w) / excess(df, thr, x - w, x)
+                      for x in (a_ts - k * w for k in range(2, 2 + args.n_placebo))
+                      if x - w >= tp and excess(df, thr, x - w, x) > 0]
+            if not ratios or pre_s <= 0:
+                continue
+            rr.append(float(np.log(excess(df, thr, a_ts, a_ts + w) / pre_s)
+                            - np.log(float(np.median(ratios)))))
+        if len(rr) >= 6:
+            v = np.array(rr)
+            _, pw = wilcoxon(v, alternative="two-sided")
+            sweep.append({"window_s": w, "n_reps": len(v),
+                          "did_ratio_median": round(float(np.exp(np.median(v))), 3),
+                          "n_reps_did_positive": int((v > 0).sum()),
+                          "p_did": float(f"{pw:.3g}")})
+    out["window_sweep"] = sweep
+
     (PROC / "placebo_control.json").write_text(json.dumps(out, indent=2))
     e, q = out["excess"], out["persistence"]
-    print(f"n = {len(rows)} reps, window {args.win:.0f} s, placebo {args.offset:.0f} s before the action")
+    print(f"n = {len(rows)} reps, window {args.win:.0f} s, {args.n_placebo} placebo anchors from {2 * args.win:.0f} s before the action")
     print(f"  excess ratio at the action  : {e['ratio_action_median']}  (naive p = {e['p_action_naive']})")
     print(f"  excess ratio at the placebo : {e['ratio_placebo_median']}  (naive p = {e['p_placebo_naive']})")
     print(f"  difference in differences   : {e['did_ratio_median']}x  positive in "
@@ -200,6 +277,10 @@ def main():
     print(f"  active-bin fraction         : {q['active_fraction_action_median']} at the action vs "
           f"{q['active_fraction_placebo_median']} at the placebo, higher in "
           f"{q['n_reps_action_greater']}/{q['n_reps']}, p = {q['p_paired']}")
+    for scen, r in sham.items():
+        print(f"  sham anchor {scen:16s} DiD {r['did_ratio_median']:.2f}x (+{r['n_reps_positive']}/{r['n_reps']})")
+    for r in sweep:
+        print(f"  window {r['window_s']:>4.0f} s: DiD {r['did_ratio_median']:.2f}x  p = {r['p_did']}")
     for scen, r in out["per_scenario"].items():
         print(f"    {scen:16s} DiD {r['did_ratio_median']:.2f}x (+{r['n_reps_did_positive']}/{r['n_reps']})  "
               f"bins {r['active_fraction_action_median']:.2f} vs {r['active_fraction_placebo_median']:.2f}")
