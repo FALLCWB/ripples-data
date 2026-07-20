@@ -1,0 +1,50 @@
+{
+  "params": {
+    "window_s": 300.0,
+    "threshold": "p95 of warmup change_volume_sum",
+    "surface_levels": {
+      "E_single_rule": 1,
+      "F_burst": 21,
+      "D_flush": 200
+    },
+    "n_reps": 30
+  },
+  "per_scenario": {
+    "D_flush": {
+      "surface": 200,
+      "n_reps": 10,
+      "excess_mean": 25999.5,
+      "excess_median": 24791.0,
+      "excess_std": 9096.6,
+      "count_mean": 314.0
+    },
+    "E_single_rule": {
+      "surface": 1,
+      "n_reps": 10,
+      "excess_mean": 25803.5,
+      "excess_median": 20660.8,
+      "excess_std": 16996.7,
+      "count_mean": 307.9
+    },
+    "F_burst": {
+      "surface": 21,
+      "n_reps": 10,
+      "excess_mean": 27571.5,
+      "excess_median": 25014.0,
+      "excess_std": 13921.9,
+      "count_mean": 288.1
+    }
+  },
+  "spearman": {
+    "excess": {
+      "rho": 0.0896,
+      "p_value": 0.6377,
+      "n": 30
+    },
+    "count": {
+      "rho": -0.1157,
+      "p_value": 0.5426,
+      "n": 30
+    }
+  }
+}

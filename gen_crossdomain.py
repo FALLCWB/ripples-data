@@ -110,7 +110,10 @@ def load_ovs_signal_from_aggregates(scenario_glob):
     action_ts = float(df["action_ts"].iloc[0])
     if not np.isfinite(action_ts):
         return None
-    pre = df[df["ts"] < action_ts]
+    # The threshold is taken from the warmup window only, matching the protocol
+    # in the setup table; the live pre-action phase is not part of the baseline.
+    ws, ca = df["warmup_start_ts"].iloc[0], df["controller_attached_ts"].iloc[0]
+    pre = df[(df["ts"] >= ws) & (df["ts"] < ca)]
     post = df[df["ts"] >= action_ts]
     if pre.empty or post.empty:
         return None
@@ -297,7 +300,7 @@ def main():
 
             ax.set_xlim(*xlim)
             ymax = sums.max() if len(sums) else 0
-            ax.set_ylim(0, max(1.0, ymax * 1.15))
+            ax.set_ylim(0, max(1.0, ymax * 1.35))
             ax.axhline(0, color="gray", lw=0.6, alpha=0.5)
             ax.axvline(0, color="red", lw=1.6, alpha=0.9)
 
@@ -313,7 +316,7 @@ def main():
                          markerfacecolor=color, markeredgecolor=color)
                 unit_short = "B" if system == "OvS" else "pg"
                 ax.text(0.97, 0.93,
-                        f"peak={ymax:.0f} {unit_short}\n{n_events} event{'s' if n_events != 1 else ''}",
+                        f"peak={ymax:.0f} {unit_short}\n{n_events}/{len(sums)} buckets",
                         transform=ax.transAxes, ha="right", va="top",
                         fontsize=13, color=color,
                         bbox=dict(boxstyle="round,pad=0.25",
@@ -332,7 +335,7 @@ def main():
 
     fig.suptitle("Action ripples observed as discrete signal-excursion events over time\n"
                  "Only the post-action window is bucketed; each stem sums the excess "
-                 "of the page-mutation signal over the 95th percentile of the warmup "
+                 "of the change-volume signal over the 95th percentile of the warmup "
                  "signal within a 5-second bucket",
                  fontsize=16, y=1.01)
     plt.tight_layout()

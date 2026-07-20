@@ -115,7 +115,7 @@ def fig2_surface():
     ax1.set_xlabel("Action surface (flow-table entries touched)")
     ax1.set_ylabel("Ripple events per hour")
     ax1.set_ylim(0, y_top_a)
-    ax1.legend(loc="lower right")
+    ax1.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=2, frameon=False)
     ax1.text(0.02, 0.97, "(a)", transform=ax1.transAxes,
              fontsize=18, fontweight="bold", va="top", ha="left")
 
@@ -136,7 +136,7 @@ def fig2_surface():
     ax2.axhline(sig["across_mean"], linestyle="--", color="gray",
                 lw=1.0, alpha=0.7,
                 label=f"across-scenario mean ({sig['across_mean']:.2f})")
-    ax2.legend(loc="lower right", framealpha=0.95)
+    ax2.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=2, frameon=False)
     ax2.text(0.02, 0.97, "(b)", transform=ax2.transAxes,
              fontsize=18, fontweight="bold", va="top", ha="left")
 
@@ -174,7 +174,7 @@ def fig5_temporal():
     centers = edges[:-1] + bucket_s / 2
 
     # Display in kB for readability.
-    excess_kb = excess_sum / 1000.0
+    excess_b = excess_sum          # bytes, matching the caption and body
 
     fig, ax = plt.subplots(figsize=(12, 5))
     pre_mask = centers < 0
@@ -184,29 +184,36 @@ def fig5_temporal():
     # sit just above the threshold, so a small residual is expected;
     # this is the noise floor against which the post-action cascade is
     # compared, not a signal.
-    ax.bar(centers[pre_mask], excess_kb[pre_mask], width=bucket_s * 0.9,
+    ax.bar(centers[pre_mask], excess_b[pre_mask], width=bucket_s * 0.9,
            color="#bbbbbb", edgecolor="#888888", linewidth=0.3, alpha=0.6,
            label="Pre-action residual (noise floor)")
-    ax.bar(centers[post_mask], excess_kb[post_mask], width=bucket_s * 0.9,
+    ax.bar(centers[post_mask], excess_b[post_mask], width=bucket_s * 0.9,
            color=PALETTE["induced"], edgecolor="black", linewidth=0.5,
            label="Post-action ripple")
     ax.axvline(action_t, color="red", linewidth=2.5, label="Action injected")
     ax.set_xlabel("Time relative to action (s)")
-    ax.set_ylabel("Excess kB / 5 s bucket")
+    ax.set_ylabel("Excess B / 5 s bucket")
     ax.set_title("Temporal Profile of a Ripple Cascade (Flow-table Flush)")
     xmax_data = float(t[t < 200].max()) if (t < 200).any() else 170.0
     xmax = int(np.ceil(xmax_data / 10.0) * 10) + 5
     ax.set_xlim(-30, xmax)
-    ax.set_ylim(0, max(excess_kb.max() * 1.2, 0.3))
+    ax.set_ylim(0, max(excess_b.max() * 1.2, 0.3))
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3, frameon=False)
     pre_total_b = excess_sum[pre_mask].sum()
     post_total_b = excess_sum[post_mask].sum()
-    ratio_pp = (post_total_b / pre_total_b) if pre_total_b > 0 else float("inf")
+    # The two totals cover windows of different length, so the figure reports the
+    # duration-normalized ratio and the matched-window ratio, as the text does.
+    pre_span = centers[pre_mask].max() - centers[pre_mask].min() + bucket_s
+    post_span = centers[post_mask].max() - centers[post_mask].min() + bucket_s
+    rate_ratio = ((post_total_b / post_span) / (pre_total_b / pre_span)) if pre_total_b > 0 else float("inf")
+    matched = excess_sum[post_mask & (centers <= pre_span)].sum()
+    matched_ratio = (matched / pre_total_b) if pre_total_b > 0 else float("inf")
     txt = (f"threshold = {threshold:.0f} B (95th pct of warmup change_volume_sum);\n"
            f"bars sum (signal - threshold) over iterations above threshold\n"
-           f"pre-action total: {pre_total_b:.0f} B    "
-           f"post-action total: {post_total_b:.0f} B    "
-           f"ratio: {ratio_pp:.1f}x")
+           f"pre-action total: {pre_total_b:.0f} B over {pre_span:.0f} s    "
+           f"post-action total: {post_total_b:.0f} B over {post_span:.0f} s\n"
+           f"duration-normalized ratio: {rate_ratio:.2f}x    "
+           f"matched {pre_span:.0f} s window: {matched_ratio:.2f}x")
     ax.text(0.01, 0.97, txt, transform=ax.transAxes, ha="left", va="top",
             fontsize=9, style="italic",
             bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
@@ -266,7 +273,7 @@ def fig6_features():
     ax.set_xticklabels(features, fontsize=11)
     ax.set_ylabel("Mean feature value")
     ax.set_title("Feature Signature: Ripple vs Baseline Iterations", pad=12)
-    ax.legend(loc="upper left", framealpha=0.95)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=2, frameon=False)
     # Headroom above tallest error-bar top so labels never collide
     top_baseline = (normal + normal_std).max()
     top_ripple = (ripple + ripple_std).max()
