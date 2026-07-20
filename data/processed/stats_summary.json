@@ -1,5 +1,5 @@
 {
-  "_superseded": "Partially superseded. The surface_monotonicity (rho=0.08) and bootstrap_per_scenario means (1106/1061/967) fields are stale legacy from the earlier pipeline and are NOT the paper's values (the paper uses rho=-0.13 from fig2_sparse_attack_cascade_per_rep.csv and Induced means 1345/1346/1234 from scenario_decomposition.csv). The detection_rate_per_scenario and wilson_95_ci fields (30/30 ripple presence, Wilson lower bound 0.72) are current and are the source of that paper number.",
+  "_note": "Retains only detection_rate_per_scenario (30/30 ripple presence per scenario with Wilson 95% intervals, lower bound 0.72), which the paper cites. Superseded fields from the earlier pipeline (surface-monotonicity rho, pooled bootstrap means, pooled Mann-Whitney) were removed; the paper's rho=-0.13 comes from fig2_sparse_attack_cascade_per_rep.csv and the Induced means 1345/1346/1234 from scenario_decomposition.csv.",
   "detection_rate_per_scenario": {
     "D_attack_flush": {
       "n_reps": 10,
@@ -27,64 +27,6 @@
         0.7224672001371107,
         0.9999999999999999
       ]
-    }
-  },
-  "surface_monotonicity_spearman": {
-    "rho": 0.08018332720821829,
-    "p_value": 0.6736090602041027,
-    "n": 30,
-    "note": ""
-  },
-  "bootstrap_per_scenario": {
-    "D_attack_flush": {
-      "mean": 1106.75,
-      "bootstrap_95_ci": [
-        1065.2397500000002,
-        1156.38075
-      ],
-      "n_reps": 10
-    },
-    "E_attack_single_rule": {
-      "mean": 1061.94,
-      "bootstrap_95_ci": [
-        998.8994999999999,
-        1119.59
-      ],
-      "n_reps": 10
-    },
-    "F_attack_burst": {
-      "mean": 967.1800000000001,
-      "bootstrap_95_ci": [
-        748.94475,
-        1124.57
-      ],
-      "n_reps": 10
-    }
-  },
-  "feature_signature_mannwhitney": {
-    "Active pages": {
-      "U": 1432705.5,
-      "p_value": 1.1369812125116536e-56,
-      "n_ripple": 181,
-      "n_baseline": 9570
-    },
-    "Entropy (changed)": {
-      "U": 1645109.0,
-      "p_value": 4.617979020590961e-96,
-      "n_ripple": 181,
-      "n_baseline": 9570
-    },
-    "High-region pages": {
-      "U": 1432615.0,
-      "p_value": 3.998615993217855e-74,
-      "n_ripple": 181,
-      "n_baseline": 9570
-    },
-    "Volume sum": {
-      "U": 1530826.5,
-      "p_value": 1.4364112692767387e-70,
-      "n_ripple": 181,
-      "n_baseline": 9570
     }
   }
 }
