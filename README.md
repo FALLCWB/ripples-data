@@ -164,7 +164,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.5). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.6). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -175,7 +175,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.5},
+  version      = {v2.1.6},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }

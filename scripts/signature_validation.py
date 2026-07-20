@@ -11,7 +11,7 @@ detectable signature even when total event counts vary.
 
 Same threshold logic as gen_crossdomain.py: signal = per-iter
 n_changed_pages (Redis) or aggregated change_volume_sum (OvS);
-threshold = max(pre-action signal); per-bucket excess = sum of
+threshold = 95th percentile of pre-action signal; per-bucket excess = sum of
 above-threshold over each 5s bucket; pre-action is empty by
 construction.
 
