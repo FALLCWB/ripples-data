@@ -27,11 +27,11 @@ data/
                not summarized or reported in the paper)
 exp_crossdomain/ capture-side scripts used to produce the crossdomain/ logs
 scripts/         data-processing pipeline that produces data/processed from raw captures
-gen_figures.py   regenerates Fig. 2, 5, 6 from data/processed
+gen_figures.py   regenerates the surface (Fig. 2), temporal (Fig. 4), and feature (Fig. 5) figures from data/processed
 gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd panels)
 ```
 
-Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and Figs 2, 5, and 6 from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
+Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and the surface, temporal, and feature figures (Fig. 2, Fig. 4, Fig. 5) from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
 
 Some released identifiers (`D_attack_flush`, `inject_attack`, `*_attack_*`) are legacy names predating the observational framing and carry no attack semantics; the study is purely observational, and scenarios D/E/F are induced administrative actions.
 
@@ -104,7 +104,7 @@ Pairwise cosine similarity between per-rep temporal signatures.
 Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
 
 ### `data/processed/stats_summary.json`
-**Superseded legacy file, retained for provenance only.** Its `surface_monotonicity` (ρ=0.08) and `bootstrap_per_scenario` means (1106/1061/967) are from the earlier pipeline and are **not** the paper's values; the paper reports ρ=−0.13 (from `fig2_sparse_attack_cascade_per_rep.csv`) and Induced-cascade means 1345/1346/1234 (from `scenario_decomposition.csv`), and repetition-level tests from `scripts/signature_replevel_perm.py`. No reported number is taken from this file.
+**Partially superseded.** The `surface_monotonicity` (ρ=0.08) and `bootstrap_per_scenario` means (1106/1061/967) fields are stale legacy from the earlier pipeline and are **not** the paper's values; the paper reports ρ=−0.13 (from `fig2_sparse_attack_cascade_per_rep.csv`) and Induced-cascade means 1345/1346/1234 (from `scenario_decomposition.csv`). The `detection_rate_per_scenario` and `wilson_95_ci` fields (the 30/30 ripple-presence and Wilson lower bound 0.72) are current and are the source of that paper number; repetition-level tests come from `scripts/signature_replevel_perm.py`.
 
 ### `data/processed/crossdomain_summary.csv`
 Per-(system, action) amplification table for the Redis and Dockerd replication.
@@ -159,7 +159,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.12). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.13). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -170,7 +170,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.12},
+  version      = {v2.1.13},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }
