@@ -15,7 +15,7 @@ This test moves inference to the repetition. For each INDUCED rep it forms a
 paired within-rep contrast: the mean of each feature over that rep's ripple
 iterations vs the mean over that rep's own warmup (baseline) iterations, using
 the SAME ripple/baseline definitions as Fig-6 (ripple = post-action iterations
-in [action, action+AFTERMATH_S] whose change_volume_sum exceeds the warmup max;
+in [action, action+AFTERMATH_S] whose change_volume_sum exceeds the warmup 95th percentile;
 baseline = warmup-window iterations). Across the N induced reps it runs a
 one-sided Wilcoxon signed-rank test (ripple > baseline) per feature, plus a
 rep-level bootstrap CI on the ripple/baseline ratio. Pairing within rep removes
@@ -109,7 +109,7 @@ def rep_contrast(sd: Path, aftermath: float):
     after = per_iter_aggregates(df[df["ts"] >= action_ts], max_page)
     if len(warm) < 10 or after.empty:
         return None
-    threshold = float(warm[SIGNAL_COL].max())
+    threshold = float(np.percentile(warm[SIGNAL_COL], 95))
     ripple = after[(after[SIGNAL_COL] > threshold) &
                    (after["ts"] >= action_ts) & (after["ts"] <= action_ts + aftermath)]
     if ripple.empty:
@@ -150,7 +150,7 @@ def main():
         c = rep_contrast(sd, args.aftermath)
         if c is None:
             censored.append(sd.name)      # scanned but no supra-warmup ripple / unusable
-            print(f"  censored {sd.name} (no ripple iters above warmup max / short warmup)")
+            print(f"  censored {sd.name} (no ripple iters above warmup p95 / short warmup)")
             continue
         used += 1
         for label, (b, r) in c.items():
@@ -164,7 +164,7 @@ def main():
     out = {"n_induced_reps_used": used, "n_reps_scanned": len(reps),
            "n_censored": len(censored), "censored_reps": censored,
            "aftermath_s": args.aftermath, "seed": SEED,
-           # each ripple iter is SELECTED as change_volume_sum > warmup max, so for
+           # each ripple iter is SELECTED as change_volume_sum > warmup p95, so for
            # the "Volume sum" feature (== that signal) ripple>baseline is definitional;
            # the informative evidence is the three non-selection features.
            "selection_variable_feature": "Volume sum",

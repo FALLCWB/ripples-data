@@ -8,9 +8,9 @@ For each (system, action) cell:
        - OvS: change_volume_sum (n_active is capped at 32 so it does not
          separate; volume separates pre from post cleanly)
        - Redis: n_changed_pages (already per-iter in features.csv)
-  3. Threshold = max of pre-action signal. By construction the pre-action
-     window has zero detections — anything above threshold is genuinely
-     "above anything seen in the calm baseline" = a novelty.
+  3. Threshold = 95th percentile of pre-action signal. The pre-action
+     window is the calm baseline; post-action excess above this threshold
+     is genuinely "above the calm baseline" = a novelty.
   4. Bucket post-action time at 5-second resolution and count, per bucket,
      how many iterations exceeded the threshold. That count IS the height
      of the stem at that bucket center.
@@ -18,8 +18,8 @@ For each (system, action) cell:
      vertical impulse. The pattern looks like discrete ripple events
      punctuating flat-zero calm — the visual user asked for.
 
-Pre-action is empty by construction (no iteration exceeds the maximum of
-its own training set). Post-action shows ripples as discrete bucket
+Pre-action carries only sparse low-level excursions by construction (few
+iterations exceed the 95th percentile of their own training set). Post-action shows ripples as discrete bucket
 events. Some panels saturate (every post bucket has detections — this is
 itself a finding: large action → sustained cascade rather than discrete
 events).
@@ -211,15 +211,14 @@ def load_redis_signal(action_kind):
 
 
 def detection_buckets(data, post_window_s):
-    """Threshold = max(pre signal). For post-action time, bucket at BUCKET_S
-    seconds and SUM the above-threshold portion of each iteration's signal
-    in the bucket. Iterations whose signal is at or below the pre-action
-    maximum contribute zero. The result is bucket-aggregated novelty
+    """Threshold = 95th percentile of pre signal. For post-action time, bucket
+    at BUCKET_S seconds and SUM the above-threshold portion of each iteration's
+    signal in the bucket. Iterations whose signal is at or below the pre-action
+    95th percentile contribute zero. The result is bucket-aggregated novelty
     magnitude.
 
-    Returns: (threshold, bucket_centers, sum_per_bucket).
-    Pre-action is zero by construction (no iteration exceeds its own
-    training maximum), so we do not return it.
+    Returns: (threshold, bucket_centers, sum_per_bucket). Only post-action
+    buckets are returned.
     """
     threshold = float(np.percentile(data["pre"]["signal"].values, 95))
     post = data["post"]
