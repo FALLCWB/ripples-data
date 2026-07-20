@@ -29,7 +29,7 @@ Server: `redis-server --save '' --appendonly no` (snapshotting and AOF disabled)
 
 ## Dockerd
 Docker engine with the Go runtime configured for measurement (`GOGC=off` plus a manual GC forced before warmup and again immediately before the action, via the pprof endpoint) in the main arms, and with the default collector (`GOGC=100`, no manual trigger) in the default-GC arm.
-- **readback** (state read, no container): `docker version`
+- **readback** (read-only query, on a long-lived container): `docker inspect`
 - **N containers** (N in {1, 10, 50}): N successive `docker run -d --rm alpine:latest sleep 60`
 - Containers auto-remove (`--rm`); each launch is bounded at 30 s.
 - **Exclusion criterion (pre-registered):** a repetition is excluded if the action does not complete within the aftermath window (for the N-container actions, if a launch exceeds the 30 s bound). Attempted/kept/excluded counts are reported per action.

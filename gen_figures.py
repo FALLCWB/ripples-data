@@ -64,7 +64,7 @@ def fig2_surface():
 
     Panel B: within-scenario pairwise cosine similarity of the
     post-action signal across reps. The signature reproducibility
-    grows monotonically with surface.
+    is high but non-monotonic in surface (0.85/0.60/0.94 for single/burst/flush).
     """
     df = pd.read_csv(DATA / "fig2_sparse_attack_cascade_per_rep.csv")
     sig = json.loads((DATA / "signature_summary.json").read_text())
