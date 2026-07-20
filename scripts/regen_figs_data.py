@@ -2,8 +2,8 @@
 """Regenerate per-figure CSVs from real lab snapshot data.
 
 This script does NOT use a classifier. An event in this pipeline is a
-test-phase iteration whose raw per-iteration signal exceeds the maximum
-of the same signal in the pre-action (warmup) window of the same rep.
+test-phase iteration whose raw per-iteration signal exceeds the 95th
+percentile of the same signal in the pre-action (warmup) window of the same rep.
 The signal is change_volume_sum (bytes mutated per iteration). This is
 the same detection-free threshold used by signature_validation.py and
 gen_crossdomain.py.
@@ -260,7 +260,7 @@ def analyze_rep(sd: Path) -> dict | None:
         "per_hour_rate": round(
             counts.get("Induced-cascade", 0) * 3600.0 / max(dur_s, 1.0), 1
         ),
-        "threshold_used": float(agg_p1[SIGNAL_COL].max()),
+        "threshold_used": float(np.percentile(agg_p1[SIGNAL_COL], PRE_QUANTILE)),
         "n_test_iters": int(len(agg_test)),
         "n_ext": int(ext_mask.sum()),
     }
@@ -371,7 +371,7 @@ def build_fig5() -> pd.DataFrame:
     if len(agg_p1) < 10:
         raise RuntimeError(f"fig5: only {len(agg_p1)} warmup iterations; need >=10")
 
-    threshold = float(agg_p1[SIGNAL_COL].max())
+    threshold = float(np.percentile(agg_p1[SIGNAL_COL], PRE_QUANTILE))
     window = agg_test[(agg_test["ts"] >= action_ts - 30) &
                       (agg_test["ts"] <= action_ts + 200)].copy()
     window["t_rel_s"] = window["ts"] - action_ts
@@ -397,7 +397,7 @@ def build_fig6() -> pd.DataFrame:
 
     "Ripple iteration" = a test-phase iteration in the post-action aftermath
     [action_ts, action_ts+AFTERMATH_S] whose change_volume_sum exceeds the
-    maximum of the same signal in the warmup window of the same rep.
+    95th percentile of the same signal in the warmup window of the same rep.
 
     "Baseline iteration" = an iteration drawn from the warmup phase of the
     same rep plus the full timeline of three idle reps. No threshold
@@ -423,7 +423,7 @@ def build_fig6() -> pd.DataFrame:
     if len(agg_warm) < 10:
         raise RuntimeError(f"fig6: only {len(agg_warm)} warmup iterations; need >=10")
 
-    threshold = float(agg_warm[SIGNAL_COL].max())
+    threshold = float(np.percentile(agg_warm[SIGNAL_COL], PRE_QUANTILE))
     ripple = agg_test[
         (agg_test[SIGNAL_COL] > threshold) &
         (agg_test["ts"] >= action_ts) &
