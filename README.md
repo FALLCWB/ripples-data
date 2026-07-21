@@ -1,6 +1,6 @@
 # Action Ripples in Memory — Dataset
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465278.svg)](https://doi.org/10.5281/zenodo.21474555)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21474555.svg)](https://doi.org/10.5281/zenodo.21474555)
 
 Data and reproduction scripts for the IEEE Access submission **"Action Ripples in Memory: An Observational Characterization of Memory Cascades after External Actions on Stateful Software"**.
 
@@ -183,6 +183,11 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 
 ## Reproducing specific paper numbers
 
+Every quantity in the manuscript is listed in [CLAIMS.md](CLAIMS.md) with the level at
+which it can be reconstructed here: recomputed from released per-repetition data,
+regenerated from a released summary, released as a measured summary only, or not
+reconstructible without the raw captures or the SDN harness.
+
 | Paper claim | Source file | Compute |
 |---|---|---|
 | within-condition mean cosine $0.89$ (repeatability, the paper's primary) and Dockerd within-daemon separation $2.31\times$ (discriminability) | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
@@ -190,7 +195,7 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 | within $0.735$ vs across $0.310$, sep $2.37\times$ (corpus-wide, reported as secondary) | `signature_summary.json` | direct read |
 | Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | Presence transition per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
-| Action-attributable step, 1.25x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |
+| Placebo-adjusted step, 1.25x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |
 | Induced arm against no-action arm, ratio of medians 1.31x, p = 3.6e-5 | `between_arm_test.json` | `scripts/between_arm_test.py` |
 | Lag profile: duration in disjoint bins, comparators all pre-action | `lag_profile.json` | `scripts/lag_profile.py` |
 | Signature restricted to cascade-present conditions, and the OvS no-action control | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
@@ -223,7 +228,8 @@ BibTeX:
   year         = 2026,
   publisher    = {Zenodo},
   version      = {v2.5.5},
-  doi          = {10.5281/zenodo.20465278},
+  doi          = {10.5281/zenodo.21474555},
+  note         = {Concept DOI 10.5281/zenodo.20465278 resolves to the latest version},
   url          = {https://doi.org/10.5281/zenodo.21474555}
 }
 ```
