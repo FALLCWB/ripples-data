@@ -35,7 +35,7 @@ Usage:
 
 Output: one JSON with per-rep category counts, per-hour rates, threshold,
 duration, n iterations, clock offset (from events.json), and the parameter set —
-the input to Table 1 and to the sensitivity grid (P5.4 runs this over the grid).
+the input to the scenario decomposition (Table 2 of the paper) and to the sensitivity grid (P5.4 runs this over the grid).
 """
 import argparse
 import json

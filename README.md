@@ -27,7 +27,7 @@ data/
                not summarized or reported in the paper)
 exp_crossdomain/ capture-side scripts used to produce the crossdomain/ logs
 scripts/         data-processing pipeline that produces data/processed from raw captures
-gen_figures.py   regenerates the surface (Fig. 2), temporal (Fig. 4), and feature (Fig. 5) figures from data/processed
+gen_figures.py   regenerates the surface figure (Fig. 2) from data/processed
 gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd panels)
 ```
 
@@ -104,7 +104,7 @@ Count-level null for the OvS presence claim, plus the paired-excess criterion (2
 Closely spaced actions (scenarios G and H): paired before/after contrast around the second action, with the solo-flush control at matched elapsed time and a window sweep. Produced by `scripts/overlap_analysis.py`.
 
 ### `data/processed/scenario_decomposition.csv`
-Per-scenario six-category decomposition (paper Table 3): one row per (scenario, audit mode), reporting the per-repetition mean rate in events/hour over ten repetitions, under the Induced-first labeler of Algorithm 1. Produced by `scripts/regen_ovs_figs.py`.
+Per-scenario six-category decomposition (paper Table 2): one row per (scenario, audit mode), reporting the per-repetition mean rate in events/hour over ten repetitions, under the Induced-first labeler of Algorithm 1. Produced by `scripts/regen_ovs_figs.py`.
 
 | column | description |
 |---|---|
