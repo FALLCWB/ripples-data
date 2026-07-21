@@ -37,6 +37,8 @@ import pandas as pd
 from scipy.stats import wilcoxon
 
 SEED = 42
+PROC_DEFAULT = (Path(__file__).resolve().parent.parent / "data" / "processed"
+                / "feature_signature_replevel.json")
 AFTERMATH_S = 300
 SIGNAL_COL = "change_volume_sum"
 # 8-column raw per-page schema written by the switch dumper (no header row).
@@ -166,7 +168,7 @@ def main():
     ap.add_argument("--snapshots", type=Path, default=None,
                     help="raw snapshot directory; omit to use the released aggregates")
     ap.add_argument("--aftermath", type=float, default=AFTERMATH_S)
-    ap.add_argument("--out", type=Path, default=None)
+    ap.add_argument("--out", type=Path, default=PROC_DEFAULT)
     args = ap.parse_args()
     rng = np.random.default_rng(SEED)
 

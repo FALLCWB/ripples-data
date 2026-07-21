@@ -150,6 +150,11 @@ def main():
     # Collect reps we care about
     prefixes = ["A_idle", "B_flow_install", "C_ping_sustained",
                 "D_flush", "E_single_rule", "F_burst"]
+    if not SNAPSHOTS.exists():
+        raise SystemExit(
+            f"SKIPPED: raw snapshot corpus not found at {SNAPSHOTS}. It is not "
+            "redistributed (multi-GB live memory); set OVS_SNAPSHOTS to a local "
+            "copy. The computed values ship in data/processed/threshold_comparison.csv.")
     rep_dirs = [d for d in sorted(SNAPSHOTS.iterdir())
                 if d.is_dir() and any(d.name.startswith(p) for p in prefixes)]
     print(f"Found {len(rep_dirs)} rep dirs")

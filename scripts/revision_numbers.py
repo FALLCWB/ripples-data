@@ -233,6 +233,12 @@ if __name__ == "__main__":
     }
     dest = os.path.join(str(PKG / "data/processed"), "revision_numbers.json")
     with open(dest, "w") as f:
+        # Mark how each value was obtained: these blocks read corpora that are not
+        # redistributed, so the shipped values are persisted summaries.
+        for _k, _v in result.items():
+            if isinstance(_v, dict):
+                _v.setdefault('provenance',
+                              'persisted_author_summary: input corpus not redistributed')
         json.dump(result, f, indent=1)
     print(json.dumps(result, indent=1))
     print("wrote", dest)
