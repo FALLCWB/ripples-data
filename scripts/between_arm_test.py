@@ -10,10 +10,15 @@ a larger value where an action was delivered than where none was?
 
 Both arms use the identical estimator: a fixed pre-action reference window, trend
 anchors spaced two window lengths back, and the difference in differences of the
-logs. The no-action arm places its anchor at the elapsed offset where the induced
-scenarios deliver their action, so the two arms differ only in whether an action
-occurred. The comparison is unpaired (different scenarios) and is therefore run
-with a rank test at the repetition level.
+logs. IMPORTANT, and stated in the paper the same way: the two arms are DIFFERENT
+SCENARIOS, not the same scenario with the action toggled. The induced arm is
+flush, single-rule and burst; the no-action arm is idle, routine rule
+installation and sustained traffic. The comparison therefore bounds a generic
+elapsed-time artifact of the estimator; it does not isolate action delivery as
+the only difference between the arms, and it is not a matched action-withheld
+counterfactual. Reading it as one requires assuming the two scenario groups
+share a common trend, which this corpus cannot verify. The test is unpaired and
+is run with a rank test at the repetition level.
 
 Output: data/processed/between_arm_test.json
 
@@ -89,9 +94,11 @@ def main():
     out = {
         "params": {"window_s": args.win, "anchor_multiples_of_window": list(ANCHOR_MULTIPLES),
                    "sham_offset_s": SHAM_OFFSET_S, "threshold": f"p{PRE_Q} of warmup {SIG}"},
-        "note": ("Both arms use the identical estimator; they differ only in whether an "
-                 "action was delivered at the anchor. The test is unpaired and at the "
-                 "repetition level."),
+        "note": ("Both arms use the identical estimator, but they are different scenarios, "
+                 "not the same scenario with the action withheld: induced is flush, "
+                 "single-rule and burst; no-action is idle, routine rule installation "
+                 "and sustained traffic. The contrast bounds a generic elapsed-time "
+                 "artifact of the estimator and is not a matched counterfactual."),
         "induced_arm": {"n_reps": len(vi), "step_median": round(float(np.exp(np.median(vi))), 3)},
         "no_action_arm": {"n_reps": len(vs), "step_median": round(float(np.exp(np.median(vs))), 3)},
         "between_arm": {"mann_whitney_u": float(u), "p": float(f"{p:.3g}"),

@@ -185,7 +185,8 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 
 | Paper claim | Source file | Compute |
 |---|---|---|
-| within $0.84$ vs across $0.50$, sep $1.70\times$ (cascade-present, the paper's primary) | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
+| within-condition mean cosine $0.89$ (repeatability, the paper's primary) and Dockerd within-daemon separation $2.31\times$ (discriminability) | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
+| cross-daemon separation $3.12\times$ and pooled five-condition $1.70\times$ (sensitivity) | `signature_cascade_present.json` | same script |
 | within $0.735$ vs across $0.310$, sep $2.37\times$ (corpus-wide, reported as secondary) | `signature_summary.json` | direct read |
 | Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | Presence transition per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
@@ -195,7 +196,7 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 | Signature restricted to cascade-present conditions, and the OvS no-action control | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
 | Spearman on post-action excess vs surface | `surface_excess_spearman.json` | `scripts/surface_excess_spearman.py` |
 | within-vs-across separation, rep-level permutation $p < 10^{-4}$ (ANOSIM $R=0.53$, PERMANOVA $F=17.8$) | `signature_pairwise_similarity.csv` | `python scripts/signature_replevel_perm.py` |
-| predicted cascade present in $30/30$ sparse-audit reps | `stats_summary.json` | direct read |
+| HISTORICAL ONLY, superseded by the placebo-controlled presence: cascade present in 30/30 sparse-audit reps under the event-count criterion | `stats_summary.json` | direct read |
 | Dockerd amplification $4.9 \times$ → $87 \times$ | `crossdomain_summary.csv` | direct read |
 
 ## Software environment

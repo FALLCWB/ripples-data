@@ -9,7 +9,7 @@
     "sham_offset_s": 288.0,
     "threshold": "p95 of warmup change_volume_sum"
   },
-  "note": "Both arms use the identical estimator; they differ only in whether an action was delivered at the anchor. The test is unpaired and at the repetition level.",
+  "note": "Both arms use the identical estimator, but they are different scenarios, not the same scenario with the action withheld: induced is flush, single-rule and burst; no-action is idle, routine rule installation and sustained traffic. The contrast bounds a generic elapsed-time artifact of the estimator and is not a matched counterfactual.",
   "induced_arm": {
     "n_reps": 29,
     "step_median": 1.255

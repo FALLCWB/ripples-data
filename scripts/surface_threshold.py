@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Ripple presence and duration against action surface, across the three daemons.
+"""Ripple presence and duration against the tested action ladder, across three daemons.
 
 The splash/ripple model predicts that an action too small to disturb the derived
-structures leaves a first-order write and no cascade. This script tests that
-prediction on the same footing in all three case studies, reporting for each
-action whether a cascade is present and how long it lasts.
+structures leaves a first-order write and no cascade. This script reports, for each action, whether a cascade is resolved and how long
+it lasts. The three systems are NOT read on one common statistic: each is read
+with the control and the outcome definition its corpus permits, and the ladders
+vary operation semantics together with nominal size, so the result brackets a
+transition in each ladder rather than isolating action size as its cause.
 
 Open vSwitch is measured against PLACEBO anchors (scripts/placebo_control.py),
 because the OvS corpus carries a monotone within-run ramp that a naive

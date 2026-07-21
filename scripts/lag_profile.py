@@ -151,7 +151,16 @@ def main():
         "induced": summarize(induced, args.bin, args.n_bins),
         "sham_no_action": summarize(sham, args.bin, args.n_bins),
         "per_scenario": {s: summarize(v, args.bin, args.n_bins) for s, v in per_scen.items()},
+        "bonferroni_alpha": None,
     }
+    # Bonferroni threshold for the number of bins actually estimated, so the
+    # per-scenario rows can be read against the same rule as the pooled arm.
+    n_est = len(out["induced"])
+    out["bonferroni_alpha"] = round(0.05 / n_est, 5) if n_est else None
+    for rows in [out["induced"], out["sham_no_action"]] + list(out["per_scenario"].values()):
+        for r in rows:
+            r["survives_bonferroni"] = bool(out["bonferroni_alpha"] and r["p"] < out["bonferroni_alpha"])
+
     (PROC / "lag_profile.json").write_text(json.dumps(out, indent=2))
 
     print(f"lag profile, {args.bin:.0f} s disjoint bins, fixed pre-action reference")
