@@ -1,6 +1,6 @@
 # Action Ripples in Memory — Dataset
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21474555.svg)](https://doi.org/10.5281/zenodo.21474555)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465278.svg)](https://doi.org/10.5281/zenodo.20465278)
 
 Data and reproduction scripts for the IEEE Access submission **"Action Ripples in Memory: An Observational Characterization of Memory Cascades after External Actions on Stateful Software"**.
 
@@ -216,7 +216,13 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.5.5). Zenodo. https://doi.org/10.5281/zenodo.21474555
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts*. Zenodo. https://doi.org/10.5281/zenodo.20465278
+
+The DOI above is the concept DOI: it always resolves to the latest version, so this
+block never goes stale inside a tag. Each release also receives its own version DOI,
+listed on the Zenodo record and on the GitHub release page. Work that must cite an
+exact snapshot should use the version DOI of the release it used; the manuscript
+pins the version DOI of the release that reproduces it.
 
 BibTeX:
 
@@ -227,10 +233,9 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.5.5},
-  doi          = {10.5281/zenodo.21474555},
-  note         = {Concept DOI 10.5281/zenodo.20465278 resolves to the latest version},
-  url          = {https://doi.org/10.5281/zenodo.21474555}
+  doi          = {10.5281/zenodo.20465278},
+  note         = {Concept DOI; resolves to the latest version},
+  url          = {https://doi.org/10.5281/zenodo.20465278}
 }
 ```
 
