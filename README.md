@@ -49,6 +49,7 @@ Added for the revised submission:
 - `overlap_analysis.py` — closely spaced actions (scenarios G and H), paired before/after contrast with solo-flush control and window sweep.
 - `lag_profile.py` — lag-resolved action step in disjoint bins, every comparator window ending at or before the action, with the no-action sham arm.
 - `signature_cascade_present.py` — signature separation restricted to the cascade-present conditions, plus the OvS no-action-window control.
+- `between_arm_test.py` — applies the estimator unchanged to the no-action scenarios and compares the two arms directly at the repetition level.
 - `placebo_control.py` — placebo-anchored control for the Open vSwitch corpus: estimates the within-run ramp from non-overlapping pre-action anchors, removes it by a difference in differences, and reports the sham-anchor negative control and the window sweep.
 - `surface_threshold.py` — ripple presence and duration against the action ladder across the three daemons (Table 3 of the paper).
 - `exclusion_accounting.py` — attempted/kept/excluded repetitions per Dockerd action under GOGC=off.
@@ -189,6 +190,7 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 | Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | Presence transition per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
 | Action-attributable step, 1.25x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |
+| Induced arm against no-action arm, ratio of medians 1.31x, p = 3.6e-5 | `between_arm_test.json` | `scripts/between_arm_test.py` |
 | Lag profile: duration in disjoint bins, comparators all pre-action | `lag_profile.json` | `scripts/lag_profile.py` |
 | Signature restricted to cascade-present conditions, and the OvS no-action control | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
 | Spearman on post-action excess vs surface | `surface_excess_spearman.json` | `scripts/surface_excess_spearman.py` |

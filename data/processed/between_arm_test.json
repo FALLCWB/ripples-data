@@ -1,0 +1,312 @@
+{
+  "params": {
+    "window_s": 30.0,
+    "anchor_multiples_of_window": [
+      2,
+      4,
+      6
+    ],
+    "sham_offset_s": 288.0,
+    "threshold": "p95 of warmup change_volume_sum"
+  },
+  "note": "Both arms use the identical estimator; they differ only in whether an action was delivered at the anchor. The test is unpaired and at the repetition level.",
+  "induced_arm": {
+    "n_reps": 29,
+    "step_median": 1.255
+  },
+  "no_action_arm": {
+    "n_reps": 27,
+    "step_median": 0.96
+  },
+  "between_arm": {
+    "mann_whitney_u": 644.0,
+    "p": 3.59e-05,
+    "ratio_of_medians": 1.308
+  },
+  "per_rep": {
+    "induced": [
+      {
+        "rep": "D_flush_rep10_1784127218",
+        "scenario": "D_flush",
+        "log_did": 0.2272682676699077
+      },
+      {
+        "rep": "D_flush_rep1_1784114542",
+        "scenario": "D_flush",
+        "log_did": 0.3320005887841351
+      },
+      {
+        "rep": "D_flush_rep2_1784116155",
+        "scenario": "D_flush",
+        "log_did": 1.045506642753484
+      },
+      {
+        "rep": "D_flush_rep3_1784117531",
+        "scenario": "D_flush",
+        "log_did": 0.36731615943588536
+      },
+      {
+        "rep": "D_flush_rep4_1784118914",
+        "scenario": "D_flush",
+        "log_did": 0.24626804525756085
+      },
+      {
+        "rep": "D_flush_rep5_1784120305",
+        "scenario": "D_flush",
+        "log_did": 0.2946681344884708
+      },
+      {
+        "rep": "D_flush_rep6_1784121684",
+        "scenario": "D_flush",
+        "log_did": 0.1145365438863235
+      },
+      {
+        "rep": "D_flush_rep7_1784123080",
+        "scenario": "D_flush",
+        "log_did": 0.1540567513236034
+      },
+      {
+        "rep": "D_flush_rep8_1784124445",
+        "scenario": "D_flush",
+        "log_did": 0.331313645522007
+      },
+      {
+        "rep": "D_flush_rep9_1784125839",
+        "scenario": "D_flush",
+        "log_did": 0.279899932009726
+      },
+      {
+        "rep": "E_single_rule_rep10_1784140959",
+        "scenario": "E_single_rule",
+        "log_did": -0.2670273613084165
+      },
+      {
+        "rep": "E_single_rule_rep1_1784128583",
+        "scenario": "E_single_rule",
+        "log_did": 0.18155278018838938
+      },
+      {
+        "rep": "E_single_rule_rep2_1784129948",
+        "scenario": "E_single_rule",
+        "log_did": 0.09339774994102498
+      },
+      {
+        "rep": "E_single_rule_rep3_1784131339",
+        "scenario": "E_single_rule",
+        "log_did": -0.11203611919472048
+      },
+      {
+        "rep": "E_single_rule_rep4_1784132700",
+        "scenario": "E_single_rule",
+        "log_did": 0.051985104326587775
+      },
+      {
+        "rep": "E_single_rule_rep5_1784134084",
+        "scenario": "E_single_rule",
+        "log_did": 0.05804918335954571
+      },
+      {
+        "rep": "E_single_rule_rep6_1784135478",
+        "scenario": "E_single_rule",
+        "log_did": -0.11203499518723131
+      },
+      {
+        "rep": "E_single_rule_rep7_1784136866",
+        "scenario": "E_single_rule",
+        "log_did": -0.048886193362380405
+      },
+      {
+        "rep": "E_single_rule_rep8_1784138257",
+        "scenario": "E_single_rule",
+        "log_did": 0.2498241366770131
+      },
+      {
+        "rep": "F_burst_rep10_1784154758",
+        "scenario": "F_burst",
+        "log_did": 0.23521837381843175
+      },
+      {
+        "rep": "F_burst_rep1_1784142339",
+        "scenario": "F_burst",
+        "log_did": 0.17842443522430176
+      },
+      {
+        "rep": "F_burst_rep2_1784143717",
+        "scenario": "F_burst",
+        "log_did": 0.20551459521698098
+      },
+      {
+        "rep": "F_burst_rep3_1784145097",
+        "scenario": "F_burst",
+        "log_did": 0.3671851460099525
+      },
+      {
+        "rep": "F_burst_rep4_1784146495",
+        "scenario": "F_burst",
+        "log_did": 0.4805043478166424
+      },
+      {
+        "rep": "F_burst_rep5_1784147877",
+        "scenario": "F_burst",
+        "log_did": 0.3648241774084876
+      },
+      {
+        "rep": "F_burst_rep6_1784149273",
+        "scenario": "F_burst",
+        "log_did": -2.595929232340757
+      },
+      {
+        "rep": "F_burst_rep7_1784150643",
+        "scenario": "F_burst",
+        "log_did": 0.6109465866502753
+      },
+      {
+        "rep": "F_burst_rep8_1784152031",
+        "scenario": "F_burst",
+        "log_did": 0.3363956831955838
+      },
+      {
+        "rep": "F_burst_rep9_1784153396",
+        "scenario": "F_burst",
+        "log_did": 0.10788896201118495
+      }
+    ],
+    "no_action": [
+      {
+        "rep": "A_idle_rep10_1784092438",
+        "scenario": "A_idle",
+        "log_did": 0.15789831354758269
+      },
+      {
+        "rep": "A_idle_rep2_1784084518",
+        "scenario": "A_idle",
+        "log_did": -0.10234507661951343
+      },
+      {
+        "rep": "A_idle_rep3_1784085513",
+        "scenario": "A_idle",
+        "log_did": 0.10673355091782255
+      },
+      {
+        "rep": "A_idle_rep4_1784086503",
+        "scenario": "A_idle",
+        "log_did": -1.5456760903647013
+      },
+      {
+        "rep": "A_idle_rep5_1784087469",
+        "scenario": "A_idle",
+        "log_did": -0.24317615618858926
+      },
+      {
+        "rep": "A_idle_rep6_1784088474",
+        "scenario": "A_idle",
+        "log_did": -0.29457766290959275
+      },
+      {
+        "rep": "A_idle_rep7_1784089481",
+        "scenario": "A_idle",
+        "log_did": -0.04124811609751922
+      },
+      {
+        "rep": "A_idle_rep8_1784090474",
+        "scenario": "A_idle",
+        "log_did": -0.23113410195980122
+      },
+      {
+        "rep": "A_idle_rep9_1784091451",
+        "scenario": "A_idle",
+        "log_did": -0.16334898962724478
+      },
+      {
+        "rep": "B_flow_install_rep10_1784102322",
+        "scenario": "B_flow_install",
+        "log_did": 0.03126872980778771
+      },
+      {
+        "rep": "B_flow_install_rep1_1784093439",
+        "scenario": "B_flow_install",
+        "log_did": 0.15117215303654974
+      },
+      {
+        "rep": "B_flow_install_rep2_1784094477",
+        "scenario": "B_flow_install",
+        "log_did": -0.725556634868388
+      },
+      {
+        "rep": "B_flow_install_rep4_1784096450",
+        "scenario": "B_flow_install",
+        "log_did": 0.07162238366602736
+      },
+      {
+        "rep": "B_flow_install_rep5_1784097432",
+        "scenario": "B_flow_install",
+        "log_did": 0.046854706996983936
+      },
+      {
+        "rep": "B_flow_install_rep6_1784098405",
+        "scenario": "B_flow_install",
+        "log_did": -0.11237859086805302
+      },
+      {
+        "rep": "B_flow_install_rep8_1784100372",
+        "scenario": "B_flow_install",
+        "log_did": 0.010921842797806263
+      },
+      {
+        "rep": "B_flow_install_rep9_1784101349",
+        "scenario": "B_flow_install",
+        "log_did": -0.12356390281523522
+      },
+      {
+        "rep": "C_ping_sustained_rep10_1784113051",
+        "scenario": "C_ping_sustained",
+        "log_did": 0.388576106475463
+      },
+      {
+        "rep": "C_ping_sustained_rep1_1784103344",
+        "scenario": "C_ping_sustained",
+        "log_did": 0.01667961340460586
+      },
+      {
+        "rep": "C_ping_sustained_rep2_1784104357",
+        "scenario": "C_ping_sustained",
+        "log_did": 0.05636794517723459
+      },
+      {
+        "rep": "C_ping_sustained_rep3_1784105390",
+        "scenario": "C_ping_sustained",
+        "log_did": 0.16385724244927757
+      },
+      {
+        "rep": "C_ping_sustained_rep4_1784106424",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.41093119556867536
+      },
+      {
+        "rep": "C_ping_sustained_rep5_1784107457",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.009923285160589018
+      },
+      {
+        "rep": "C_ping_sustained_rep6_1784108483",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.016990845300249316
+      },
+      {
+        "rep": "C_ping_sustained_rep7_1784109493",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.29455713384005183
+      },
+      {
+        "rep": "C_ping_sustained_rep8_1784110765",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.1568309305596276
+      },
+      {
+        "rep": "C_ping_sustained_rep9_1784111883",
+        "scenario": "C_ping_sustained",
+        "log_did": -0.06477689129682834
+      }
+    ]
+  }
+}
