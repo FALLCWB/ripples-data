@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-LOGDIR=$(cd "$(dirname "$0")/.." /home/lemos/research/ripples-paper/data/crossdomain/home/lemos/research/ripples-paper/data/crossdomain pwd)/data/crossdomain
+LOGDIR=$(cd "$(dirname "$0")/.." && pwd)/data/crossdomain
 mkdir -p "$LOGDIR"
 export WARMUP_S=180 OBSERVATION_S=180
 

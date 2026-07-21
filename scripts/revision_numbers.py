@@ -26,6 +26,20 @@ R46S = f"{H}/research/ripples-recollection/r46_server"
 R46L = f"{H}/research/ripples-recollection/r46_local"
 
 
+def _available(path, label):
+    """Non-redistributed corpora: report and skip instead of tracebacking.
+
+    The raw recollection trees are multi-GB live-memory captures and are not part
+    of the released package. Every value they produce is persisted in the shipped
+    revision_numbers.json and is marked there with its provenance.
+    """
+    if not Path(path).exists():
+        print(f"SKIPPED {label}: input corpus not redistributed; "
+              f"the released revision_numbers.json carries the computed value.")
+        return False
+    return True
+
+
 def _rows(d, col):
     """(ts, value at column `col`) from a rep's features CSV, action_ts from markers."""
     try:
@@ -59,6 +73,8 @@ def amp(d, col=1):
 
 
 def r2_10_gcdefault():
+    if not _available(GC, "R2.10 default-GC corpus"):
+        return None
     SURF = {"docker_inspect": 0, "docker_run_1": 1, "docker_run_10": 10}
     surf, amps, amean = [], [], {}
     for act, s in SURF.items():
@@ -87,6 +103,8 @@ def r2_10_gcdefault():
 
 
 def r2_11_presence():
+    if not _available(GC, "R2.11 presence corpus"):
+        return None
     AFT = 180.0
     null, reps = [], {}
     for act in ["docker_inspect", "docker_run_1", "docker_run_10", "docker_run_50"]:
@@ -125,6 +143,8 @@ def r3_1_readback():
 
 
 def r4_2_shifted():
+    if not _available(SNAP, "R4.2 shifted-anchor corpus"):
+        return None
     DELTA = 300.0
     real, shift = [], []
     for pref in ["D_flush", "E_single_rule", "F_burst"]:
@@ -194,6 +214,8 @@ def _within(base, prefix, action):
 
 
 def r4_6_robustness():
+    if not _available(R46S, "R4.6 robustness corpus"):
+        return None
     out = {}
     for a in ["redis_set_1", "redis_mset_100", "redis_flushdb"]:
         out[a] = {"redis6_debian": _within(R46S, "redis6deb", a),

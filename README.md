@@ -47,6 +47,8 @@ Added for the revised submission:
 - `presence_null.py` — count-level null for the presence claim and the calibrated paired-excess criterion.
 - `persistence_profile.py` — per-repetition cascade duration on excess mass against each repetition's own pre-action bins.
 - `overlap_analysis.py` — closely spaced actions (scenarios G and H), paired before/after contrast with solo-flush control and window sweep.
+- `lag_profile.py` — lag-resolved action step in disjoint bins, every comparator window ending at or before the action, with the no-action sham arm.
+- `signature_cascade_present.py` — signature separation restricted to the cascade-present conditions, plus the OvS no-action-window control.
 - `placebo_control.py` — placebo-anchored control for the Open vSwitch corpus: estimates the within-run ramp from non-overlapping pre-action anchors, removes it by a difference in differences, and reports the sham-anchor negative control and the window sweep.
 - `surface_threshold.py` — ripple presence and duration against action surface across the three daemons (Table 4 of the paper).
 - `surface_excess_spearman.py` — surface-versus-magnitude test read on excess mass as well as on the event count.
@@ -70,6 +72,16 @@ Added for the revised submission:
 The revision parameter-sensitivity and ablation analyses run on a fresh recollection under a denser audit regime; those raw traces are not redistributed (multi-GB, live memory), but the processed outputs above contain every reported value.
 
 ## File schemas
+
+### Levels of reproduction supported
+
+| Level | Supported? |
+| --- | --- |
+| Regeneration of every figure, table and statistic from the released processed outputs | yes |
+| Recomputation from the released per-repetition aggregates (presence, step, lag profile, signature, overlap) | yes |
+| Reconstruction from the raw Open vSwitch captures, per-repetition action schedules and audit files | no: 1.3 GB of live process memory, too large to host online |
+| Recomputation of the default-GC, presence-null, shifted-anchor and robustness values | no: their input corpora are not redistributed; the computed values ship in `revision_numbers.json` and the scripts skip with an explicit message |
+| The SDN lab harness that drives the OvS testbed | not part of this package |
 
 ### Audit-log schema
 
@@ -195,7 +207,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.1.16). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.4.0). Zenodo. https://doi.org/10.5281/zenodo.20465278
 
 BibTeX:
 
@@ -206,7 +218,7 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.1.16},
+  version      = {v2.4.0},
   doi          = {10.5281/zenodo.20465278},
   url          = {https://doi.org/10.5281/zenodo.20465278}
 }

@@ -7,56 +7,41 @@
       "action - 3 x window",
       "action - 4 x window"
     ],
-    "persistence_pre_s": 120.0,
-    "persistence_post_s": 300.0,
     "threshold": "p95 of warmup change_volume_sum",
     "n_reps": 29
   },
   "note": "The placebo anchor sits inside the live pre-action phase, so any ramp common to both anchors cancels in the difference. p_action and p_placebo are the naive before/after tests at each anchor; the action's own effect is the difference.",
   "excess": {
     "ratio_action_median": 1.386,
-    "ratio_placebo_median": 1.041,
+    "ratio_placebo_median": 1.039,
     "p_action_naive": 5.34e-05,
     "p_placebo_naive": 0.256,
-    "did_log_median": 0.2498,
-    "did_ratio_median": 1.284,
-    "n_reps_did_positive": 23,
-    "p_did": 0.000217
-  },
-  "persistence": {
-    "active_fraction_action_median": 0.967,
-    "active_fraction_placebo_median": 0.833,
-    "n_reps_action_greater": 22,
-    "n_reps": 29,
-    "p_paired": 0.0132
+    "did_log_median": 0.2273,
+    "did_ratio_median": 1.255,
+    "n_reps_did_positive": 24,
+    "p_did": 0.000332
   },
   "per_scenario": {
     "D_flush": {
       "n_reps": 10,
       "ratio_action_median": 1.423,
-      "ratio_placebo_median": 1.031,
-      "did_ratio_median": 1.35,
-      "n_reps_did_positive": 10,
-      "active_fraction_action_median": 1.0,
-      "active_fraction_placebo_median": 0.833
+      "ratio_placebo_median": 1.023,
+      "did_ratio_median": 1.333,
+      "n_reps_did_positive": 10
     },
     "E_single_rule": {
       "n_reps": 9,
       "ratio_action_median": 1.055,
-      "ratio_placebo_median": 1.033,
-      "did_ratio_median": 0.967,
-      "n_reps_did_positive": 4,
-      "active_fraction_action_median": 0.3,
-      "active_fraction_placebo_median": 0.633
+      "ratio_placebo_median": 1.023,
+      "did_ratio_median": 1.053,
+      "n_reps_did_positive": 5
     },
     "F_burst": {
       "n_reps": 10,
       "ratio_action_median": 1.465,
-      "ratio_placebo_median": 1.063,
-      "did_ratio_median": 1.407,
-      "n_reps_did_positive": 9,
-      "active_fraction_action_median": 1.0,
-      "active_fraction_placebo_median": 0.883
+      "ratio_placebo_median": 1.069,
+      "did_ratio_median": 1.331,
+      "n_reps_did_positive": 9
     }
   },
   "per_rep": [
@@ -69,10 +54,8 @@
       "pre_placebo": 1127.0,
       "post_placebo": 1171.0,
       "ratio_action": 1.7025823686553874,
-      "ratio_placebo": 1.1776384535005224,
-      "log_did": 0.3686350162860814,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9
+      "ratio_placebo": 1.3564593301435406,
+      "log_did": 0.2272682676699077
     },
     {
       "rep": "D_flush_rep1_1784114542",
@@ -83,10 +66,8 @@
       "pre_placebo": 553.0,
       "post_placebo": 540.0,
       "ratio_action": 1.6352941176470588,
-      "ratio_placebo": 1.1037924151696608,
-      "log_did": 0.3930707762029052,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9333333333333333
+      "ratio_placebo": 1.1733021077283372,
+      "log_did": 0.3320005887841351
     },
     {
       "rep": "D_flush_rep2_1784116155",
@@ -98,9 +79,7 @@
       "post_placebo": 421.0,
       "ratio_action": 2.632258064516129,
       "ratio_placebo": 0.9252747252747253,
-      "log_did": 1.045506642753484,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8333333333333334
+      "log_did": 1.045506642753484
     },
     {
       "rep": "D_flush_rep3_1784117531",
@@ -111,10 +90,8 @@
       "pre_placebo": 2222.0,
       "post_placebo": 1688.0,
       "ratio_action": 1.4476439790575917,
-      "ratio_placebo": 1.0053879310344827,
-      "log_did": 0.36456392485461653,
-      "active_fraction_action": 0.8,
-      "active_fraction_placebo": 0.6
+      "ratio_placebo": 1.0026246719160106,
+      "log_did": 0.36731615943588536
     },
     {
       "rep": "D_flush_rep4_1784118914",
@@ -125,10 +102,8 @@
       "pre_placebo": 699.0,
       "post_placebo": 1078.0,
       "ratio_action": 1.8068006182380216,
-      "ratio_placebo": 1.471578947368421,
-      "log_did": 0.2052217287719988,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 1.0
+      "ratio_placebo": 1.412398921832884,
+      "log_did": 0.24626804525756085
     },
     {
       "rep": "D_flush_rep5_1784120305",
@@ -140,9 +115,7 @@
       "post_placebo": 2059.0,
       "ratio_action": 1.397632617273126,
       "ratio_placebo": 1.0409270216962525,
-      "log_did": 0.2946681344884708,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8333333333333334
+      "log_did": 0.2946681344884708
     },
     {
       "rep": "D_flush_rep6_1784121684",
@@ -153,10 +126,8 @@
       "pre_placebo": 3591.0,
       "post_placebo": 3611.0,
       "ratio_action": 1.1275989746510966,
-      "ratio_placebo": 0.9751664106502816,
-      "log_did": 0.1452377158957186,
-      "active_fraction_action": 0.9333333333333333,
-      "active_fraction_placebo": 0.6
+      "ratio_placebo": 1.0055694792536898,
+      "log_did": 0.1145365438863235
     },
     {
       "rep": "D_flush_rep7_1784123080",
@@ -167,10 +138,8 @@
       "pre_placebo": 2179.0,
       "post_placebo": 1911.0,
       "ratio_action": 1.2332375478927202,
-      "ratio_placebo": 1.2105263157894737,
-      "log_did": 0.01858762733259789,
-      "active_fraction_action": 0.9,
-      "active_fraction_placebo": 0.7333333333333333
+      "ratio_placebo": 1.0571600481347774,
+      "log_did": 0.1540567513236034
     },
     {
       "rep": "D_flush_rep8_1784124445",
@@ -181,10 +150,8 @@
       "pre_placebo": 2294.0,
       "post_placebo": 2279.0,
       "ratio_action": 1.385972850678733,
-      "ratio_placebo": 1.02143522833178,
-      "log_did": 0.3051935874437144,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8333333333333334
+      "ratio_placebo": 0.995100707675558,
+      "log_did": 0.331313645522007
     },
     {
       "rep": "D_flush_rep9_1784125839",
@@ -196,9 +163,7 @@
       "post_placebo": 1143.0,
       "ratio_action": 1.322997416020672,
       "ratio_placebo": 1.0,
-      "log_did": 0.279899932009726,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8333333333333334
+      "log_did": 0.279899932009726
     },
     {
       "rep": "E_single_rule_rep10_1784140959",
@@ -209,10 +174,8 @@
       "pre_placebo": 1548.0,
       "post_placebo": 1515.0,
       "ratio_action": 0.8784273150543197,
-      "ratio_placebo": 1.0742539902845247,
-      "log_did": -0.2012485704871887,
-      "active_fraction_action": 0.23333333333333334,
-      "active_fraction_placebo": 0.7333333333333333
+      "ratio_placebo": 1.1472929936305734,
+      "log_did": -0.2670273613084165
     },
     {
       "rep": "E_single_rule_rep1_1784128583",
@@ -223,10 +186,8 @@
       "pre_placebo": 6245.0,
       "post_placebo": 6009.0,
       "ratio_action": 1.1537643932683792,
-      "ratio_placebo": 0.9742268041237113,
-      "log_did": 0.16914112596632502,
-      "active_fraction_action": 0.13333333333333333,
-      "active_fraction_placebo": 0.03333333333333333
+      "ratio_placebo": 0.9622097678142514,
+      "log_did": 0.18155278018838938
     },
     {
       "rep": "E_single_rule_rep2_1784129948",
@@ -237,10 +198,8 @@
       "pre_placebo": 1708.5,
       "post_placebo": 1863.5,
       "ratio_action": 1.0546277950750071,
-      "ratio_placebo": 1.0907228563067017,
-      "log_did": -0.03365274356157793,
-      "active_fraction_action": 0.5333333333333333,
-      "active_fraction_placebo": 0.8333333333333334
+      "ratio_placebo": 0.9605878423513694,
+      "log_did": 0.09339774994102498
     },
     {
       "rep": "E_single_rule_rep3_1784131339",
@@ -251,10 +210,8 @@
       "pre_placebo": 4009.600000000093,
       "post_placebo": 4175.900000000096,
       "ratio_action": 0.9310915224725218,
-      "ratio_placebo": 0.9785240140570095,
-      "log_did": -0.049687750237356054,
-      "active_fraction_action": 0.23333333333333334,
-      "active_fraction_placebo": 0.2
+      "ratio_placebo": 1.041475458898643,
+      "log_did": -0.11203611919472048
     },
     {
       "rep": "E_single_rule_rep4_1784132700",
@@ -265,10 +222,8 @@
       "pre_placebo": 2219.0,
       "post_placebo": 2230.0,
       "ratio_action": 1.0779347296639066,
-      "ratio_placebo": 1.0049571879224877,
-      "log_did": 0.07010198151054559,
-      "active_fraction_action": 0.06666666666666667,
-      "active_fraction_placebo": 0.06666666666666667
+      "ratio_placebo": 1.0233297985153764,
+      "log_did": 0.051985104326587775
     },
     {
       "rep": "E_single_rule_rep5_1784134084",
@@ -279,10 +234,8 @@
       "pre_placebo": 2023.0,
       "post_placebo": 2039.0,
       "ratio_action": 1.068148864185597,
-      "ratio_placebo": 1.032669729453803,
-      "log_did": 0.03377969754305078,
-      "active_fraction_action": 0.8666666666666667,
-      "active_fraction_placebo": 0.8333333333333334
+      "ratio_placebo": 1.0079090459713298,
+      "log_did": 0.05804918335954571
     },
     {
       "rep": "E_single_rule_rep6_1784135478",
@@ -293,10 +246,8 @@
       "pre_placebo": 3447.0,
       "post_placebo": 3545.0,
       "ratio_action": 1.0189118417224323,
-      "ratio_placebo": 1.0758426966292134,
-      "log_did": -0.0543690223326522,
-      "active_fraction_action": 0.3,
-      "active_fraction_placebo": 0.7
+      "ratio_placebo": 1.1397058823529411,
+      "log_did": -0.11203499518723131
     },
     {
       "rep": "E_single_rule_rep7_1784136866",
@@ -308,9 +259,7 @@
       "post_placebo": 915.0,
       "ratio_action": 1.0336817653890824,
       "ratio_placebo": 1.0854700854700854,
-      "log_did": -0.048886193362380405,
-      "active_fraction_action": 0.6333333333333333,
-      "active_fraction_placebo": 0.6333333333333333
+      "log_did": -0.048886193362380405
     },
     {
       "rep": "E_single_rule_rep8_1784138257",
@@ -322,9 +271,7 @@
       "post_placebo": 826.0,
       "ratio_action": 1.1640159045725647,
       "ratio_placebo": 0.9066959385290889,
-      "log_did": 0.2498241366770131,
-      "active_fraction_action": 0.9,
-      "active_fraction_placebo": 0.5666666666666667
+      "log_did": 0.2498241366770131
     },
     {
       "rep": "F_burst_rep10_1784154758",
@@ -336,9 +283,7 @@
       "post_placebo": 3277.0,
       "ratio_action": 1.3150229943791518,
       "ratio_placebo": 1.0393918451969593,
-      "log_did": 0.23521837381843175,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9333333333333333
+      "log_did": 0.23521837381843175
     },
     {
       "rep": "F_burst_rep1_1784142339",
@@ -349,10 +294,8 @@
       "pre_placebo": 1831.0,
       "post_placebo": 1971.0,
       "ratio_action": 1.5230366492146596,
-      "ratio_placebo": 1.0764609503003824,
-      "log_did": 0.3470273749763165,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8
+      "ratio_placebo": 1.2741530740276035,
+      "log_did": 0.17842443522430176
     },
     {
       "rep": "F_burst_rep2_1784143717",
@@ -363,10 +306,8 @@
       "pre_placebo": 2801.0,
       "post_placebo": 3091.0,
       "ratio_action": 1.4127388535031846,
-      "ratio_placebo": 1.1035344519814352,
-      "log_did": 0.24701210269595075,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9666666666666667
+      "ratio_placebo": 1.1502918287937742,
+      "log_did": 0.20551459521698098
     },
     {
       "rep": "F_burst_rep3_1784145097",
@@ -378,9 +319,7 @@
       "post_placebo": 2451.0,
       "ratio_action": 1.5867369345630216,
       "ratio_placebo": 1.099103139013453,
-      "log_did": 0.3671851460099525,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9333333333333333
+      "log_did": 0.3671851460099525
     },
     {
       "rep": "F_burst_rep4_1784146495",
@@ -391,10 +330,8 @@
       "pre_placebo": 794.0,
       "post_placebo": 960.0,
       "ratio_action": 1.9549295774647888,
-      "ratio_placebo": 1.0753512132822478,
-      "log_did": 0.597706852779865,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9333333333333333
+      "ratio_placebo": 1.2090680100755669,
+      "log_did": 0.4805043478166424
     },
     {
       "rep": "F_burst_rep5_1784147877",
@@ -406,9 +343,7 @@
       "post_placebo": 1792.0,
       "ratio_action": 1.4840325610519725,
       "ratio_placebo": 1.0303915838690825,
-      "log_did": 0.3648241774084876,
-      "active_fraction_action": 0.9666666666666667,
-      "active_fraction_placebo": 0.7666666666666667
+      "log_did": 0.3648241774084876
     },
     {
       "rep": "F_burst_rep6_1784149273",
@@ -419,10 +354,8 @@
       "pre_placebo": 2253.0,
       "post_placebo": 2032.25,
       "ratio_action": 0.0759493670886076,
-      "ratio_placebo": 0.9433685753166544,
-      "log_did": -2.519390164521093,
-      "active_fraction_action": 0.0,
-      "active_fraction_placebo": 0.03333333333333333
+      "ratio_placebo": 1.018408229561451,
+      "log_did": -2.595929232340757
     },
     {
       "rep": "F_burst_rep7_1784150643",
@@ -433,10 +366,8 @@
       "pre_placebo": 700.0,
       "post_placebo": 878.0,
       "ratio_action": 1.8610792192881744,
-      "ratio_placebo": 1.0687022900763359,
-      "log_did": 0.5547114454750205,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.8666666666666667
+      "ratio_placebo": 1.0102622576966933,
+      "log_did": 0.6109465866502753
     },
     {
       "rep": "F_burst_rep8_1784152031",
@@ -448,9 +379,7 @@
       "post_placebo": 1223.0,
       "ratio_action": 1.4450506625097428,
       "ratio_placebo": 1.032258064516129,
-      "log_did": 0.3363956831955838,
-      "active_fraction_action": 1.0,
-      "active_fraction_placebo": 0.9
+      "log_did": 0.3363956831955838
     },
     {
       "rep": "F_burst_rep9_1784153396",
@@ -461,10 +390,8 @@
       "pre_placebo": 1670.0,
       "post_placebo": 1620.0,
       "ratio_action": 1.4285714285714286,
-      "ratio_placebo": 1.0569620253164558,
-      "log_did": 0.301276164548944,
-      "active_fraction_action": 0.9,
-      "active_fraction_placebo": 0.8666666666666667
+      "ratio_placebo": 1.2824675324675325,
+      "log_did": 0.10788896201118495
     }
   ],
   "sham_anchor_no_action_scenarios": {
@@ -498,9 +425,9 @@
     },
     {
       "window_s": 30.0,
-      "did_ratio_median": 1.284,
-      "n_reps_did_positive": 23,
-      "p_did": 0.000217
+      "did_ratio_median": 1.255,
+      "n_reps_did_positive": 24,
+      "p_did": 0.000332
     },
     {
       "window_s": 45.0,

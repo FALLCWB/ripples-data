@@ -2,7 +2,7 @@
   "params": {
     "quantile": 95,
     "ovs_window_s": 30.0,
-    "note": "OvS is read against placebo anchors because its corpus carries a within-run ramp; Redis and Dockerd carry no supra-threshold excess before the action, so a direct contrast is valid there."
+    "note": "OvS is read against placebo anchors because its corpus carries a within-run ramp. Redis is read directly (negligible pre-action excess). Dockerd is read against a warmup-anchored null because a forced GC contaminates its pre-action window. The Redis FLUSHDB rung runs against an unpopulated database: it differs from SET and MSET in the command's code path, not in the number of keys touched."
   },
   "ovs": [
     {
@@ -52,8 +52,8 @@
     },
     {
       "system": "Redis",
-      "action": "FLUSHDB",
-      "surface": 1000,
+      "action": "FLUSHDB (whole keyspace)",
+      "surface": null,
       "n_reps": 13,
       "pre_excess_median": 1.0,
       "post_excess_median": 4115.0,

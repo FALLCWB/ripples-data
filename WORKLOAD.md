@@ -24,12 +24,12 @@ The exact per-repetition action schedule (action names and timestamps) is record
 Server: `redis-server --save '' --appendonly no` (snapshotting and AOF disabled).
 - **SET** (1 key): `redis-cli SET k1 v1`
 - **MSET** (100 keys): `redis-cli MSET k0 v0 ... k99 v99`
-- **FLUSHDB**: `redis-cli FLUSHDB`
+- **FLUSHDB**: `redis-cli FLUSHDB`. The measurement container starts a fresh `redis-server` and the arm performs no population step, so this rung runs against an unpopulated keyspace: it differs from SET and MSET in the command's code path, not in the number of keys touched. Database cardinality at action time was not recorded.
 - Robustness arm: Redis 6.2 on Debian (`redis:6-bookworm`, glibc) and Redis 7.4 on Alpine (`redis:7-alpine`, musl), on two hosts.
 
 ## Dockerd
 Docker engine with the Go runtime configured for measurement (`GOGC=off` plus a manual GC forced before warmup and again immediately before the action, via the pprof endpoint) in the main arms, and with the default collector (`GOGC=100`, no manual trigger) in the default-GC arm.
-- **readback** (read-only query, on a long-lived container): `docker inspect`
+- **readback** (read-only daemon query; no container spawned, no image mounted, no cgroup created): `docker version`
 - **N containers** (N in {1, 10, 50}): N successive `docker run -d --rm alpine:latest sleep 60`
 - Containers auto-remove (`--rm`); each launch is bounded at 30 s.
 - **Exclusion criterion (pre-registered):** a repetition is excluded if the action does not complete within the aftermath window (for the N-container actions, if a launch exceeds the 30 s bound). Attempted/kept/excluded counts are reported per action.

@@ -79,7 +79,7 @@ PLOT_GRID = [
     ("Redis",   "small",  "redis_set_1",     "SET (1 key)",          None),
     ("Redis",   "medium", "redis_mset_100",  "MSET (100 keys)",      None),
     ("Redis",   "large",  "redis_flushdb",   "FLUSHDB",              None),
-    ("Dockerd", "small",  "docker_inspect",  "docker inspect (readback)",  None),
+    ("Dockerd", "small",  "docker_inspect",  "docker version (readback)",  None),
     ("Dockerd", "medium", "docker_run_1",    "1 container",          None),
     ("Dockerd", "large",  "docker_run_10",   "10 containers",        None),
 ]
@@ -349,7 +349,7 @@ def main():
         ("Redis",   "small",  "redis_set_1",    "SET (1 key)"),
         ("Redis",   "medium", "redis_mset_100", "MSET (100 keys)"),
         ("Redis",   "large",  "redis_flushdb",  "FLUSHDB"),
-        ("Dockerd", "small",  "docker_inspect", "docker inspect (readback)"),
+        ("Dockerd", "small",  "docker_inspect", "docker version (readback)"),
         ("Dockerd", "medium", "docker_run_1",   "1 container"),
         ("Dockerd", "large",  "docker_run_10",  "10 containers"),
         ("Dockerd", "xlarge", "docker_run_50",  "50 containers"),

@@ -1,0 +1,71 @@
+{
+  "params": {
+    "cascade_present_conditions": [
+      "OvS-Flush",
+      "OvS-Burst",
+      "Redis-FLUSHDB",
+      "Dockerd-Run10",
+      "Dockerd-Run50"
+    ],
+    "n_perm": 2000,
+    "seed": 42
+  },
+  "full_corpus": {
+    "within": 0.7346,
+    "across": 0.3095,
+    "separation": 2.373,
+    "n_pairs_within": 564,
+    "n_pairs_across": 5214
+  },
+  "cascade_present": {
+    "within": 0.8428,
+    "across": 0.4969,
+    "separation": 1.696,
+    "n_pairs_within": 210,
+    "n_pairs_across": 871,
+    "permutation_p": 0.0004997501249375312,
+    "bootstrap_ci": [
+      1.38,
+      2.103
+    ]
+  },
+  "cascade_present_within_daemon": {
+    "within": 0.8428,
+    "across": 0.6244,
+    "separation": 1.35,
+    "n_pairs_within": 210,
+    "n_pairs_across": 149
+  },
+  "per_daemon": {
+    "OvS": {
+      "within": 0.7739,
+      "across": 0.7665,
+      "separation": 1.01,
+      "n_pairs_within": 90,
+      "n_pairs_across": 100
+    },
+    "Dockerd": {
+      "within": 0.7737,
+      "across": 0.3344,
+      "separation": 2.313,
+      "n_pairs_within": 42,
+      "n_pairs_across": 49
+    },
+    "Redis": "not estimable (one cascade-present action)"
+  },
+  "ovs_no_action_control": {
+    "post_action_window": {
+      "n_reps": 30,
+      "within": 0.897,
+      "across": 0.899,
+      "separation": 0.998
+    },
+    "no_action_window": {
+      "n_reps": 29,
+      "within": 0.84,
+      "across": 0.826,
+      "separation": 1.017
+    },
+    "note": "Same vector construction on a window of the same runs that contains no action. If the no-action window separates as well as the aftermath, the daemon's trace repeatability is not action-attributable."
+  }
+}

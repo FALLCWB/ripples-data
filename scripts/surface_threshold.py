@@ -6,11 +6,13 @@ structures leaves a first-order write and no cascade. This script tests that
 prediction on the same footing in all three case studies, reporting for each
 action whether a cascade is present and how long it lasts.
 
-Open vSwitch is measured against a PLACEBO anchor (scripts/placebo_control.py),
+Open vSwitch is measured against PLACEBO anchors (scripts/placebo_control.py),
 because the OvS corpus carries a monotone within-run ramp that a naive
-before/after contrast cannot separate from the action. Redis and Dockerd carry
-no such ramp: their pre-action windows contain no supra-threshold excess at all,
-so a direct before/after reading is valid there.
+before/after contrast cannot separate from the action. Redis is read directly:
+its pre-action windows carry negligible supra-threshold excess. Dockerd is NOT
+read directly, because its protocol forces a garbage collection immediately
+before the action and so contaminates the preceding window; its presence comes
+from the warmup-anchored null already reported for R2.11.
 
 Output: data/processed/surface_threshold.json
 
@@ -38,11 +40,11 @@ OVS_ACTIONS = [("E_single_rule", "single rule", 1),
 # Redis is read directly: its pre-action windows carry no supra-threshold excess.
 XD_ACTIONS = [("redis_redis_set_1", "Redis", "SET (1 key)", 1),
               ("redis_redis_mset_100", "Redis", "MSET (100 keys)", 100),
-              ("redis_redis_flushdb", "Redis", "FLUSHDB", 1000)]
+              ("redis_redis_flushdb", "Redis", "FLUSHDB (whole keyspace)", None)]
 # Dockerd forces a manual GC immediately before the action, so its pre-action
 # window is not a valid baseline; presence there is taken from the warmup-anchored
 # null already reported for R2.11 in revision_numbers.json.
-DOCKERD_ACTIONS = [("docker_inspect", "docker inspect (readback)", 0),
+DOCKERD_ACTIONS = [("docker_inspect", "docker version (readback)", 0),
                    ("docker_run_1", "1 container", 1),
                    ("docker_run_10", "10 containers", 10),
                    ("docker_run_50", "50 containers", 50)]
@@ -123,8 +125,11 @@ def ovs_rows(win=30.0, n_placebo=3):
 def main():
     result = {"params": {"quantile": PRE_Q, "ovs_window_s": 30.0,
                          "note": ("OvS is read against placebo anchors because its corpus carries a "
-                                  "within-run ramp; Redis and Dockerd carry no supra-threshold excess "
-                                  "before the action, so a direct contrast is valid there.")},
+                                  "within-run ramp. Redis is read directly (negligible pre-action "
+                                  "excess). Dockerd is read against a warmup-anchored null because a "
+                                  "forced GC contaminates its pre-action window. The Redis FLUSHDB rung "
+                                  "runs against an unpopulated database: it differs from SET and MSET "
+                                  "in the command's code path, not in the number of keys touched.")},
               "ovs": [], "crossdomain": []}
 
     rows = ovs_rows()
@@ -167,7 +172,7 @@ def main():
               f"step {r['step_over_ramp']:.2f}x  present in {r['n_reps_with_step']}/{r['n_reps']}")
     print("Redis (direct contrast; no pre-action excess):")
     for r in result["crossdomain"]:
-        print(f"  {r['system']:8s} surface {r['surface']:4d}  {r['action']:26s} n={r['n_reps']:2d}  "
+        print(f"  {r['system']:8s} surface {str(r['surface']):>4s}  {r['action']:26s} n={r['n_reps']:2d}  "
               f"pre {r['pre_excess_median']:7.1f}  post {r['post_excess_median']:8.1f}  "
               f"last event {r['last_event_s_median']:6.1f} s of {r['window_s_median']:.0f} s")
     print("Dockerd (presence against the warmup-anchored null, R2.11):")

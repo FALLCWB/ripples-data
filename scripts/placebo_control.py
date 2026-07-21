@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Placebo-anchored control for the post-action excess and persistence readings.
+"""Placebo-anchored control for the post-action excess reading.
 
 The induced action is delivered at a nearly fixed elapsed offset in every
 repetition, and the excess signal ramps monotonically through a run. "After the
@@ -15,9 +15,9 @@ difference between them, paired within repetition:
     delta = log(post/pre at the action) - log(post/pre at the placebo)
 
 A ramp that is common to both anchors cancels in delta; what remains is the step
-the action adds on top of the ramp. The same construction is applied to the
-persistence criterion (fraction of aftermath bins whose excess exceeds the 95th
-percentile of the anchor's own preceding bins).
+the action adds on top of the ramp. Duration is not estimated here: no same-run comparator admits an
+action-free window of the length a persistence criterion needs. Lag-resolved
+duration is computed by scripts/lag_profile.py instead.
 
 Output: data/processed/placebo_control.json
 
@@ -71,15 +71,6 @@ def bins(df, thr, lo, hi, bin_s):
     return out
 
 
-def active_fraction(df, thr, anchor, pre_s, post_s, bin_s):
-    ref = bins(df, thr, anchor - pre_s, anchor, bin_s)
-    post = bins(df, thr, anchor, anchor + post_s, bin_s)
-    if len(ref) < 5 or not post:
-        return None
-    rt = float(np.percentile(ref, REF_Q))
-    return sum(1 for b in post if b > rt) / len(post)
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--win", type=float, default=60.0, help="window length each side of an anchor")
@@ -87,7 +78,6 @@ def main():
     ap.add_argument("--bin", type=float, default=10.0)
     ap.add_argument("--n-placebo", type=int, default=3,
                     help="number of non-overlapping placebo anchors used to estimate the ramp")
-    ap.add_argument("--persist-pre", type=float, default=120.0)
     ap.add_argument("--persist-post", type=float, default=300.0)
     args = ap.parse_args()
 
@@ -106,7 +96,7 @@ def main():
         anchors, k = [], 2
         while a - k * args.win - args.win >= tp and len(anchors) < args.n_placebo:
             anchors.append(a - k * args.win)
-            k += 1
+            k += 2
         if not anchors:
             continue
         ratios = []
@@ -129,10 +119,6 @@ def main():
         r["ratio_action"] = r["post_action"] / r["pre_action"]
         r["ratio_placebo"] = float(np.median(ratios))
         r["log_did"] = float(np.log(r["ratio_action"]) - np.log(r["ratio_placebo"]))
-        fa = active_fraction(df, thr, a, args.persist_pre, args.persist_post, args.bin)
-        fp = active_fraction(df, thr, placebo, args.persist_pre, args.persist_post, args.bin)
-        r["active_fraction_action"] = fa
-        r["active_fraction_placebo"] = fp
         rows.append(r)
 
     if not rows:
@@ -147,14 +133,10 @@ def main():
                             np.array([r["pre_placebo"] for r in rows]), alternative="two-sided")
     _, p_did = wilcoxon(did, alternative="two-sided")
 
-    fa = np.array([r["active_fraction_action"] for r in rows if r["active_fraction_action"] is not None])
-    fp = np.array([r["active_fraction_placebo"] for r in rows if r["active_fraction_placebo"] is not None])
-    _, p_fr = wilcoxon(fa, fp, alternative="two-sided")
 
     out = {
         "params": {"window_s": args.win, "bin_s": args.bin,
                    "placebo_anchors_at": [f"action - {k} x window" for k in range(2, 2 + args.n_placebo)],
-                   "persistence_pre_s": args.persist_pre, "persistence_post_s": args.persist_post,
                    "threshold": f"p{PRE_Q} of warmup {SIG}", "n_reps": len(rows)},
         "note": ("The placebo anchor sits inside the live pre-action phase, so any ramp common to "
                  "both anchors cancels in the difference. p_action and p_placebo are the naive "
@@ -168,13 +150,6 @@ def main():
             "did_ratio_median": round(float(np.exp(np.median(did))), 3),
             "n_reps_did_positive": int((did > 0).sum()),
             "p_did": float(f"{p_did:.3g}"),
-        },
-        "persistence": {
-            "active_fraction_action_median": round(float(np.median(fa)), 3),
-            "active_fraction_placebo_median": round(float(np.median(fp)), 3),
-            "n_reps_action_greater": int((fa > fp).sum()),
-            "n_reps": int(len(fa)),
-            "p_paired": float(f"{p_fr:.3g}"),
         },
         "per_scenario": {},
         "per_rep": rows,
@@ -190,10 +165,6 @@ def main():
             "ratio_placebo_median": round(float(np.median([r["ratio_placebo"] for r in sub])), 3),
             "did_ratio_median": round(float(np.exp(np.median(d))), 3),
             "n_reps_did_positive": int((d > 0).sum()),
-            "active_fraction_action_median": round(float(st.median(
-                [r["active_fraction_action"] for r in sub if r["active_fraction_action"] is not None])), 3),
-            "active_fraction_placebo_median": round(float(st.median(
-                [r["active_fraction_placebo"] for r in sub if r["active_fraction_placebo"] is not None])), 3),
         }
 
     # Negative control: same statistic on scenarios with no induced action.
@@ -268,22 +239,16 @@ def main():
     out["window_sweep"] = sweep
 
     (PROC / "placebo_control.json").write_text(json.dumps(out, indent=2))
-    e, q = out["excess"], out["persistence"]
-    print(f"n = {len(rows)} reps, window {args.win:.0f} s, {args.n_placebo} placebo anchors from {2 * args.win:.0f} s before the action")
-    print(f"  excess ratio at the action  : {e['ratio_action_median']}  (naive p = {e['p_action_naive']})")
-    print(f"  excess ratio at the placebo : {e['ratio_placebo_median']}  (naive p = {e['p_placebo_naive']})")
-    print(f"  difference in differences   : {e['did_ratio_median']}x  positive in "
-          f"{e['n_reps_did_positive']}/{len(rows)}  p = {e['p_did']}")
-    print(f"  active-bin fraction         : {q['active_fraction_action_median']} at the action vs "
-          f"{q['active_fraction_placebo_median']} at the placebo, higher in "
-          f"{q['n_reps_action_greater']}/{q['n_reps']}, p = {q['p_paired']}")
     for scen, r in sham.items():
         print(f"  sham anchor {scen:16s} DiD {r['did_ratio_median']:.2f}x (+{r['n_reps_positive']}/{r['n_reps']})")
     for r in sweep:
         print(f"  window {r['window_s']:>4.0f} s: DiD {r['did_ratio_median']:.2f}x  p = {r['p_did']}")
+    e = out["excess"]
+    print(f"  overall DiD {e['did_ratio_median']:.2f}x  positive in "
+          f"{e['n_reps_did_positive']}/{out['params']['n_reps']}  p = {e['p_did']}")
     for scen, r in out["per_scenario"].items():
-        print(f"    {scen:16s} DiD {r['did_ratio_median']:.2f}x (+{r['n_reps_did_positive']}/{r['n_reps']})  "
-              f"bins {r['active_fraction_action_median']:.2f} vs {r['active_fraction_placebo_median']:.2f}")
+        print(f"    {scen:16s} DiD {r['did_ratio_median']:.2f}x "
+              f"(+{r['n_reps_did_positive']}/{r['n_reps']})")
 
 
 if __name__ == "__main__":

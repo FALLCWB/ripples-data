@@ -1,0 +1,307 @@
+{
+  "params": {
+    "bin_s": 20.0,
+    "n_bins": 7,
+    "reference": "fixed window [action - bin, action)",
+    "anchor_multiples_of_bin": [
+      2,
+      4,
+      6
+    ],
+    "sham_offset_s": 288.0,
+    "threshold": "p95 of warmup change_volume_sum"
+  },
+  "note": "Every comparator window ends at or before the action, so no control interval contains the treatment. Bins are disjoint, so a resolved bin is activity in that lag range and not an accumulation from earlier lags.",
+  "induced": [
+    {
+      "lag_lo_s": 0.0,
+      "lag_hi_s": 20.0,
+      "n_reps": 29,
+      "step": 1.303,
+      "n_reps_positive": 23,
+      "p": 0.000195
+    },
+    {
+      "lag_lo_s": 20.0,
+      "lag_hi_s": 40.0,
+      "n_reps": 28,
+      "step": 1.319,
+      "n_reps_positive": 24,
+      "p": 2.05e-05
+    },
+    {
+      "lag_lo_s": 40.0,
+      "lag_hi_s": 60.0,
+      "n_reps": 28,
+      "step": 1.12,
+      "n_reps_positive": 24,
+      "p": 0.000425
+    },
+    {
+      "lag_lo_s": 60.0,
+      "lag_hi_s": 80.0,
+      "n_reps": 28,
+      "step": 1.178,
+      "n_reps_positive": 22,
+      "p": 0.00204
+    },
+    {
+      "lag_lo_s": 80.0,
+      "lag_hi_s": 100.0,
+      "n_reps": 28,
+      "step": 1.061,
+      "n_reps_positive": 19,
+      "p": 0.0662
+    },
+    {
+      "lag_lo_s": 100.0,
+      "lag_hi_s": 120.0,
+      "n_reps": 28,
+      "step": 1.031,
+      "n_reps_positive": 15,
+      "p": 0.937
+    },
+    {
+      "lag_lo_s": 120.0,
+      "lag_hi_s": 140.0,
+      "n_reps": 28,
+      "step": 0.973,
+      "n_reps_positive": 9,
+      "p": 0.194
+    }
+  ],
+  "sham_no_action": [
+    {
+      "lag_lo_s": 0.0,
+      "lag_hi_s": 20.0,
+      "n_reps": 27,
+      "step": 1.023,
+      "n_reps_positive": 14,
+      "p": 0.628
+    },
+    {
+      "lag_lo_s": 20.0,
+      "lag_hi_s": 40.0,
+      "n_reps": 27,
+      "step": 1.003,
+      "n_reps_positive": 14,
+      "p": 0.75
+    },
+    {
+      "lag_lo_s": 40.0,
+      "lag_hi_s": 60.0,
+      "n_reps": 27,
+      "step": 0.999,
+      "n_reps_positive": 13,
+      "p": 0.485
+    },
+    {
+      "lag_lo_s": 60.0,
+      "lag_hi_s": 80.0,
+      "n_reps": 27,
+      "step": 0.94,
+      "n_reps_positive": 13,
+      "p": 0.4
+    },
+    {
+      "lag_lo_s": 80.0,
+      "lag_hi_s": 100.0,
+      "n_reps": 27,
+      "step": 0.97,
+      "n_reps_positive": 13,
+      "p": 0.578
+    },
+    {
+      "lag_lo_s": 100.0,
+      "lag_hi_s": 120.0,
+      "n_reps": 27,
+      "step": 0.965,
+      "n_reps_positive": 12,
+      "p": 0.628
+    },
+    {
+      "lag_lo_s": 120.0,
+      "lag_hi_s": 140.0,
+      "n_reps": 27,
+      "step": 0.979,
+      "n_reps_positive": 11,
+      "p": 0.301
+    }
+  ],
+  "per_scenario": {
+    "D_flush": [
+      {
+        "lag_lo_s": 0.0,
+        "lag_hi_s": 20.0,
+        "n_reps": 10,
+        "step": 1.362,
+        "n_reps_positive": 9,
+        "p": 0.00391
+      },
+      {
+        "lag_lo_s": 20.0,
+        "lag_hi_s": 40.0,
+        "n_reps": 10,
+        "step": 1.42,
+        "n_reps_positive": 10,
+        "p": 0.00195
+      },
+      {
+        "lag_lo_s": 40.0,
+        "lag_hi_s": 60.0,
+        "n_reps": 10,
+        "step": 1.105,
+        "n_reps_positive": 9,
+        "p": 0.0273
+      },
+      {
+        "lag_lo_s": 60.0,
+        "lag_hi_s": 80.0,
+        "n_reps": 10,
+        "step": 1.297,
+        "n_reps_positive": 8,
+        "p": 0.105
+      },
+      {
+        "lag_lo_s": 80.0,
+        "lag_hi_s": 100.0,
+        "n_reps": 10,
+        "step": 1.111,
+        "n_reps_positive": 8,
+        "p": 0.432
+      },
+      {
+        "lag_lo_s": 100.0,
+        "lag_hi_s": 120.0,
+        "n_reps": 10,
+        "step": 1.053,
+        "n_reps_positive": 6,
+        "p": 1.0
+      },
+      {
+        "lag_lo_s": 120.0,
+        "lag_hi_s": 140.0,
+        "n_reps": 10,
+        "step": 0.978,
+        "n_reps_positive": 4,
+        "p": 0.625
+      }
+    ],
+    "E_single_rule": [
+      {
+        "lag_lo_s": 0.0,
+        "lag_hi_s": 20.0,
+        "n_reps": 9,
+        "step": 1.006,
+        "n_reps_positive": 5,
+        "p": 0.82
+      },
+      {
+        "lag_lo_s": 20.0,
+        "lag_hi_s": 40.0,
+        "n_reps": 9,
+        "step": 1.02,
+        "n_reps_positive": 5,
+        "p": 1.0
+      },
+      {
+        "lag_lo_s": 40.0,
+        "lag_hi_s": 60.0,
+        "n_reps": 9,
+        "step": 1.056,
+        "n_reps_positive": 6,
+        "p": 0.57
+      },
+      {
+        "lag_lo_s": 60.0,
+        "lag_hi_s": 80.0,
+        "n_reps": 9,
+        "step": 1.112,
+        "n_reps_positive": 5,
+        "p": 0.496
+      },
+      {
+        "lag_lo_s": 80.0,
+        "lag_hi_s": 100.0,
+        "n_reps": 9,
+        "step": 1.062,
+        "n_reps_positive": 7,
+        "p": 0.164
+      },
+      {
+        "lag_lo_s": 100.0,
+        "lag_hi_s": 120.0,
+        "n_reps": 9,
+        "step": 1.043,
+        "n_reps_positive": 5,
+        "p": 0.82
+      },
+      {
+        "lag_lo_s": 120.0,
+        "lag_hi_s": 140.0,
+        "n_reps": 9,
+        "step": 0.942,
+        "n_reps_positive": 2,
+        "p": 0.301
+      }
+    ],
+    "F_burst": [
+      {
+        "lag_lo_s": 0.0,
+        "lag_hi_s": 20.0,
+        "n_reps": 10,
+        "step": 1.414,
+        "n_reps_positive": 9,
+        "p": 0.084
+      },
+      {
+        "lag_lo_s": 20.0,
+        "lag_hi_s": 40.0,
+        "n_reps": 9,
+        "step": 1.521,
+        "n_reps_positive": 9,
+        "p": 0.00391
+      },
+      {
+        "lag_lo_s": 40.0,
+        "lag_hi_s": 60.0,
+        "n_reps": 9,
+        "step": 1.209,
+        "n_reps_positive": 9,
+        "p": 0.00391
+      },
+      {
+        "lag_lo_s": 60.0,
+        "lag_hi_s": 80.0,
+        "n_reps": 9,
+        "step": 1.17,
+        "n_reps_positive": 9,
+        "p": 0.00391
+      },
+      {
+        "lag_lo_s": 80.0,
+        "lag_hi_s": 100.0,
+        "n_reps": 9,
+        "step": 0.973,
+        "n_reps_positive": 4,
+        "p": 0.91
+      },
+      {
+        "lag_lo_s": 100.0,
+        "lag_hi_s": 120.0,
+        "n_reps": 9,
+        "step": 0.983,
+        "n_reps_positive": 4,
+        "p": 0.82
+      },
+      {
+        "lag_lo_s": 120.0,
+        "lag_hi_s": 140.0,
+        "n_reps": 9,
+        "step": 0.985,
+        "n_reps_positive": 3,
+        "p": 0.496
+      }
+    ]
+  }
+}

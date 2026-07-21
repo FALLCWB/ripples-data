@@ -136,7 +136,7 @@ def fig_gcdefault():
     for row in csv.DictReader(open(DATA / "crossdomain_summary.csv")):
         if row["system"] == "Dockerd":
             off[row["action"]] = float(row["amplification"])
-    off_vals = [off["docker inspect (readback)"],
+    off_vals = [off["docker version (readback)"],
                 off["1 container"], off["10 containers"]]
     # default-GC amplification: read the shipped per-action means from the
     # released JSON (the raw GOGC=100 reps are not redistributed). Falls back to
