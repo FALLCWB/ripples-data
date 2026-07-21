@@ -1,6 +1,6 @@
 # Action Ripples in Memory — Dataset
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465278.svg)](https://doi.org/10.5281/zenodo.20465278)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465278.svg)](https://doi.org/10.5281/zenodo.21466332)
 
 Data and reproduction scripts for the IEEE Access submission **"Action Ripples in Memory: An Observational Characterization of Memory Cascades after External Actions on Stateful Software"**.
 
@@ -208,7 +208,7 @@ The capture pipeline is OS-bound; the analysis pipeline in this repository is pl
 
 ## Citing this dataset
 
-> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.5.2). Zenodo. https://doi.org/10.5281/zenodo.20465278
+> F. Lemos et al. (2026). *Action Ripples in Memory — Dataset and Reproduction Scripts* (v2.5.3). Zenodo. https://doi.org/10.5281/zenodo.21466332
 
 BibTeX:
 
@@ -219,9 +219,9 @@ BibTeX:
   month        = may,
   year         = 2026,
   publisher    = {Zenodo},
-  version      = {v2.5.2},
+  version      = {v2.5.3},
   doi          = {10.5281/zenodo.20465278},
-  url          = {https://doi.org/10.5281/zenodo.20465278}
+  url          = {https://doi.org/10.5281/zenodo.21466332}
 }
 ```
 
