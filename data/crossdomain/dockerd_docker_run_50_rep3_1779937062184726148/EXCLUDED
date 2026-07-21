@@ -1,0 +1,4 @@
+Excluded under the pre-registered criterion: the repetition carries no
+completion marker and no feature stream, i.e. the docker-in-docker batch
+did not finish within the bound. Kept as an empty directory so the
+attempted/kept/excluded accounting is reproducible from the package.
