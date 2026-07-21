@@ -1,0 +1,33 @@
+{
+  "note": "Repetition accounting for the GOGC=off cross-domain arm, counted from the released rep directories: a repetition is kept when it carries both a completion marker and a feature stream.",
+  "per_action": {
+    "dockerd_docker_inspect": {
+      "action": "docker version (readback)",
+      "attempted": 16,
+      "kept": 12,
+      "excluded": 4,
+      "exclusion_reason": "no completion marker (incomplete docker-in-docker batch)"
+    },
+    "dockerd_docker_run_1": {
+      "action": "1 container",
+      "attempted": 16,
+      "kept": 10,
+      "excluded": 6,
+      "exclusion_reason": "no completion marker (incomplete docker-in-docker batch)"
+    },
+    "dockerd_docker_run_10": {
+      "action": "10 containers",
+      "attempted": 17,
+      "kept": 7,
+      "excluded": 10,
+      "exclusion_reason": "no completion marker (incomplete docker-in-docker batch)"
+    },
+    "dockerd_docker_run_50": {
+      "action": "50 containers",
+      "attempted": 17,
+      "kept": 7,
+      "excluded": 10,
+      "exclusion_reason": "no completion marker (incomplete docker-in-docker batch)"
+    }
+  }
+}

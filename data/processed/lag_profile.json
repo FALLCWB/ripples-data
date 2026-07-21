@@ -11,7 +11,7 @@
     "sham_offset_s": 288.0,
     "threshold": "p95 of warmup change_volume_sum"
   },
-  "note": "Every comparator window ends at or before the action, so no control interval contains the treatment. Bins are disjoint, so a resolved bin is activity in that lag range and not an accumulation from earlier lags.",
+  "note": "Every comparator window ends at or before the action, enforced by an assertion, so no control interval contains the treatment. An anchor serves lag bin k only while its own bin-k window still ends before the action, so the far bins are estimated from fewer anchors and the profile stops where the anchor set runs out, which is a limit of the design and not the end of the effect. Bins are disjoint, so a resolved bin is activity in that lag range and not an accumulation from earlier lags.",
   "induced": [
     {
       "lag_lo_s": 0.0,
@@ -33,99 +33,83 @@
       "lag_lo_s": 40.0,
       "lag_hi_s": 60.0,
       "n_reps": 28,
-      "step": 1.12,
-      "n_reps_positive": 24,
-      "p": 0.000425
+      "step": 1.215,
+      "n_reps_positive": 23,
+      "p": 3.66e-05
     },
     {
       "lag_lo_s": 60.0,
       "lag_hi_s": 80.0,
       "n_reps": 28,
-      "step": 1.178,
-      "n_reps_positive": 22,
-      "p": 0.00204
+      "step": 1.221,
+      "n_reps_positive": 23,
+      "p": 0.000473
     },
     {
       "lag_lo_s": 80.0,
       "lag_hi_s": 100.0,
       "n_reps": 28,
-      "step": 1.061,
-      "n_reps_positive": 19,
-      "p": 0.0662
+      "step": 1.184,
+      "n_reps_positive": 23,
+      "p": 0.000473
     },
     {
       "lag_lo_s": 100.0,
       "lag_hi_s": 120.0,
       "n_reps": 28,
-      "step": 1.031,
-      "n_reps_positive": 15,
-      "p": 0.937
-    },
-    {
-      "lag_lo_s": 120.0,
-      "lag_hi_s": 140.0,
-      "n_reps": 28,
-      "step": 0.973,
-      "n_reps_positive": 9,
-      "p": 0.194
+      "step": 1.187,
+      "n_reps_positive": 18,
+      "p": 0.0156
     }
   ],
   "sham_no_action": [
     {
       "lag_lo_s": 0.0,
       "lag_hi_s": 20.0,
-      "n_reps": 27,
-      "step": 1.023,
-      "n_reps_positive": 14,
-      "p": 0.628
+      "n_reps": 26,
+      "step": 1.009,
+      "n_reps_positive": 13,
+      "p": 0.861
     },
     {
       "lag_lo_s": 20.0,
       "lag_hi_s": 40.0,
-      "n_reps": 27,
-      "step": 1.003,
-      "n_reps_positive": 14,
-      "p": 0.75
+      "n_reps": 26,
+      "step": 0.997,
+      "n_reps_positive": 13,
+      "p": 0.499
     },
     {
       "lag_lo_s": 40.0,
       "lag_hi_s": 60.0,
       "n_reps": 27,
-      "step": 0.999,
-      "n_reps_positive": 13,
-      "p": 0.485
+      "step": 0.995,
+      "n_reps_positive": 12,
+      "p": 0.47
     },
     {
       "lag_lo_s": 60.0,
       "lag_hi_s": 80.0,
       "n_reps": 27,
-      "step": 0.94,
-      "n_reps_positive": 13,
-      "p": 0.4
+      "step": 0.959,
+      "n_reps_positive": 10,
+      "p": 0.211
     },
     {
       "lag_lo_s": 80.0,
       "lag_hi_s": 100.0,
-      "n_reps": 27,
-      "step": 0.97,
-      "n_reps_positive": 13,
-      "p": 0.578
+      "n_reps": 25,
+      "step": 0.942,
+      "n_reps_positive": 9,
+      "p": 0.263
     },
     {
       "lag_lo_s": 100.0,
       "lag_hi_s": 120.0,
-      "n_reps": 27,
-      "step": 0.965,
-      "n_reps_positive": 12,
-      "p": 0.628
-    },
-    {
-      "lag_lo_s": 120.0,
-      "lag_hi_s": 140.0,
-      "n_reps": 27,
-      "step": 0.979,
-      "n_reps_positive": 11,
-      "p": 0.301
+      "n_reps": 25,
+      "step": 0.968,
+      "n_reps_positive": 9,
+      "p": 0.287
     }
   ],
   "per_scenario": {
@@ -150,41 +134,33 @@
         "lag_lo_s": 40.0,
         "lag_hi_s": 60.0,
         "n_reps": 10,
-        "step": 1.105,
+        "step": 1.285,
         "n_reps_positive": 9,
-        "p": 0.0273
+        "p": 0.00391
       },
       {
         "lag_lo_s": 60.0,
         "lag_hi_s": 80.0,
         "n_reps": 10,
-        "step": 1.297,
-        "n_reps_positive": 8,
-        "p": 0.105
+        "step": 1.388,
+        "n_reps_positive": 9,
+        "p": 0.00977
       },
       {
         "lag_lo_s": 80.0,
         "lag_hi_s": 100.0,
         "n_reps": 10,
-        "step": 1.111,
-        "n_reps_positive": 8,
-        "p": 0.432
+        "step": 1.374,
+        "n_reps_positive": 9,
+        "p": 0.0137
       },
       {
         "lag_lo_s": 100.0,
         "lag_hi_s": 120.0,
         "n_reps": 10,
-        "step": 1.053,
-        "n_reps_positive": 6,
-        "p": 1.0
-      },
-      {
-        "lag_lo_s": 120.0,
-        "lag_hi_s": 140.0,
-        "n_reps": 10,
-        "step": 0.978,
-        "n_reps_positive": 4,
-        "p": 0.625
+        "step": 1.331,
+        "n_reps_positive": 7,
+        "p": 0.105
       }
     ],
     "E_single_rule": [
@@ -208,41 +184,33 @@
         "lag_lo_s": 40.0,
         "lag_hi_s": 60.0,
         "n_reps": 9,
-        "step": 1.056,
-        "n_reps_positive": 6,
-        "p": 0.57
+        "step": 1.058,
+        "n_reps_positive": 5,
+        "p": 1.0
       },
       {
         "lag_lo_s": 60.0,
         "lag_hi_s": 80.0,
         "n_reps": 9,
-        "step": 1.112,
+        "step": 1.066,
         "n_reps_positive": 5,
-        "p": 0.496
+        "p": 0.91
       },
       {
         "lag_lo_s": 80.0,
         "lag_hi_s": 100.0,
         "n_reps": 9,
-        "step": 1.062,
-        "n_reps_positive": 7,
-        "p": 0.164
+        "step": 1.109,
+        "n_reps_positive": 6,
+        "p": 0.57
       },
       {
         "lag_lo_s": 100.0,
         "lag_hi_s": 120.0,
         "n_reps": 9,
-        "step": 1.043,
-        "n_reps_positive": 5,
-        "p": 0.82
-      },
-      {
-        "lag_lo_s": 120.0,
-        "lag_hi_s": 140.0,
-        "n_reps": 9,
-        "step": 0.942,
-        "n_reps_positive": 2,
-        "p": 0.301
+        "step": 0.994,
+        "n_reps_positive": 4,
+        "p": 0.91
       }
     ],
     "F_burst": [
@@ -266,7 +234,7 @@
         "lag_lo_s": 40.0,
         "lag_hi_s": 60.0,
         "n_reps": 9,
-        "step": 1.209,
+        "step": 1.335,
         "n_reps_positive": 9,
         "p": 0.00391
       },
@@ -274,7 +242,7 @@
         "lag_lo_s": 60.0,
         "lag_hi_s": 80.0,
         "n_reps": 9,
-        "step": 1.17,
+        "step": 1.25,
         "n_reps_positive": 9,
         "p": 0.00391
       },
@@ -282,25 +250,17 @@
         "lag_lo_s": 80.0,
         "lag_hi_s": 100.0,
         "n_reps": 9,
-        "step": 0.973,
-        "n_reps_positive": 4,
-        "p": 0.91
+        "step": 1.255,
+        "n_reps_positive": 8,
+        "p": 0.00781
       },
       {
         "lag_lo_s": 100.0,
         "lag_hi_s": 120.0,
         "n_reps": 9,
-        "step": 0.983,
-        "n_reps_positive": 4,
-        "p": 0.82
-      },
-      {
-        "lag_lo_s": 120.0,
-        "lag_hi_s": 140.0,
-        "n_reps": 9,
-        "step": 0.985,
-        "n_reps_positive": 3,
-        "p": 0.496
+        "step": 1.197,
+        "n_reps_positive": 7,
+        "p": 0.0195
       }
     ]
   }

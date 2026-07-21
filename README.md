@@ -31,7 +31,7 @@ gen_figures.py   regenerates the surface (Fig. 2), temporal (Fig. 4), and featur
 gen_crossdomain.py regenerates the cross-domain figure (OvS, Redis, Dockerd panels)
 ```
 
-Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and the surface, temporal, and feature figures (Fig. 2, Fig. 4, Fig. 5) from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
+Raw Open vSwitch memory snapshots are too large to host online (1.3 GB per recollection). The processed outputs in `data/processed/` contain every value used in the paper text and figures, including the per-iteration aggregates (`ovs_recollection_aggregates/`) and the Induced-first labels (`labels_corrected_{sparse,rich}`) from the frozen-protocol recollection. `scripts/regen_ovs_figs.py` regenerates the scenario decomposition (Table 3) and the surface figure (Fig. 2) from those processed outputs alone, under Algorithm 1's Induced-first order and the 95th-percentile warmup threshold; `scripts/regen_figs_data.py` holds the snapshot-to-features helpers.
 
 Released identifiers use the observational vocabulary throughout: scenarios are `D_flush`, `E_single_rule`, and `F_burst`, the action marker in the event logs is `inject_action`, and per-scenario rates are reported as ripple *presence*. The loaders still accept the legacy marker `inject_attack`, which appears only in first-collection captures that are not redistributed; it predates the observational framing and carries no attack semantics. Scenarios D/E/F are induced administrative actions and the study is purely observational.
 
@@ -45,12 +45,13 @@ Added for the revised submission:
 - `revision_numbers.py` — recomputes and persists the revision numbers (default-GC dissociation, calibrated ripple-presence, readback amplification, shifted-anchor control, robustness signature) into `data/processed/revision_numbers.json`.
 - `build_ovs_aggregates.py` — reduces the raw OvS capture to the released per-iteration aggregates (needs the raw snapshots, which are not redistributed; with them it reproduces the shipped files byte for byte).
 - `presence_null.py` — count-level null for the presence claim and the calibrated paired-excess criterion.
-- `persistence_profile.py` — per-repetition cascade duration on excess mass against each repetition's own pre-action bins.
+- `persistence_profile.py` — WITHDRAWN: its comparator window contained the action. Kept for inspection; duration is reported by `lag_profile.py`.
 - `overlap_analysis.py` — closely spaced actions (scenarios G and H), paired before/after contrast with solo-flush control and window sweep.
 - `lag_profile.py` — lag-resolved action step in disjoint bins, every comparator window ending at or before the action, with the no-action sham arm.
 - `signature_cascade_present.py` — signature separation restricted to the cascade-present conditions, plus the OvS no-action-window control.
 - `placebo_control.py` — placebo-anchored control for the Open vSwitch corpus: estimates the within-run ramp from non-overlapping pre-action anchors, removes it by a difference in differences, and reports the sham-anchor negative control and the window sweep.
-- `surface_threshold.py` — ripple presence and duration against action surface across the three daemons (Table 4 of the paper).
+- `surface_threshold.py` — ripple presence and duration against the action ladder across the three daemons (Table 3 of the paper).
+- `exclusion_accounting.py` — attempted/kept/excluded repetitions per Dockerd action under GOGC=off.
 - `surface_excess_spearman.py` — surface-versus-magnitude test read on excess mass as well as on the event count.
 - `within_scenario_ci.py` — per-scenario within-cosine bootstrap CIs (repetition level) used by Fig. 2(b).
 - `ablation_migration.py` — labeler priority-order ablation, writes `ablation_migration.json` (needs the raw snapshots).
@@ -99,9 +100,6 @@ The labeler consumes only `ts` and `category`; every other field is carried thro
 ### `data/processed/presence_null.json`
 Count-level null for the OvS presence claim, plus the paired-excess criterion (29/30 repetitions, Wilcoxon p = 3.2e-6), which is itself superseded in the paper by the placebo-controlled presence of `placebo_control.json`, since the paired contrast is not controlled for the within-run ramp. Produced by `scripts/presence_null.py`.
 
-### `data/processed/persistence_profile.json`, `persistence_per_rep.csv`
-Per-repetition cascade duration measured on excess mass in 10 s bins against each repetition's own pre-action bins. Produced by `scripts/persistence_profile.py`.
-
 ### `data/processed/overlap_analysis.json`, `overlap_per_rep.csv`
 Closely spaced actions (scenarios G and H): paired before/after contrast around the second action, with the solo-flush control at matched elapsed time and a window sweep. Produced by `scripts/overlap_analysis.py`.
 
@@ -146,7 +144,7 @@ Pairwise cosine similarity between per-rep temporal signatures.
 | `cosine_similarity` | cosine over the post-action feature vector |
 
 ### `data/processed/signature_summary.json`
-Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the signature-reproducibility numbers quoted in the results section.
+Aggregates of the pairwise table: `within_mean = 0.735`, `across_mean = 0.310`, `separation_ratio = 2.37`. These are the corpus-wide trace-repeatability numbers, which the paper reports as secondary; the primary statistic is in `signature_cascade_present.json`.
 
 ### `data/processed/stats_summary.json`
 Per-scenario ripple presence (10/10 per scenario, 30/30 pooled, with Wilson 95% intervals), the surface-monotonicity Spearman (rho = -0.13, n = 30), the per-scenario bootstrap means and CIs (1345/1346/1234 per hour), and the pooled feature-signature Mann-Whitney. The pooled Mann-Whitney is superseded in the paper by the repetition-level paired test of `scripts/feature_signature_replevel.py` and is kept for continuity with the first submission; the file's own `_note` field says so. The presence figure quoted in the paper is the placebo-controlled reading of `placebo_control.json` and `surface_threshold.json`; both this event-count rate and the paired-excess figure of `presence_null.json` are superseded, and are kept for continuity. Produced by `scripts/stats_tests.py`.
@@ -188,8 +186,10 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 |---|---|---|
 | within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
 | Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
-| Surface threshold: presence per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
-| Action-attributable step, 1.28x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |
+| Presence transition per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
+| Action-attributable step, 1.25x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |
+| Lag profile: duration in disjoint bins, comparators all pre-action | `lag_profile.json` | `scripts/lag_profile.py` |
+| Signature restricted to cascade-present conditions, and the OvS no-action control | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
 | Spearman on post-action excess vs surface | `surface_excess_spearman.json` | `scripts/surface_excess_spearman.py` |
 | within-vs-across separation, rep-level permutation $p < 10^{-4}$ (ANOSIM $R=0.53$, PERMANOVA $F=17.8$) | `signature_pairwise_similarity.csv` | `python scripts/signature_replevel_perm.py` |
 | predicted cascade present in $30/30$ sparse-audit reps | `stats_summary.json` | direct read |

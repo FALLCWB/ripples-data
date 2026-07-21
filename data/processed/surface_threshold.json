@@ -9,21 +9,21 @@
       "action": "single rule",
       "surface": 1,
       "n_reps": 9,
-      "step_over_ramp": 0.967,
-      "n_reps_with_step": 4
+      "step_over_ramp": 1.053,
+      "n_reps_with_step": 5
     },
     {
       "action": "21-rule burst",
       "surface": 21,
       "n_reps": 10,
-      "step_over_ramp": 1.407,
+      "step_over_ramp": 1.331,
       "n_reps_with_step": 9
     },
     {
       "action": "flow-table flush",
       "surface": 200,
       "n_reps": 10,
-      "step_over_ramp": 1.35,
+      "step_over_ramp": 1.333,
       "n_reps_with_step": 10
     }
   ],
@@ -65,7 +65,7 @@
   "dockerd": [
     {
       "system": "Dockerd",
-      "action": "docker inspect (readback)",
+      "action": "docker version (readback)",
       "surface": 0,
       "n_reps": 12,
       "n_present": 1,

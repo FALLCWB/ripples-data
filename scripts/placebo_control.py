@@ -73,12 +73,11 @@ def bins(df, thr, lo, hi, bin_s):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--win", type=float, default=60.0, help="window length each side of an anchor")
+    ap.add_argument("--win", type=float, default=30.0, help="window length each side of an anchor")
 
     ap.add_argument("--bin", type=float, default=10.0)
     ap.add_argument("--n-placebo", type=int, default=3,
                     help="number of non-overlapping placebo anchors used to estimate the ramp")
-    ap.add_argument("--persist-post", type=float, default=300.0)
     args = ap.parse_args()
 
     rows = []
@@ -91,7 +90,7 @@ def main():
             continue
         df, thr, a = loaded
         tp = float(df["test_phase_start_ts"].iloc[0])
-        # Several placebo anchors, all non-overlapping and inside the live phase:
+        # Several placebo anchors, spaced two window lengths apart and inside the live phase:
         # the ramp is not linear, so a single anchor estimates it noisily.
         anchors, k = [], 2
         while a - k * args.win - args.win >= tp and len(anchors) < args.n_placebo:
@@ -136,7 +135,7 @@ def main():
 
     out = {
         "params": {"window_s": args.win, "bin_s": args.bin,
-                   "placebo_anchors_at": [f"action - {k} x window" for k in range(2, 2 + args.n_placebo)],
+                   "placebo_anchors_at": [f"action - {k} x window" for k in range(2, 2 + 2 * args.n_placebo, 2)],
                    "threshold": f"p{PRE_Q} of warmup {SIG}", "n_reps": len(rows)},
         "note": ("The placebo anchor sits inside the live pre-action phase, so any ramp common to "
                  "both anchors cancels in the difference. p_action and p_placebo are the naive "
@@ -182,7 +181,7 @@ def main():
             anc = tp + SHAM_OFFSET_S
             pre_s = excess(df, thr, anc - args.win, anc)
             ratios = [excess(df, thr, x, x + args.win) / excess(df, thr, x - args.win, x)
-                      for x in (anc - k * args.win for k in range(2, 2 + args.n_placebo))
+                      for x in (anc - k * args.win for k in range(2, 2 + 2 * args.n_placebo, 2))
                       if x - args.win >= tp and excess(df, thr, x - args.win, x) > 0]
             if not ratios or pre_s <= 0:
                 continue
@@ -223,7 +222,7 @@ def main():
             thr = float(np.percentile(warm[SIG], PRE_Q))
             pre_s = excess(df, thr, a_ts - w, a_ts)
             ratios = [excess(df, thr, x, x + w) / excess(df, thr, x - w, x)
-                      for x in (a_ts - k * w for k in range(2, 2 + args.n_placebo))
+                      for x in (a_ts - k * w for k in range(2, 2 + 2 * args.n_placebo, 2))
                       if x - w >= tp and excess(df, thr, x - w, x) > 0]
             if not ratios or pre_s <= 0:
                 continue
@@ -237,6 +236,23 @@ def main():
                           "n_reps_did_positive": int((v > 0).sum()),
                           "p_did": float(f"{pw:.3g}")})
     out["window_sweep"] = sweep
+
+    # Surface correlation on the trend-adjusted step, so the magnitude reading and
+    # the step it is computed from always come from the same anchor configuration.
+    from scipy.stats import spearmanr
+    SURF = {"E_single_rule": 1, "F_burst": 21, "D_flush": 200}
+    x = np.array([SURF[r["scenario"]] for r in rows])
+    y = np.array([r["log_did"] for r in rows])
+    rho_all, p_all = spearmanr(x, y)
+    m = x > 1
+    rho_above, p_above = spearmanr(x[m], y[m])
+    out["surface_correlation_on_step"] = {
+        "all_levels": {"rho": round(float(rho_all), 3), "p": float(f"{p_all:.3g}"), "n": int(len(x))},
+        "above_transition": {"rho": round(float(rho_above), 3), "p": float(f"{p_above:.3g}"),
+                             "n": int(m.sum()), "levels": 2},
+        "note": ("Across all three levels the ordering is produced by the sub-transition rung; "
+                 "restricted to the two levels above it, no difference is resolved."),
+    }
 
     (PROC / "placebo_control.json").write_text(json.dumps(out, indent=2))
     for scen, r in sham.items():

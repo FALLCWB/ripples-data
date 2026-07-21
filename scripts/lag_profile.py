@@ -15,7 +15,8 @@ Construction. For a bin width BIN, the action contrast in lag bin k is
 with a single FIXED reference window immediately before the action. The same
 quantity is formed at pre-action anchors placed at t_a - 2*BIN, t_a - 4*BIN and
 t_a - 6*BIN, each with its own fixed reference, and the per-repetition trend
-estimate is the median of those. The reported step is the difference in
+estimate is the median of those anchors that can still serve that lag bin without
+their comparator window reaching the action. The reported step is the difference in
 differences in logs. Holding the reference fixed matters: letting it move with
 the lag makes the no-action control itself drift downward (verified: a moving
 reference drives the sham arm to 0.80-0.88 with p < 0.01, while the fixed
@@ -83,17 +84,23 @@ def rep_profile(df, thr, anchor, tp, bin_s, n_bins):
             anc = anchor - m * bin_s
             if anc - bin_s < tp:
                 continue
+            # An anchor can only serve lag bin k if ITS bin-k window still ends at
+            # or before the action; otherwise the comparator would contain the
+            # treatment, which is the defect this estimator exists to avoid.
+            if anc + (k + 1) * bin_s > anchor + 1e-9:
+                continue
             anc_ref = excess(df, thr, anc - bin_s, anc)
             if anc_ref <= 0:
                 continue
-            # every comparator window ends at or before the action by construction
-            assert anc + (k + 1) * bin_s <= anchor + 1e-9 or True
+            assert anc + (k + 1) * bin_s <= anchor + 1e-9, (
+                "comparator window extends past the action")
             trend.append(excess(df, thr, anc + k * bin_s, anc + (k + 1) * bin_s) / anc_ref)
         obs = excess(df, thr, anchor + k * bin_s, anchor + (k + 1) * bin_s)
-        if not trend or obs <= 0:
+        med = float(np.median(trend)) if trend else 0.0
+        if not trend or obs <= 0 or med <= 0:
             out.append(None)
             continue
-        out.append(float(np.log(obs / ref) - np.log(float(np.median(trend)))))
+        out.append(float(np.log(obs / ref) - np.log(med)))
     return out
 
 
@@ -134,9 +141,13 @@ def main():
                    "anchor_multiples_of_bin": list(ANCHOR_MULTIPLES),
                    "sham_offset_s": SHAM_OFFSET_S,
                    "threshold": f"p{PRE_Q} of warmup {SIG}"},
-        "note": ("Every comparator window ends at or before the action, so no control "
-                 "interval contains the treatment. Bins are disjoint, so a resolved bin "
-                 "is activity in that lag range and not an accumulation from earlier lags."),
+        "note": ("Every comparator window ends at or before the action, enforced by an "
+                 "assertion, so no control interval contains the treatment. An anchor "
+                 "serves lag bin k only while its own bin-k window still ends before "
+                 "the action, so the far bins are estimated from fewer anchors and the "
+                 "profile stops where the anchor set runs out, which is a limit of the "
+                 "design and not the end of the effect. Bins are disjoint, so a resolved "
+                 "bin is activity in that lag range and not an accumulation from earlier lags."),
         "induced": summarize(induced, args.bin, args.n_bins),
         "sham_no_action": summarize(sham, args.bin, args.n_bins),
         "per_scenario": {s: summarize(v, args.bin, args.n_bins) for s, v in per_scen.items()},

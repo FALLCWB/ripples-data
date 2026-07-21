@@ -111,7 +111,7 @@ def ovs_rows(win=30.0, n_placebo=3):
             s = w[w[OVS_SIG] > thr]
             return float((s[OVS_SIG] - thr).sum())
 
-        anchors = [a - k * win for k in range(2, 2 + n_placebo) if a - k * win - win >= tp]
+        anchors = [a - k * win for k in range(2, 2 + 2 * n_placebo, 2) if a - k * win - win >= tp]
         ratios = [ex(x, x + win) / ex(x - win, x) for x in anchors if ex(x - win, x) > 0]
         pre_a = ex(a - win, a)
         if not ratios or pre_a <= 0:

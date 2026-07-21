@@ -7,7 +7,7 @@
       "Dockerd-Run10",
       "Dockerd-Run50"
     ],
-    "n_perm": 2000,
+    "n_perm": 10000,
     "seed": 42
   },
   "full_corpus": {
@@ -23,10 +23,10 @@
     "separation": 1.696,
     "n_pairs_within": 210,
     "n_pairs_across": 871,
-    "permutation_p": 0.0004997501249375312,
+    "permutation_p": 9.999000099990002e-05,
     "bootstrap_ci": [
-      1.38,
-      2.103
+      1.387,
+      2.079
     ]
   },
   "cascade_present_within_daemon": {
