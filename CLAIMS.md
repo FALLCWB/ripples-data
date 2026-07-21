@@ -23,8 +23,10 @@ collection host.
 
 | Manuscript item | Quantity | Level | Produced by |
 |---|---|---|---|
-| §VII-A, Table 2 | Six-category rates per OvS scenario | R2 | `scripts/regen_ovs_figs.py`, reading `labels_corrected_{sparse,rich}_W2.0_C5.0_D300.json`; `scripts/labeler_v2.py` regenerates those labels but needs `--snapshots` |
+| §VII-A, Table 2 | Six-category rate columns of Table 2 | R2 | `scripts/regen_ovs_figs.py`, reading `labels_corrected_{sparse,rich}_W2.0_C5.0_D300.json`; `scripts/labeler_v2.py` regenerates those labels but needs `--snapshots` |
 | §VII-A | Rich-vs-sparse residual to zero, paired on flush reps | R1 | `scripts/reanalysis_r2.py` (`paired_audit_coverage`) |
+| §VII-A, Table 2 | Obs. and Lat. columns of Table 2 | R1 | `scripts/stats_tests.py` (`stats_summary.json`) and `data/processed/threshold_comparison.csv` |
+| §IX | Repetition-level feature contrast 2.18x / 2.54x / 1.66x | R1 | `scripts/feature_signature_replevel.py` |
 | §VII-A | Audit density 114 to 306 entries per repetition | R1 | `scripts/reanalysis_r2.py` (`paired_audit_coverage`) |
 | §VII-B | Matched-window occupancy 0.31 vs 0.30; 19/30 | R1 | `scripts/presence_null.py` (`paired_excess`) |
 | §VII-B | Naive 1.39x vs placebo 1.04x at 30 s | R1 | `scripts/placebo_control.py` |
@@ -37,7 +39,7 @@ collection host.
 | §VII-B | Shifted-anchor control: 2.0 vs 289 events, 0.7% | R3 | `data/processed/revision_numbers.json` (`R4.2_shifted_anchor`); computed over a snapshot corpus not redistributed |
 | §VII-B, Table 3 | Redis last supra-threshold time (0.6 / 0.7 / at least 179.8 s) | R1 | `scripts/surface_threshold.py` over `data/crossdomain/` |
 | §VII-B, Table 3 | Dockerd presence rates 8 / 20 / 57 / 100% | R3 | read back from `revision_numbers.json` (`R2.11`) by `scripts/surface_threshold.py` |
-| §VII-C | Dockerd presence Wilson intervals | R4 | arithmetic from the rates above; no released script emits them |
+| §VII-C | Dockerd presence Wilson intervals | R1 (not emitted) | arithmetic from the rates above; no released script writes them out |
 | §VII-C, Fig. 2a | Per-hour rates 1346 / 1234 / 1345; rho = -0.13 and its bootstrap intervals | R2 | `scripts/regen_ovs_figs.py` writes `fig2_sparse_cascade_per_rep.csv`; the coefficient and the intervals ship in `stats_summary.json` from `scripts/stats_tests.py` |
 | §VII-C | Spearman on post-action excess vs surface (rho = 0.09) | R1 | `scripts/surface_excess_spearman.py` |
 | §VII-C | Conditional magnitude rho = 0.02, p = 0.94, n = 20 | R1 | `scripts/placebo_control.py` (`surface_correlation_on_step`) |
@@ -47,15 +49,15 @@ collection host.
 | §VII-C | Corpus-wide 2.37x, ANOSIM R = 0.53, PERMANOVA F = 17.8 | R1 | `scripts/signature_replevel_perm.py` |
 | §VII-C, Fig. 2b | Per-scenario cosines 0.85 / 0.60 / 0.94 with CIs | R1 | `scripts/within_scenario_ci.py` |
 | §VII-C | OvS no-action control 1.02x vs 1.00x | R1 | `scripts/signature_cascade_present.py` (`ovs_no_action_control`) |
-| §VII-D, Table 4 | Redis and Dockerd peak, baseline, amplification | R2 | `gen_crossdomain.py` writes `crossdomain_summary.csv` |
-| §VII-D, Table 4 | Peak bootstrap intervals | R4 | recomputable in principle from `data/crossdomain/`; no released script emits them |
+| §VII-D, Table 4 | Redis and Dockerd peak, baseline, amplification | R1 | `gen_crossdomain.py`, recomputed from the released per-repetition `data/crossdomain/*/features.csv` |
+| §VII-D, Table 4 | Peak bootstrap intervals | R1 (not emitted) | computable from the released `data/crossdomain/` per-repetition peaks; no released script writes them out |
 | §VII-D | Dockerd repetition accounting 16/12, 16/10, 17/7, 17/7 | R1 | `scripts/exclusion_accounting.py` |
 | §VII-D | n = 3 pilot FLUSHDB amplification 10.4x | R4 | historical pilot corpus, not part of this package |
 | §VII-E, Fig. 4 | Observer CPU, RSS, dump latency, cadence, throughput | R3 | recorded by `exp_overhead/`; released as summary |
 | §VII-E | Storage footprint and capture-window figures | R3 | recorded at collection |
-| §VII-F, Fig. 5 | Default-GC amplification 10.9 / 12.6 / 11.4x, rho = 0.09 | R2 | `scripts/regen_figs_data.py`; underlying corpus not redistributed |
+| §VII-F, Fig. 5 | Default-GC amplification 10.9 / 12.6 / 11.4x, rho = 0.09 | R3 | values in `data/processed/revision_numbers.json` (`R2.10_default_gc`); figure drawn by `gen_figures_r1.py` (`fig_gcdefault`); underlying corpus not redistributed |
 | §VII-F | Default-GC per-action accounting and launch timing | R3 | recorded at collection |
-| §VII-G, Fig. 6 | Cross-environment similarity and 4.0x vs 2.0x | R2 | `scripts/reanalysis_r2.py` (`cross_environment_robustness`) over released summaries |
+| §VII-G, Fig. 6 | Cross-environment similarity and 4.0x vs 2.0x | R3 | values in `data/processed/revision_numbers.json` (`R4.6_robustness_signature`), mirrored as a literal in `scripts/reanalysis_r2.py`; figure drawn by `gen_figures_r1.py` (`fig_robustness`) |
 | §VII-H | Overlap arm, 24-cell sweep, between-spacing p = 0.47 | R1 | `scripts/overlap_analysis.py` |
 | §VII-I | Label migration 14,429 events, 84% | R2 | `scripts/ablation_migration.py` needs `--snapshots`; the result ships in `ablation_migration.json` |
 | §VII-J | Oracle 155/102/90/12; recall 100%, precision 63% / 75% | R1 | `exp_dbcascade/dbcascade_labeler_eval.py` writing `exp_dbcascade/dbcascade_result.json`; mirrored in `reanalysis_r2.json` |
@@ -66,6 +68,11 @@ collection host.
 | — | Raw OvS process-memory dumps | R4 | not redistributed |
 | — | Per-repetition OvS collection schedules | R4 | produced by the SDN harness, not in package |
 | — | SDN testbed harness | R4 | not part of this package |
+
+Two Spearman coefficients on surface ship in the package and are different quantities:
+`stats_summary.json` carries the per-hour label rate against surface (rho = -0.13), which is
+what Fig. 2(a) reports, and `surface_excess_spearman.json` carries post-action excess against
+surface (rho = 0.09) and a count reading over a 300 s window (rho = -0.12).
 
 `threshold_comparison.csv` also carries two treatments that recover no induced
 repetition (`T4_z3` and `T5_z5`, 0/30). The manuscript compares the four descriptive
