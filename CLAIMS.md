@@ -36,7 +36,8 @@ package. Those two exclusions are what separate R1/R2 from R3/R4.
 | §VII-C, Fig. 2a | Per-hour rates 1346 / 1234 / 1345; ρ = −0.13 | R1 | `scripts/surface_excess_spearman.py` |
 | §VII-C | Conditional magnitude ρ = 0.02, p = 0.94, n = 20 | R1 | `scripts/placebo_control.py` |
 | §VII-C | Cascade-present cosine 0.89; 3.12×; CI [2.67, 3.63] | R1 | `scripts/signature_cascade_present.py` |
-| §VII-C | Within-daemon 2.31× (Dockerd); 1.85× Redis; 1.00× OvS | R1 | `scripts/signature_cascade_present.py` |
+| §VII-C | Within-daemon, cascade-present: Dockerd 2.313×; OvS 1.01×; Redis not estimable (one cascade-present action) | R1 | `scripts/signature_cascade_present.py` |
+| §VII-C | Full-corpus within-daemon sensitivity: Redis 1.85×, Dockerd 2.23×, OvS 1.00× (includes splash-only conditions) | R1 | `scripts/signature_replevel_perm.py` |
 | §VII-C | Corpus-wide 2.37×, ANOSIM R = 0.53, PERMANOVA F = 17.8 | R1 | `scripts/signature_replevel_perm.py` |
 | §VII-C, Fig. 2b | Per-scenario cosines 0.85 / 0.60 / 0.94 with CIs | R1 | `scripts/within_scenario_ci.py` |
 | §VII-C | OvS no-action control 1.02× vs 1.00× | R1 | `scripts/signature_cascade_present.py` |
