@@ -29,6 +29,18 @@
       2.079
     ]
   },
+  "cascade_present_excluding_ovs": {
+    "within": 0.8945,
+    "across": 0.2869,
+    "separation": 3.118,
+    "n_pairs_within": 120,
+    "n_pairs_across": 231,
+    "permutation_p": 9.999000099990002e-05,
+    "bootstrap_ci": [
+      2.665,
+      3.625
+    ]
+  },
   "cascade_present_within_daemon": {
     "within": 0.8428,
     "across": 0.6244,

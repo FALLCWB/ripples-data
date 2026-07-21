@@ -156,6 +156,16 @@ def main():
     out["cascade_present"]["permutation_p"] = p
     out["cascade_present"]["bootstrap_ci"] = boot_ci(present, rng)
 
+    # Open vSwitch fails its own no-action control, so the headline statistic must
+    # also be reported without it; the pooled five-condition value stays as a
+    # sensitivity analysis.
+    xd = present[~present["scenario_a"].str.startswith("OvS") & ~present["scenario_b"].str.startswith("OvS")]
+    out["cascade_present_excluding_ovs"] = separation(xd)
+    if out["cascade_present_excluding_ovs"]:
+        r2, p2 = perm_test(xd, np.random.default_rng(SEED), args.n_perm)
+        out["cascade_present_excluding_ovs"]["permutation_p"] = p2
+        out["cascade_present_excluding_ovs"]["bootstrap_ci"] = boot_ci(xd, np.random.default_rng(SEED))
+
     blocked = present[present["scenario_a"].map(DAEMON_OF) == present["scenario_b"].map(DAEMON_OF)]
     out["cascade_present_within_daemon"] = separation(blocked)
     for daemon in ("OvS", "Dockerd", "Redis"):
