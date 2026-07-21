@@ -239,6 +239,6 @@ if __name__ == "__main__":
             if isinstance(_v, dict):
                 _v.setdefault('provenance',
                               'persisted_author_summary: input corpus not redistributed')
-        json.dump(result, f, indent=1)
+        json.dump(result, f, indent=2, sort_keys=True)
     print(json.dumps(result, indent=1))
     print("wrote", dest)
