@@ -7,7 +7,7 @@ Inputs (all under data/processed/, no raw snapshots needed; the 1.3 GB raw
 recollection is too large to host online):
   - labels_corrected_{sparse,rich}_W2.0_C5.0_D300.json : per-rep six-category
     counts/rates from the Induced-first labeler (labeler_v2), used for the
-    scenario decomposition (Table 3) and Fig 2(a) magnitude.
+    scenario decomposition (Table 2) and Fig 2(a) magnitude.
   - ovs_recollection_aggregates/<rep>.csv : per-0.5 s-iteration aggregates
     (change_volume_sum etc.) with markers and action_ts, used for the temporal
     profile (Fig 5) and per-iteration feature distributions (Fig 6).
@@ -55,7 +55,7 @@ def warm_test(df):
     return df[(df["ts"] >= ws) & (df["ts"] < ca)], df[df["ts"] >= ts]
 
 
-# ---------------------------------------------------------------- Table 3 + Fig 2
+# ---------------------------------------------------------------- Table 2 + Fig 2
 def build_decomposition_and_fig2():
     def per_scen(results):
         agg = defaultdict(list)

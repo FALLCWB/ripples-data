@@ -184,7 +184,8 @@ The capture-side instrumentation (per-iteration `change_volume_sum`, `n_changed_
 
 | Paper claim | Source file | Compute |
 |---|---|---|
-| within $0.73$ vs across $0.31$, sep $2.4\times$ | `signature_summary.json` | direct read |
+| within $0.84$ vs across $0.50$, sep $1.70\times$ (cascade-present, the paper's primary) | `signature_cascade_present.json` | `scripts/signature_cascade_present.py` |
+| within $0.735$ vs across $0.310$, sep $2.37\times$ (corpus-wide, reported as secondary) | `signature_summary.json` | direct read |
 | Spearman $\rho = -0.13$ on cascade rate vs surface | `fig2_sparse_cascade_per_rep.csv` | Spearman of `per_hour_rate` vs surface (1/21/200) over 30 reps |
 | Presence transition per action across the three daemons | `surface_threshold.json`, `placebo_control.json` | `scripts/surface_threshold.py`; OvS read as the placebo-controlled step |
 | Action-attributable step, 1.25x at 30 s windows | `placebo_control.json` | `scripts/placebo_control.py --win 30` |

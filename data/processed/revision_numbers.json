@@ -1,67 +1,72 @@
 {
- "R2.10_default_gc": {
-  "spearman_rho": 0.088,
-  "ci95": [
-   -0.239,
-   0.409
-  ],
-  "amplification_mean": {
-   "docker_inspect": 10.91,
-   "docker_run_1": 12.59,
-   "docker_run_10": 11.37
+  "R2.10_default_gc": {
+    "spearman_rho": 0.088,
+    "ci95": [
+      -0.239,
+      0.409
+    ],
+    "amplification_mean": {
+      "docker_inspect": 10.91,
+      "docker_run_1": 12.59,
+      "docker_run_10": 11.37
+    },
+    "n": 40,
+    "provenance": "persisted_author_summary: input corpus not redistributed"
   },
-  "n": 40
- },
- "R2.11_ripple_presence_calibrated": {
-  "null_draws": 36,
-  "null_q95": 14.25,
-  "null_fp_rate": 0.056,
-  "presence": {
-   "docker_inspect": {
-    "n": 12,
-    "present": 1,
-    "rate": 0.083
-   },
-   "docker_run_1": {
-    "n": 10,
-    "present": 2,
-    "rate": 0.2
-   },
-   "docker_run_10": {
-    "n": 7,
-    "present": 4,
-    "rate": 0.571
-   },
-   "docker_run_50": {
-    "n": 7,
-    "present": 7,
-    "rate": 1.0
-   }
+  "R2.11_ripple_presence_calibrated": {
+    "null_draws": 36,
+    "null_q95": 14.25,
+    "null_fp_rate": 0.056,
+    "presence": {
+      "docker_inspect": {
+        "n": 12,
+        "present": 1,
+        "rate": 0.083
+      },
+      "docker_run_1": {
+        "n": 10,
+        "present": 2,
+        "rate": 0.2
+      },
+      "docker_run_10": {
+        "n": 7,
+        "present": 4,
+        "rate": 0.571
+      },
+      "docker_run_50": {
+        "n": 7,
+        "present": 7,
+        "rate": 1.0
+      }
+    },
+    "provenance": "persisted_author_summary: input corpus not redistributed"
+  },
+  "R3.1_readback_amplification": {
+    "table2_gogc_off": 4.91,
+    "baseline": 4.782,
+    "peak": 23.5,
+    "provenance": "persisted_author_summary: input corpus not redistributed"
+  },
+  "R4.2_shifted_anchor": {
+    "n": 30,
+    "real_mean": 289.3,
+    "shifted_mean": 2.0,
+    "spurious_rate": 0.0068,
+    "provenance": "persisted_author_summary: input corpus not redistributed"
+  },
+  "R4.6_robustness_signature": {
+    "redis_set_1": {
+      "redis6_debian": 0.856,
+      "redis7_localhost": 0.811
+    },
+    "redis_mset_100": {
+      "redis6_debian": 0.848,
+      "redis7_localhost": 0.931
+    },
+    "redis_flushdb": {
+      "redis6_debian": 0.754,
+      "redis7_localhost": 0.992
+    },
+    "provenance": "persisted_author_summary: input corpus not redistributed"
   }
- },
- "R3.1_readback_amplification": {
-  "table2_gogc_off": 4.91,
-  "baseline": 4.782,
-  "peak": 23.5
- },
- "R4.2_shifted_anchor": {
-  "n": 30,
-  "real_mean": 289.3,
-  "shifted_mean": 2.0,
-  "spurious_rate": 0.0068
- },
- "R4.6_robustness_signature": {
-  "redis_set_1": {
-   "redis6_debian": 0.856,
-   "redis7_localhost": 0.811
-  },
-  "redis_mset_100": {
-   "redis6_debian": 0.848,
-   "redis7_localhost": 0.931
-  },
-  "redis_flushdb": {
-   "redis6_debian": 0.754,
-   "redis7_localhost": 0.992
-  }
- }
 }

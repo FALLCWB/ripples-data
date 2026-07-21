@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Count-level null for the OvS ripple-presence claim.
 
-The presence criterion used in Table 3 is qualitative: a repetition counts as
+The presence criterion used in Table 2 is qualitative: a repetition counts as
 showing a cascade when at least one post-action iteration exceeds the warmup
 95th percentile. At that threshold roughly five per cent of warmup iterations
 already exceed it by construction, so "at least one event in the aftermath" is
