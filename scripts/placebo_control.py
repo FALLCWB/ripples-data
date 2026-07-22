@@ -9,8 +9,11 @@ contrast at the action alone cannot separate the two.
 This script measures the confound directly and then removes it. A PLACEBO anchor
 is placed OFFSET seconds before the real action, with both of its windows inside
 the live, controller-attached pre-action phase, where no action is delivered. The
-same statistic is computed at both anchors, and the action's effect is the
-difference between them, paired within repetition:
+same statistic is computed at both anchors, and the placebo-adjusted step is the
+difference between them, paired within repetition. This is a historical-trend-adjusted
+contrast, not an isolated causal effect of action delivery: the induced and no-action
+arms are different scenarios, so the contrast bounds a generic elapsed-time artifact
+rather than identifying action delivery as the only difference between them.
 
     delta = log(post/pre at the action) - log(post/pre at the placebo)
 
@@ -139,7 +142,7 @@ def main():
                    "threshold": f"p{PRE_Q} of warmup {SIG}", "n_reps": len(rows)},
         "note": ("The placebo anchor sits inside the live pre-action phase, so any ramp common to "
                  "both anchors cancels in the difference. p_action and p_placebo are the naive "
-                 "before/after tests at each anchor; the action's own effect is the difference."),
+                 "before/after tests at each anchor; the placebo-adjusted step is the difference, a historical-trend-adjusted contrast rather than an isolated causal effect."),
         "excess": {
             "ratio_action_median": round(float(np.median(ra)), 3),
             "ratio_placebo_median": round(float(np.median(rp)), 3),
