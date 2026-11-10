@@ -29,5 +29,165 @@
       "excluded": 10,
       "exclusion_reason": "no completion marker (incomplete docker-in-docker batch)"
     }
+  },
+  "R4.5_by_launcher": {
+    "note": "Launch mode inferred from the directory name (the batch launch command is not part of this package): 10-digit second stamp = sequential, exp_crossdomain/run_dockerd.sh, one repetition at a time; 19-digit nanosecond stamp = batch launch; batch-launched repetitions are grouped into launches by the stamp's second: two launches of twenty concurrent repetitions and two later readback re-runs of one and two repetitions. Batch, parallelism and load were not varied separately, so any association with load is descriptive.",
+    "per_action": {
+      "dockerd_docker_inspect": {
+        "sequential": {
+          "attempted": 3,
+          "kept": 3,
+          "excluded": 0
+        },
+        "parallel": {
+          "attempted": 13,
+          "kept": 9,
+          "excluded": 4
+        }
+      },
+      "dockerd_docker_run_1": {
+        "sequential": {
+          "attempted": 6,
+          "kept": 5,
+          "excluded": 1
+        },
+        "parallel": {
+          "attempted": 10,
+          "kept": 5,
+          "excluded": 5
+        }
+      },
+      "dockerd_docker_run_10": {
+        "sequential": {
+          "attempted": 7,
+          "kept": 7,
+          "excluded": 0
+        },
+        "parallel": {
+          "attempted": 10,
+          "kept": 0,
+          "excluded": 10
+        }
+      },
+      "dockerd_docker_run_50": {
+        "sequential": {
+          "attempted": 7,
+          "kept": 7,
+          "excluded": 0
+        },
+        "parallel": {
+          "attempted": 10,
+          "kept": 0,
+          "excluded": 10
+        }
+      }
+    },
+    "excluded_total": 30,
+    "excluded_by_launcher": {
+      "parallel": 29,
+      "sequential": 1
+    },
+    "excluded_without_completion_marker": 30,
+    "parallel_launches": {
+      "1779936540": {
+        "size": 20,
+        "kept": 11,
+        "excluded": 9,
+        "per_action": {
+          "dockerd_docker_inspect": {
+            "attempted": 10,
+            "kept": 6
+          },
+          "dockerd_docker_run_1": {
+            "attempted": 10,
+            "kept": 5
+          }
+        }
+      },
+      "1779941548": {
+        "size": 1,
+        "kept": 1,
+        "excluded": 0,
+        "per_action": {
+          "dockerd_docker_inspect": {
+            "attempted": 1,
+            "kept": 1
+          }
+        }
+      },
+      "1779941945": {
+        "size": 2,
+        "kept": 2,
+        "excluded": 0,
+        "per_action": {
+          "dockerd_docker_inspect": {
+            "attempted": 2,
+            "kept": 2
+          }
+        }
+      },
+      "1779937062": {
+        "size": 20,
+        "kept": 0,
+        "excluded": 20,
+        "per_action": {
+          "dockerd_docker_run_10": {
+            "attempted": 10,
+            "kept": 0
+          },
+          "dockerd_docker_run_50": {
+            "attempted": 10,
+            "kept": 0
+          }
+        }
+      }
+    }
+  },
+  "R4.5_presence_by_launcher": {
+    "note": "R2.11 ripple presence (warmup-anchored null, same rule and pooled null as scripts/revision_numbers.py) split by launcher; pooled values checked equal to the persisted R2.11 values. Excluded repetitions lack the completion marker that timestamps the action, so their presence cannot be computed. Descriptive only: with 3 against 9 and 5 against 5 repetitions no test can resolve a difference by launcher, and launcher is confounded with launch, date and load.",
+    "null_draws": 36,
+    "null_q95": 14.25,
+    "per_action": {
+      "dockerd_docker_inspect": {
+        "sequential": {
+          "n": 3,
+          "present": 0
+        },
+        "parallel": {
+          "n": 9,
+          "present": 1
+        }
+      },
+      "dockerd_docker_run_1": {
+        "sequential": {
+          "n": 5,
+          "present": 1
+        },
+        "parallel": {
+          "n": 5,
+          "present": 1
+        }
+      },
+      "dockerd_docker_run_10": {
+        "sequential": {
+          "n": 7,
+          "present": 4
+        },
+        "parallel": {
+          "n": 0,
+          "present": 0
+        }
+      },
+      "dockerd_docker_run_50": {
+        "sequential": {
+          "n": 7,
+          "present": 7
+        },
+        "parallel": {
+          "n": 0,
+          "present": 0
+        }
+      }
+    }
   }
 }

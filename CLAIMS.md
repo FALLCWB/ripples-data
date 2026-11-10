@@ -52,6 +52,7 @@ collection host.
 | §VII-D, Table 4 | Redis and Dockerd peak, baseline, amplification | R1 | `gen_crossdomain.py`, recomputed from the released per-repetition `data/crossdomain/*/features.csv` |
 | §VII-D, Table 4 | Peak bootstrap intervals | R1 (not emitted) | computable from the released `data/crossdomain/` per-repetition peaks; no released script writes them out |
 | §VII-D | Dockerd repetition accounting 16/12, 16/10, 17/7, 17/7 | R1 | `scripts/exclusion_accounting.py` |
+| §VII-D, §VIII-C | Dockerd exclusions by launch mode: 29 of 30 from the two batch launches of twenty concurrent repetitions (readback 4 of 10, one container 5 of 10, ten and fifty containers 20 of 20), 1 of 23 launched one at a time; presence by launch mode on the light rungs, readback 0/3 vs 1/9, one container 1/5 vs 1/5 | R1 | `scripts/exclusion_accounting.py` (`R4.5_by_launcher`, `R4.5_presence_by_launcher`); launch mode inferred from the directory stamp, the batch launch command is not part of this package |
 | §VII-D | n = 3 pilot FLUSHDB amplification 10.4x | R4 | historical pilot corpus, not part of this package |
 | §VII-E, Fig. 4 | Observer CPU, RSS, dump latency, cadence, throughput | R3 | recorded by `exp_overhead/`; released as summary |
 | §VII-E | Storage footprint and capture-window figures | R3 | recorded at collection |
